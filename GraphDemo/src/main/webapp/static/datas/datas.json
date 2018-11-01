@@ -1,0 +1,155 @@
+{
+"datas":[
+
+  {"id":"sq2356","descript":"推广机构id","symbol":"../img/icon12@3x.png","name":"广东省深圳市招商银行新安支行","category":3,"value":12,"nodeId":"0000","x":10000,"y":0,"level":0,"width":52,"height":52,"nodeSetting":{},"showLabelText":true},
+  {"id":"sq3141","descript":"推广人id","symbol":"../img/icon13@3x.png","name":"07551001","category":3,"value":12,"nodeId":"0001","x":-10000,"y":0,"level":0,"width":52,"height":52,"nodeSetting":{},"showLabelText":true},
+
+  {"id":"sq1","descript":"申请书编号","symbol":"../img/icon8@3x.png","name":"sq201809041000101","category":2,"value":10,"nodeId":"0002","parentId":"0000","level":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"sq2","descript":"申请书编号","symbol":"../img/icon8@3x.png","name":"sq201809041000102","category":2,"value":10,"nodeId":"0004","parentId":"0000","level":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"sq3","descript":"申请书编号","symbol":"../img/icon8@3x.png","name":"sq201809041000103","category":2,"value":10,"nodeId":"0024","parentId":"0000","level":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"sq4","descript":"申请书编号","symbol":"../img/icon8@3x.png","name":"sq201809041000104","category":2,"value":8,"nodeId":"0026","parentId":"0001","level":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+
+  {"id":"sq5","descript":"申请书编号","symbol":"../img/icon8@3x.png","name":"sq201809041000105","category":2,"value":9,"nodeId":"0035","parentId":"0000","level":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"sq6","descript":"申请书编号","symbol":"../img/icon8@3x.png","name":"sq201809041000106","category":2,"value":10,"nodeId":"0036","parentId":"0000","level":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"sq7","descript":"申请书编号","symbol":"../img/icon8@3x.png","name":"sq201809041000107","category":2,"value":10,"nodeId":"0037","parentId":"0001","level":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+
+  {"id":"K1","descript":"卡号","symbol":"../img/icon11@3x.png","name":"201809043000101","category":3,"value":8,"nodeId":"0003","parentId":"0000","level":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"K2","descript":"卡号","symbol":"../img/icon11@3x.png","name":"201809043000102","category":3,"value":8,"nodeId":"0005","parentId":"0000","level":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"K3","descript":"卡号","symbol":"../img/icon11@3x.png","name":"201809043000103","category":3,"value":5,"nodeId":"0025","parentId":"0000","level":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"K4","descript":"卡号","symbol":"../img/icon11@3x.png","name":"201809043000104","category":3,"value":7,"nodeId":"0025","parentId":"0001","level":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"K5","descript":"卡号","symbol":"../img/icon11@3x.png","name":"201809043000105","category":3,"value":7,"nodeId":"0025","parentId":"0001","level":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+
+
+
+
+
+  {"id":"cu1","descript":"客户号","symbol":"../img/icon1@3x.png","name":"600118772311","category":0,"value":9,"nodeId":"0009","parentId":"0002","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"cu2","descript":"客户号","symbol":"../img/icon1@3x.png","name":"600118772312","category":0,"value":5,"nodeId":"0018","parentId":"0004","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"cu3","descript":"客户号3","symbol":"../img/icon1@3x.png","name":"600118772313","category":0,"value":5,"nodeId":"0018","parentId":"0004","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"cu4","descript":"客户号4","symbol":"../img/icon1@3x.png","name":"600118772314","category":0,"value":5,"nodeId":"0018","parentId":"0004","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+
+  {"id":"cu783","descript":"客户电话","symbol":"../img/icon2@3x.png","name":"13009040001","category":0,"value":1,"nodeId":"0014","parentId":"0009","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"cu784","descript":"客户电话","symbol":"../img/icon2@3x.png","name":"13009040002","category":0,"value":1,"nodeId":"0019","parentId":"0018","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"cu785","descript":"客户电话3","symbol":"../img/icon2@3x.png","name":"13009040001","category":0,"value":1,"nodeId":"0014","parentId":"0009","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"cu786","descript":"客户电话4","symbol":"../img/icon2@3x.png","name":"13009040002","category":0,"value":1,"nodeId":"0019","parentId":"0018","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+
+  {"id":"sq1572","descript":"单位电话","symbol":"../img/icon10@3x.png","name":"075586941102","category":2,"value":1,"nodeId":"0016","parentId":"0004","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"sq1573","descript":"单位电话","symbol":"../img/icon10@3x.png","name":"075586941103","category":2,"value":1,"nodeId":"0028","parentId":"0024","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+
+
+  {"id":"cu1565","descript":"所属公司编号1","symbol":"../img/icon3@3x.png","name":"92440300731093239W","category":0,"value":4,"nodeId":"0010","parentId":"0009","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"cu1566","descript":"所属公司编号2","symbol":"../img/icon3@3x.png","name":"92440300731093239X","category":0,"value":2,"nodeId":"0035","parentId":"0018","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"cu1567","descript":"所属公司编号3","symbol":"../img/icon3@3x.png","name":"92440300731093239Y","category":0,"value":2,"nodeId":"0035","parentId":"0018","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"cu1568","descript":"所属公司编号4","symbol":"../img/icon3@3x.png","name":"92440300731093239Z","category":0,"value":2,"nodeId":"0035","parentId":"0018","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+
+
+  {"id":"sq786","descript":"证件号码","symbol":"../img/icon9@3x.png","name":"230102198002012001","category":2,"value":1,"nodeId":"0006","parentId":"0002","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"sq787","descript":"证件号码","symbol":"../img/icon9@3x.png","name":"230102198002012002","category":2,"value":1,"nodeId":"0015","parentId":"0004","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"sq788","descript":"证件号码","symbol":"../img/icon9@3x.png","name":"230102198002012003","category":2,"value":1,"nodeId":"0027","parentId":"0024","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"sq789","descript":"证件号码","symbol":"../img/icon9@3x.png","name":"230102198202012004","category":2,"value":1,"nodeId":"0029","parentId":"0026","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"sq790","descript":"证件号码","symbol":"../img/icon9@3x.png","name":"230102198202012004","category":2,"value":1,"nodeId":"0039","parentId":"0037","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"sq1571","descript":"单位电话","symbol":"../img/icon10@3x.png","name":"075586941101","category":2,"value":1,"nodeId":"0007","parentId":"0002","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"sq1574","descript":"单位电话","symbol":"../img/icon10@3x.png","name":"075586941104","category":2,"value":1,"nodeId":"0030","parentId":"0026","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"sq1575","descript":"单位电话","symbol":"../img/icon10@3x.png","name":"075586941105","category":2,"value":1,"nodeId":"0038","parentId":"0037","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+
+
+  {"id":"zh1","descript":"账户号","symbol":"../img/icon4@3x.png","name":"2998000050900151","category":1,"value":9,"nodeId":"0008","parentId":"0002","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"zh2","descript":"账户号","symbol":"../img/icon4@3x.png","name":"2998000050900152","category":1,"value":9,"nodeId":"0017","parentId":"0035","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"zh3","descript":"账户号","symbol":"../img/icon4@3x.png","name":"2998000050900153","category":1,"value":6,"value":1,"nodeId":"0031","parentId":"0025","level":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"zh785","descript":"邮编","symbol":"../img/icon5@3x.png","name":"518001","category":1,"value":1,"nodeId":"0011","parentId":"0008","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"zh786","descript":"邮编","symbol":"../img/icon5@3x.png","name":"518002","category":1,"value":1,"nodeId":"0021","parentId":"0017","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"zh787","descript":"邮编","symbol":"../img/icon5@3x.png","name":"518003","category":1,"value":1,"nodeId":"0011","parentId":"0008","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"zh1569","descript":"地址","symbol":"../img/icon6@3x.png","name":"广东省深圳市刘村和平小区 ","category":1,"value":1,"nodeId":"0012","parentId":"0008","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"zh1570","descript":"地址","symbol":"../img/icon6@3x.png","name":"广东省深圳市龙华弓村和平小区 ","category":1,"value":1,"nodeId":"0022","parentId":"0017","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"zh1571","descript":"地址","symbol":"../img/icon6@3x.png","name":"广东省深圳市泰宁小区 ","category":1,"value":1,"nodeId":"0033","parentId":"0031","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"zh2353","descript":"城市编号","symbol":"../img/icon7@3x.png","name":"440301","category":1,"value":1,"nodeId":"0013","parentId":"0008","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"zh2354","descript":"城市编号","symbol":"../img/icon7@3x.png","name":"4403002","category":1,"value":1,"nodeId":"0023","parentId":"0017","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+  {"id":"zh2355","descript":"城市编号","symbol":"../img/icon7@3x.png","name":"440303","category":1,"value":1,"nodeId":"0034","parentId":"0031","level":3,"width":32,"height":32,"nodeSetting":{},"showLabelText":false}
+
+
+],
+  "links":[
+
+    {"target":"sq2356","source":"sq1","weight":2,"value":2,"relation":"从属","linkSetting":{}},
+    {"target":"sq2356","source":"sq2","weight":2,"value":2,"relation":"从属","linkSetting":{}},
+    {"target":"sq2356","source":"sq3","weight":7,"value":7,"relation":"从属","linkSetting":{}},
+    {"target":"sq2356","source":"sq6","weight":1,"value":1,"relation":"从属","linkSetting":{}},
+    {"target":"sq2356","source":"sq7","weight":1,"value":1,"relation":"从属","linkSetting":{}},
+    {"target":"sq2356","source":"K1","weight":5,"value":5,"relation":"从属","linkSetting":{}},
+    {"target":"sq2356","source":"K2","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+    {"target":"sq2356","source":"K5","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+
+
+    {"target":"sq3141","source":"sq1","weight":8,"value":8,"relation":"从属","linkSetting":{}},
+    {"target":"sq3141","source":"sq2","weight":9,"value":9,"relation":"从属","linkSetting":{}},
+    {"target":"sq3141","source":"sq3","weight":2,"value":2,"relation":"从属","linkSetting":{}},
+    {"target":"sq3141","source":"sq4","weight":2,"value":2,"relation":"从属","linkSetting":{"style":"stroke: #f60; stroke-width: 1px;fill:#f3f3f3;fill:none","arrowheadStyle":"fill: #f60"}},
+    {"target":"sq3141","source":"sq5","weight":2,"value":2,"relation":"从属","linkSetting":{}},
+    {"target":"sq3141","source":"K1","weight":2,"value":2,"relation":"从属","linkSetting":{}},
+    {"target":"sq3141","source":"K2","weight":2,"value":2,"relation":"从属","linkSetting":{}},
+    {"target":"sq3141","source":"K3","weight":3,"value":3,"relation":"从属","linkSetting":{}},
+    {"target":"sq3141","source":"K4","weight":3,"value":3,"relation":"从属","linkSetting":{}},
+    {"target":"K3","source":"zh2","weight":3,"value":3,"relation":"对应","linkSetting":{}},
+    {"target":"K4","source":"zh2","weight":3,"value":3,"relation":"对应","linkSetting":{}},
+
+    {"target":"sq1","source":"sq786","weight":3,"value":3,"relation":"从属","linkSetting":{}},
+    {"target":"sq1","source":"sq1571","weight":2,"value":2,"relation":"从属","linkSetting":{}},
+
+    {"target":"sq1","source":"cu1565","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+    {"target":"sq1","source":"cu1","weight":2,"value":2,"relation":"对应","linkSetting":{}},
+
+    {"target":"sq2","source":"zh2","weight":4,"value":4,"relation":"对应","linkSetting":{}},
+    {"target":"sq2","source":"sq787","weight":5,"value":5,"relation":"从属","linkSetting":{}},
+    {"target":"sq2","source":"sq1572","weight":7,"value":7,"relation":"从属","linkSetting":{}},
+    {"target":"sq2","source":"cu1565","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+
+    {"target":"sq3","source":"cu1567","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+    {"target":"cu1567","source":"cu3","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+    {"target":"cu3","source":"cu785","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+    {"target":"sq3","source":"sq788","weight":9,"value":9,"relation":"从属","linkSetting":{}},
+    {"target":"sq3","source":"sq1573","weight":2,"value":2,"relation":"从属","linkSetting":{}},
+    {"target":"sq4","source":"cu1568","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+    {"target":"sq5","source":"cu1568","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+    {"target":"cu1568","source":"cu4","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+    {"target":"cu4","source":"cu786","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+    {"target":"sq4","source":"sq789","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+    {"target":"sq4","source":"sq1574","weight":8,"value":8,"relation":"从属","linkSetting":{}},
+    {"target":"sq6","source":"cu1567","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+    {"target":"sq7","source":"cu1567","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+    {"target":"sq7","source":"sq790","weight":1,"value":1,"relation":"从属","linkSetting":{}},
+    {"target":"sq7","source":"sq1575","weight":1,"value":1,"relation":"从属","linkSetting":{}},
+
+
+    {"source":"cu1","target":"cu1565","weight":3,"value":3,"relation":"从属","linkSetting":{}},
+    {"source":"cu1","target":"K1","weight":9,"value":9,"relation":"对应","linkSetting":{}},
+    {"source":"cu1","target":"zh1","weight":2,"value":2,"relation":"对应","linkSetting":{"style":"stroke: #f60; stroke-width: 1px;fill:#f3f3f3; fill:none;","arrowheadStyle":"fill: #f60"}},
+    {"source":"zh1","target":"K1","weight":2,"value":2,"relation":"对应","linkSetting":{}},
+    {"source":"zh1","target":"K2","weight":2,"value":2,"relation":"对应","linkSetting":{}},
+
+    {"target":"cu1","source":"cu783","weight":2,"value":2,"relation":"从属","linkSetting":{}},
+
+
+    {"target":"sq2","source":"cu2","weight":2,"value":2,"relation":"对应","linkSetting":{}},
+    {"target":"cu2","source":"cu784","weight":6,"value":6,"relation":"从属","linkSetting":{}},
+    {"source":"cu2","target":"cu1566","weight":5,"value":5,"relation":"从属","linkSetting":{}},
+    {"source":"cu1566","target":"sq2","weight":5,"value":5,"relation":"从属","linkSetting":{}},
+
+    {"target":"zh1","source":"zh785","weight":1,"value":1,"relation":"从属","linkSetting":{}},
+    {"target":"zh1","source":"zh1569","weight":1,"value":1,"relation":"从属","linkSetting":{}},
+    {"target":"zh1","source":"zh2353","weight":2,"value":2,"relation":"从属","linkSetting":{}},
+    {"source":"zh1","target":"K3","weight":2,"value":2,"relation":"对应"},
+
+    {"source":"zh1","target":"K1","weight":4,"value":4,"relation":"对应","linkSetting":{}},
+    {"source":"zh1","target":"sq2","weight":2,"value":2,"relation":"对应","linkSetting":{}},
+    {"target":"zh2","source":"zh786","weight":8,"value":8,"relation":"从属","linkSetting":{}},
+    {"target":"zh2","source":"zh1570","weight":4,"value":4,"relation":"从属","linkSetting":{}},
+    {"target":"zh2","source":"zh2354","weight":2,"value":2,"relation":"从属","linkSetting":{}},
+    {"source":"zh2","target":"K2","weight":3,"value":3,"relation":"对应","linkSetting":{}},
+    {"source":"zh2","target":"sq2","weight":2,"value":2,"relation":"对应","linkSetting":{}},
+    {"source":"zh3","target":"K5","weight":3,"value":3,"relation":"对应","linkSetting":{}},
+    {"target":"zh3","source":"zh787","weight":4,"value":4,"relation":"从属","linkSetting":{}},
+    {"target":"zh3","source":"zh1571","weight":5,"value":5,"relation":"从属","linkSetting":{}},
+    {"target":"zh3","source":"zh2355","weight":7,"value":7,"relation":"从属","linkSetting":{}}
+
+    ]
+}

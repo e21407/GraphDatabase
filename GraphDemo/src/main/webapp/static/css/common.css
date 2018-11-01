@@ -1,0 +1,272 @@
+@charset "UTF-8";
+::-webkit-scrollbar-track-piece { //滚动条凹槽的颜色，还可以设置边框属性
+    background-color:#f8f8f8;
+}
+::-webkit-scrollbar {//滚动条的宽度
+    width:9px;
+    height:9px;
+}
+::-webkit-scrollbar-thumb {//滚动条的设置
+    background-color:#dddddd;
+    background-clip:padding-box;
+    min-height:28px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color:#bbb;
+}
+
+body,html{
+    height: 100%;
+    background: #f3f3f3;
+}
+
+.wrapper{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.left{
+    width: 68px;
+    height: 100%;
+    background: #61A0A8;
+    background-color: rgba(97,160,168,0.86);
+    padding: 150px 20px;
+    position: fixed;
+    left:0;
+    top:0;
+    z-index: 100;
+    box-sizing: border-box;
+    overflow-y: auto;
+    /*transition: all 1s ease-in-out ;*/
+    /*-moz-transition: all 1s ease-in-out;*/
+    /*-webkit-transition: all 1s ease-in-out;*/
+    /*-o-transition:all 1s ease-in-out;*/
+}
+.toggle-part{
+    height: 190px;
+    color: #fff;
+    background: #61A0A8;
+    text-align: center;
+    display: block;
+    padding: 8px 15px;
+    position: absolute;
+    right:0;
+    top:0;
+    width: 68px;
+    cursor: pointer;
+}
+.toggle-part .text{
+     font-family: "Microsoft Yahei";
+     font-size: 18px;
+     display: inline-block;
+     width: 1em;
+ }
+.toggle-part .icon-item{
+    width: 24px;
+    height: 18px;
+    display: inline-block;
+    margin-bottom: 5px;
+
+}
+.toggle-part .icon-close{
+    background: url("../img/icon-close.png") no-repeat center;
+}
+.toggle-part .icon-toggle{
+    background: url("../img/icon-toggle.png") no-repeat center;
+}
+.content{
+    height: 100%;
+    box-sizing: border-box;
+    background: #f3f3f3 !important;
+}
+.info-box{
+    position: fixed;
+    min-height: 150px;
+    text-align: left;
+    padding: 12px 8px;
+    min-width: 170px;
+    bottom:50px;
+    right:30px;
+    display: none;
+    color: #333;
+    color: rgba(0,0,0,0.65);
+    font-size: 12px;
+    line-height: 28px;
+    background: #fff;
+    background-color: rgba(255,255,255,0.85);
+    border: 1px solid #CFCFCF;
+    border-radius: 4px;
+    text-align: center;
+}
+.info-box p{
+    font-weight: bold;
+    margin:0 0 5px 0;
+    font-size: 14px;
+
+}
+.info-inner{
+    text-align: left;
+}
+.look{
+    background: #61A0A8;
+    border-radius: 2px;
+    color: #fff !important;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
+    width: 80%;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+.search{
+    width: 100%;
+    display: none;
+}
+.toggle-button{
+    color: #f60;
+    font-size: 20px;
+    position: absolute !important;
+    top:50% !important;
+    left:10px;
+    margin-top: -340px;
+    cursor: pointer;
+    z-index: 100;
+}
+/*.tipbox{*/
+    /*background: #fff;*/
+    /*background-color: rgba(255,255,255,0.85);*/
+    /*border-radius: 2px;*/
+    /*color: #333;*/
+/*}*/
+.title{
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    display: block;
+    font-size: 24px;
+}
+.condition{
+    padding: 10px;
+}
+.condition .line{
+    color: #fff;
+    margin-bottom: 25px;
+}
+.condition .btn-default{
+    background:transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 4px;
+}
+.condition .line .caret{
+    display: inline-block;
+    width: 15px;
+    height: 11px;
+    margin-left: 2px;
+    vertical-align: middle;
+    border:none;
+    margin-top:-5.5px !important;
+    background: url("../img/icon-angle.png") no-repeat center;
+}
+.condition .btn-default:hover{
+    background: #61A0A8;
+    color: #fff;
+    border-color:#61A0A8 ;
+}
+.condition .btn-default.active.focus,.condition .btn-default.active:focus, .btn-default.active:hover,.condition .btn-default:active.focus, .condition .btn-default:active:focus,.condition .btn-default:active:hover,.condition .open>.dropdown-toggle.btn-default.focus,.condition .open>.dropdown-toggle.btn-default:focus,.condition .open>.dropdown-toggle.btn-default:hover {
+    color: #fff !important;
+    background-color: #61A0A8!important;
+    border-color: #61A0A8!important;
+    box-shadow: none!important;
+    -webkit-box-shadow: none!important;
+    outline: 0!important;
+}
+.condition .btn-default.active,.condition  .btn-default:active,.condition .open>.dropdown-toggle.btn-default{
+    color: #fff !important;
+    background-color: #61A0A8!important;
+    border-color: #61A0A8!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    outline: 0!important;
+
+
+}
+.condition .btn.focus{
+    color: #fff !important;
+    background-color: #61A0A8!important;
+    border-color: #61A0A8!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    outline: 0!important;
+}
+.condition .bootstrap-select .dropdown-toggle:focus{
+    outline:thin dotted #61A0A8!important;
+    outline:0!important;
+    outline-offset:-2px
+}
+.condition .btn-default.focus,.condition  .btn-default:focus{
+    color: #fff !important;
+    background-color: #61A0A8!important;
+    border-color: #61A0A8!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    outline: 0!important;
+}
+.condition .form-control{
+    background:transparent!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    outline: none!important;
+    border-color: #61A0A8!important;
+}
+.operate .btn{
+    font-size: 14px;
+    border-radius:0;
+    min-width: 120px;
+    font-family: "Microsoft Yahei";
+}
+.operate .btn-search{
+    color: #61A0A8;
+    background: #fff;
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 2px;
+    margin-right: 30px;
+}
+.operate .btn-reset{
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+}
+.operate-menu{
+    position: absolute;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    min-width: 90px;
+    text-align: center;
+}
+.operate-menu li{
+    padding: 8px;
+}
+.operate-menu li.active,.operate-menu li:hover{
+    background: #61A0A8;
+    color: #fff;
+}
+.operate-menu li:first-child.active,.operate-menu li:first-child:hover{
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.operate-menu li:last-child.active,.operate-menu li:last-child:hover{
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.svg{
+    padding-left:68px;
+    cursor: pointer;
+    background: #f3f3f3;
+}
