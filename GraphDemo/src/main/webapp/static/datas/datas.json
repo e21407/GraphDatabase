@@ -55,7 +55,7 @@
 
     {"id":"zh1","descript":"账户号","symbol":"static/img/icon4@3x.png","name":"2998000050900151","category":1,"value":9,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
     {"id":"zh2","descript":"账户号","symbol":"static/img/icon4@3x.png","name":"2998000050900152","category":1,"value":9,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-    {"id":"zh3","descript":"账户号","symbol":"static/img/icon4@3x.png","name":"2998000050900153","category":1,"value":6,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+    {"id":"zh3","descript":"账户号","symbol":"static/img/icon4@3x.png","name":"2998000050900153","category":1,"value":6,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
     {"id":"zh785","descript":"邮编","symbol":"static/img/icon5@3x.png","name":"518001","category":1,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
     {"id":"zh786","descript":"邮编","symbol":"static/img/icon5@3x.png","name":"518002","category":1,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
     {"id":"zh787","descript":"邮编","symbol":"static/img/icon5@3x.png","name":"518003","category":1,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
@@ -152,4 +152,4 @@
     {"target":"zh3","source":"zh2355","weight":7,"value":7,"relation":"从属","linkSetting":{}}
 
   ]
-};
+}
