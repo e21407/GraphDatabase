@@ -9,7 +9,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,8 +56,7 @@ public class GraphController {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-
+		}
 		// 读取边数据
 		file = new File("datas_edge.json");
 		filelength = file.length();
@@ -81,13 +83,33 @@ public class GraphController {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-
+		}
 		// 封装返回数据
 		result.put("datas", vertexs);
 		result.put("links", edges);
 		return result;
 
+	}
+	
+	@RequestMapping(value ="/search", method = {RequestMethod.POST})
+	@ResponseBody
+	public String searchRelationship(@RequestBody Map<String,Object> reqMap) {
+		//账户号
+		String account = (String) reqMap.get("account");
+		//客户号
+		String customer = (String) reqMap.get("customer");
+		//卡号
+		String card = (String) reqMap.get("card");
+		//申请书标号
+		String apply = (String) reqMap.get("apply");
+		//推广人id
+		String tgr = (String) reqMap.get("tgr"); 
+		//推广机构id
+		String tgjg = (String) reqMap.get("tgjg");
+		//所属公司
+		String company = (String) reqMap.get("company");
+		
+		return "123";
 	}
 
 }
