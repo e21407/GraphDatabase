@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema>
+    
+	<vertexLabelList>
+        <vertexLabel name="person" isPartitioned="false"/>
+		<vertexLabel name="phone" isPartitioned="false"/>
+    </vertexLabelList>
+	
+	<edgeLabelList>
+        <edgeLabel name="friend"></edgeLabel>
+		<edgeLabel name="knows"></edgeLabel>
+		<edgeLabel name="call"></edgeLabel>
+		<edgeLabel name="has"></edgeLabel>
+    </edgeLabelList>
+	
+    <propertyKeyList>
+        <propertyKey name="name" dataType="STRING"/>
+		<propertyKey name="age" dataType="INTEGER"/>
+		<propertyKey name="telephone" dataType="STRING"/>
+		<propertyKey name="weight" dataType="FLOAT"/>
+    </propertyKeyList>
+	 
+	<graphIndexList>
+		<graphIndex name="name_index" elementCategory="VERTEX" type="COMPOSITE" unique="false">
+            <keyTextTypeList name="name" textType=""/>
+        </graphIndex>
+		<graphIndex name="age_index" elementCategory="VERTEX" type="MIXED" unique="false">
+            <keyTextTypeList name="age" textType="DEFAULT"/>
+        </graphIndex>
+		<graphIndex name="telephone_index" elementCategory="VERTEX" type="COMPOSITE" unique="false">
+            <keyTextTypeList name="telephone" textType=""/>
+        </graphIndex>
+		<graphIndex name="weight_index" elementCategory="EDGE" type="MIXED" unique="false">
+            <keyTextTypeList name="weight" textType="DEFAULT"/>
+        </graphIndex>
+    </graphIndexList>	
+
+</schema>

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,16 +19,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.entity.EdgeObj;
 import com.demo.entity.VertexObj;
+import com.demo.service.GraphService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 public class GraphController {
 
+	@Autowired
+	private GraphService graphService;
+
 	@RequestMapping("/getAllGraph")
 	@ResponseBody
-	public Map<String, List<Object>> getAllGraph() {
-		Map<String, List<Object>> result = new HashMap<String, List<Object>>();
+	public Map<String, Object> getAllGraph() {
+		Map<String, Object> result = new HashMap<String, Object>();
 		// 读取点数据
 		File file = new File("datas_vertex.json");
 		Long filelength = file.length();
@@ -91,25 +96,24 @@ public class GraphController {
 
 	}
 	
-	@RequestMapping(value ="/search", method = {RequestMethod.POST})
+	@RequestMapping("/getGraph")
 	@ResponseBody
-	public String searchRelationship(@RequestBody Map<String,Object> reqMap) {
-		//账户号
-		String account = (String) reqMap.get("account");
-		//客户号
-		String customer = (String) reqMap.get("customer");
-		//卡号
-		String card = (String) reqMap.get("card");
-		//申请书标号
-		String apply = (String) reqMap.get("apply");
-		//推广人id
-		String tgr = (String) reqMap.get("tgr"); 
-		//推广机构id
-		String tgjg = (String) reqMap.get("tgjg");
-		//所属公司
-		String company = (String) reqMap.get("company");
-		
-		return "123";
+	public Map<String, Object> getGraph(@RequestBody Map<String, Object> reqMap) {
+		return graphService.getGraph(reqMap);
+	}
+
+	// 二次查询，根据一个点的id查询它附件的关系
+	@RequestMapping(value = "/secondSearch", method = { RequestMethod.POST })
+	@ResponseBody
+	public String secondSearch(@RequestBody Map<String, Object> reqMap) {
+		return graphService.searchLines(reqMap);
+	}
+
+	// 关联查询，根据点的id产出它们的关系
+	@RequestMapping(value = "/searchRelationship", method = { RequestMethod.POST })
+	@ResponseBody
+	public String searchRelationshipByVertexsId(@RequestBody Map<String, Object> reqMap) {
+		return graphService.searchLines(reqMap);
 	}
 
 }
