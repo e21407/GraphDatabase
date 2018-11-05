@@ -1,0 +1,97 @@
+{
+  "data": [
+    {
+      "id": "sq2356",
+      "name": "广东省深圳市招商银行新安支行",
+      "descript": "推广机构id",
+      "symbol": "static/img/icon12@3x.png",
+      "category": "3",
+      "value": "12"
+    },
+    {
+      "id": "sq3141",
+      "name": "07551001",
+      "descript": "推广人id",
+      "symbol": "static/img/icon13@3x.png",
+      "category": "3",
+      "value": "12"
+    },
+    {
+      "id": "sq1",
+      "name": "广东省深圳市招商银行新安支行",
+      "descript": "申请书编号",
+      "symbol": "static/img/icon12@3x.png",
+      "category": "3",
+      "value": "12"
+    },
+    {
+      "id": "sq2",
+      "name": "广东省深圳市招商银行新安支行",
+      "descript": "申请书编号",
+      "symbol": "static/img/icon12@3x.png",
+      "category": "3",
+      "value": "12"
+    },
+    {
+      "id": "sq3",
+      "name": "广东省深圳市招商银行新安支行",
+      "descript": "申请书编号",
+      "symbol": "static/img/icon12@3x.png",
+      "category": "3",
+      "value": "12"
+    },
+    {
+      "id": "sq4",
+      "name": "广东省深圳市招商银行新安支行",
+      "descript": "申请书编号",
+      "symbol": "static/img/icon12@3x.png",
+      "category": "3",
+      "value": "12"
+    },
+    {
+      "id": "sq5",
+      "name": "广东省深圳市招商银行新安支行",
+      "descript": "申请书编号",
+      "symbol": "static/img/icon12@3x.png",
+      "category": "3",
+      "value": "12"
+    },
+     {
+      "id": "sq6",
+      "name": "广东省深圳市招商银行新安支行",
+      "descript": "申请书编号",
+      "symbol": "static/img/icon12@3x.png",
+      "category": "3",
+      "value": "12"
+    },{
+      "id": "sq7",
+      "name": "广东省深圳市招商银行新安支行",
+      "descript": "申请书编号",
+      "symbol": "static/img/icon12@3x.png",
+      "category": "3",
+      "value": "12"
+    },{
+       "id": "sq8",
+       "name": "广东省深圳市招商银行新安支行",
+       "descript": "申请书编号",
+       "symbol": "static/img/icon12@3x.png",
+       "category": "3",
+       "value": "12"
+     },
+     {
+        "id": "sq8",
+        "name": "广东省深圳市招商银行新安支行",
+        "descript": "申请书编号",
+        "symbol": "static/img/icon12@3x.png",
+        "category": "3",
+        "value": "12"
+      },{
+         "id": "sq8",
+         "name": "广东省深圳市招商银行新安支行",
+         "descript": "申请书编号",
+         "symbol": "static/img/icon12@3x.png",
+         "category": "3",
+         "value": "12"
+       }
+  ]
+}

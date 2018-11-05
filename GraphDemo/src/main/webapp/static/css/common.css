@@ -270,3 +270,9 @@ body,html{
     cursor: pointer;
     background: #f3f3f3;
 }
+table.dataTable.no-footer{
+    border-bottom: none !important;
+}
+.dataTables_wrapper.dataTables_info{
+    display: none;
+}

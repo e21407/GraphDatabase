@@ -5,12 +5,13 @@
 <title>xx系统xx业务案件反查系统</title>
 <link rel="stylesheet" type="text/css" href="./static/js/bootstrap/css/font-awesome.min.css"/>
 <link rel="stylesheet" type="text/css" href="./static/js/bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="./static/css/jquery.dataTables.min.css"/>
 <link rel="stylesheet" type="text/css" href="./static/js/bootstrap/css/bootstrap-select.min.css"/>
 <link rel="stylesheet" type="text/css" href="./static/js/icheck/skins/all.css"/>
-<link rel="stylesheet" href="./static/css/base.css">
-<link rel="stylesheet" href="./static/css/common.css">
-<link rel="stylesheet" href="./static/css/link.css">
-<link rel="stylesheet" href="./static/css/tipsy.css">
+<link rel="stylesheet" type="text/css" href="./static/css/base.css">
+<link rel="stylesheet" type="text/css" href="./static/css/common.css">
+<link rel="stylesheet" type="text/css" href="./static/css/link.css">
+<link rel="stylesheet" type="text/css" href="./static/css/tipsy.css">
 <body>
 <div class="wrapper">
     <div class="outer">
@@ -64,65 +65,18 @@
             </div>
         </div>
         <div class="table-box">
-            <table class="table mt10" cellpadding="0" cellspacing="0">
+            <table id="table" class="table display mt10" cellpadding="0" cellspacing="0">
                 <thead>
-
-                <tr>
-                    <th><div>客户号</div></th>
-                    <th><div>手机号码</div></th>
-                    <th><div>住宅电话</div></th>
-                    <th><div>单位电话</div></th>
-                    <th><div>联络人一电话</div></th>
-                    <th><div>联络人二电话</div></th>
-                </tr>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>descript</th>
+                        <th>symbol</th>
+                        <th>category</th>
+                        <th>value</th>
+                    </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td><div>600118772311</div>
-                    <td><div>18323564736</div></td>
-                    <td><div>15932356534</div></td>
-                    <td><div>58746353</div></td>
-                    <td><div>58746352</div></td>
-                    <td><div>58746351</div></td>
-                </tr>
-                <tr>
-                    <td><div>600118772312</div>
-                    <td><div>18323564736</div></td>
-                    <td><div>15932356534</div></td>
-                    <td><div>58746353</div></td>
-                    <td><div>58746352</div></td>
-                    <td><div>58746351</div></td>
-                </tr>
-                <tr>
-                    <td><div>600118772313</div>
-                    <td><div>18323564737</div></td>
-                    <td><div>15932356535</div></td>
-                    <td><div>58746354</div></td>
-                    <td><div>58746355</div></td>
-                    <td><div>58746356</div></td>
-                </tr>
-                </tbody>
-
             </table>
-            <nav class="text-center" aria-label="Page navigation">
-                <ul class="pagination">
-                    <li>
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </div>
 
@@ -374,6 +328,7 @@
 <script type="text/javascript" src="./static/js/layer/layer.js" charset="utf-8"></script>
 <script type="text/javascript" src="./static/js/bootstrap/bootstrap.min.js"></script>
 <script type="text/javascript" src="./static/js/bootstrap/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="./static/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="./static/js/d3.v4.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="./static/js/dagre-d3.js"></script>
 <script type="text/javascript" src="./static/js/tipsy.js"></script>
@@ -385,6 +340,23 @@
         $(".common-radio input").iCheck({
             radioClass:'iradio_square-aero'
         });
+
+        //table
+        $('#table').DataTable( {
+            "ajax": "./static/datas/data.txt",
+            "pageLength":6,
+            "lengthChange": false,
+            "searching": false,
+            "info": "",
+            "columns": [
+                { "data": "id" },
+                { "data": "name" },
+                { "data": "descript" },
+                { "data": "symbol" },
+                { "data": "category" },
+                { "data": "value" }
+            ]
+        } );
     });
 
 </script>
