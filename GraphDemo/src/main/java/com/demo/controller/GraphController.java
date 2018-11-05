@@ -124,7 +124,8 @@ public class GraphController {
 	@RequestMapping(value = "/searchPath", method = { RequestMethod.POST })
 	@ResponseBody
 	public String searchPath(@RequestBody Map<String, Object> reqMap) {
-		return graphService.searchPath(reqMap);
+//		return graphService.searchPath(reqMap);
+		return "searchPath: " + reqMap.get("vertexIds") + ", option: " + reqMap.get("option");
 	}
 
 }
