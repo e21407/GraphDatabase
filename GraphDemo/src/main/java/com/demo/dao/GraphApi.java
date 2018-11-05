@@ -9,8 +9,10 @@ import java.util.Properties;
 
 import com.huawei.graphbase.RestApi;
 import com.huawei.request.CentricEdgeSearchReqObj;
+import com.huawei.request.EdgeQueryRspObj;
 import com.huawei.request.LineSearchReqObj;
 import com.huawei.request.PathSearchReqObj;
+import com.huawei.request.VertexQueryRspObj;
 import com.huawei.request.VertexSearchReqObj;
 import com.huawei.request.VertexSearchRspObj;
 import com.huawei.security.GraphHttpClient;
@@ -92,6 +94,16 @@ public class GraphApi {
 	//路径查询
 	public String searchPath(PathSearchReqObj pathSearchReqObj) {
 		return api.searchPath(pathSearchReqObj, graphName);
+	}
+	
+	//根据点id查询节点信息
+	public VertexQueryRspObj queryVertex(String id) {
+		return api.queryVertex(id, graphName);
+	}
+	
+	//根据边id查询边信息
+	public EdgeQueryRspObj queryEdge(String id) {
+		return api.queryEdge(id, graphName);
 	}
 
 }
