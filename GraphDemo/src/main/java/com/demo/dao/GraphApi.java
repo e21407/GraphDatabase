@@ -10,6 +10,7 @@ import java.util.Properties;
 import com.huawei.graphbase.RestApi;
 import com.huawei.request.CentricEdgeSearchReqObj;
 import com.huawei.request.LineSearchReqObj;
+import com.huawei.request.PathSearchReqObj;
 import com.huawei.request.VertexSearchReqObj;
 import com.huawei.request.VertexSearchRspObj;
 import com.huawei.security.GraphHttpClient;
@@ -78,7 +79,7 @@ public class GraphApi {
 		return api.searchLines(lineSearchReqObj, graphName);
 	}
 	
-	//Vertex 的全图条件查询
+	//Vertex的全图条件查询
 	public VertexSearchRspObj searchVertex(VertexSearchReqObj vertexSearchReqObj) {
 		return api.searchVertex(vertexSearchReqObj, graphName);
 	}
@@ -86,6 +87,11 @@ public class GraphApi {
 	//Edge的以点为中心的条件查询
 	public  String centricEdgeSearch(CentricEdgeSearchReqObj centricEdgeSearchReqObj) {
 		return api.centricEdgeSearch(centricEdgeSearchReqObj, graphName);
+	}
+	
+	//路径查询
+	public String searchPath(PathSearchReqObj pathSearchReqObj) {
+		return api.searchPath(pathSearchReqObj, graphName);
 	}
 
 }

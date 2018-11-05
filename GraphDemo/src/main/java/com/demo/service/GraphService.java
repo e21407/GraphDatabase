@@ -16,5 +16,8 @@ public interface GraphService {
 	
 	// 关联查询，根据点的id产出它们的关系
 	String searchRelationshipByVertexsId(Map<String, Object> reqMap);
+	
+	//路径查询，可以查询最短路径，全路径（点对点之间的所有路径），有权最短路径
+	String searchPath(Map<String,Object> reqMap);
 
 }

@@ -102,7 +102,7 @@ public class GraphController {
 		return graphService.getGraph(reqMap);
 	}
 
-	// 二次查询，根据一个点的id查询它附件的关系
+	// 二次查询，根据一个点的id查询它附近的关系
 	@RequestMapping(value = "/secondSearch", method = { RequestMethod.POST })
 	@ResponseBody
 	public String secondSearch(@RequestBody Map<String, Object> reqMap) {
@@ -114,6 +114,17 @@ public class GraphController {
 	@ResponseBody
 	public String searchRelationshipByVertexsId(@RequestBody Map<String, Object> reqMap) {
 		return graphService.searchLines(reqMap);
+	}
+	
+	/**
+	 * 路径查询，必要参数：节点id列表vertexIdList，路径类型option=（all，shortest， circle， weighted） 
+	 * @param reqMap
+	 * @return
+	 */
+	@RequestMapping(value = "/searchPath", method = { RequestMethod.POST })
+	@ResponseBody
+	public String searchPath(@RequestBody Map<String, Object> reqMap) {
+		return graphService.searchPath(reqMap);
 	}
 
 }
