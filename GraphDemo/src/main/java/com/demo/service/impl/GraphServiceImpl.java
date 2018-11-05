@@ -8,9 +8,13 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.demo.dao.GraphApi;
+import com.demo.entity.VertexObj;
 import com.demo.service.GraphService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huawei.request.CentricEdgeSearchReqObj;
 import com.huawei.request.LineSearchReqObj;
+import com.huawei.request.PathSearchReqObj;
 import com.huawei.request.VertexElement;
 import com.huawei.request.VertexSearchReqObj;
 import com.huawei.request.VertexSearchRspObj;
@@ -37,7 +41,7 @@ public class GraphServiceImpl implements GraphService {
 		}else {
 			vertexSearchReqObj.setLimit(100);	//默认查询100个节点
 		}
-		VertexSearchRspObj vertexSearchRspObj = api.searchVertex(vertexSearchReqObj);
+		VertexSearchRspObj vertexSearchRspObj = api.searchVertex(vertexSearchReqObj);	//Vertex的全图条件查询
 		//获取节点id
 		List<Integer> vertexIdList = new ArrayList<Integer>();
 		List<VertexElement> vertexList = vertexSearchRspObj.getVertexList();
@@ -80,7 +84,7 @@ public class GraphServiceImpl implements GraphService {
 		// 所属公司
 		Integer companyId = (Integer) reqMap.get("company");
 
-		// 层数
+		// 扩线层数
 		Integer layer = (Integer) reqMap.get("layer");
 
 		List<Integer> vertexIdList = new ArrayList<Integer>();
@@ -118,6 +122,36 @@ public class GraphServiceImpl implements GraphService {
 	public String searchRelationshipByVertexsId(Map<String, Object> reqMap) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String searchPath(Map<String, Object> reqMap) {
+		String vertexIdLstStr = (String) reqMap.get("vertexIds");
+		String option = (String) reqMap.get("option");
+		ObjectMapper mapper = new ObjectMapper();
+		List<String> vertexIdList = null;
+		try {
+			vertexIdList = mapper.readValue(vertexIdLstStr, new TypeReference<List<String>>() {
+			});
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		PathSearchReqObj pathSearchReqObj = new PathSearchReqObj();
+		pathSearchReqObj.setVertexIdList(vertexIdList);
+		if("shortest".equals(option.trim().toLowerCase())) {
+			pathSearchReqObj.setOption("shortest");	//最短路径
+		}else if("circle".equals(option.trim().toLowerCase())) {
+			pathSearchReqObj.setOption("circle");	//查询回环路径
+		}else if("weighted".equals(option.trim().toLowerCase())) {
+			pathSearchReqObj.setOption("weighted");		//查询有权最短路径
+			String weightedPropertyName = (String) reqMap.get("weightedPropertyName");
+			pathSearchReqObj.setWeightedPropertyName(weightedPropertyName);
+		}else {
+			pathSearchReqObj.setOption("all"); 		//默认查询全路径
+		}
+		pathSearchReqObj.setLayer(10);	//设置跳数
+		return api.searchPath(pathSearchReqObj);
 	}
 
 }
