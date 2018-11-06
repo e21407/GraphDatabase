@@ -35,3 +35,42 @@ function loadData(obj) {
         }
     })
 }
+
+function exportData() {
+    var arrs = $("#exportData").serializeArray();
+    var value ;
+    $('.common-radio input').on('ifChecked', function(event){
+       value =$(this).val();
+    });
+
+    switch (value) {
+        case 'single':
+            break;
+        case 'multi':
+            break;
+        case 'all':
+            break;
+
+    }
+    var obj = {};
+    obj.vertexIds = [];
+    obj.edgeIds = [];
+    var data = JSON.stringify(obj);
+
+
+
+    $.ajax({
+        type:'post',
+        url:'/exportExcel',
+        contentType: 'application/json;charset=utf-8',
+        data: data,
+        success:function(response){
+           console.log("response:"+response);
+        }
+    });
+    var obj = {};
+
+    obj.option = "all";
+    obj.vertexIds = [];
+
+}

@@ -155,172 +155,7 @@ function initSelect(id){
 }
 
 function loadNodesDatas(){
-    //$.getJSON("./datas/datas.json",function(result){
 
-//        var result ={
-//            "datas":[
-//
-//                {"id":"sq2356","descript":"推广机构id","symbol":"static/img/icon12@3x.png","name":"广东省深圳市招商银行新安支行","category":3,"value":12,"width":52,"height":52,"nodeSetting":{},"showLabelText":true},
-//                {"id":"sq3141","descript":"推广人id","symbol":"static/img/icon13@3x.png","name":"07551001","category":3,"value":12,"width":52,"height":52,"nodeSetting":{},"showLabelText":true},
-//
-//                {"id":"sq1","descript":"申请书编号","symbol":"static/img/icon8@3x.png","name":"sq201809041000101","category":2,"value":10,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"sq2","descript":"申请书编号","symbol":"static/img/icon8@3x.png","name":"sq201809041000102","category":2,"value":10,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"sq3","descript":"申请书编号","symbol":"static/img/icon8@3x.png","name":"sq201809041000103","category":2,"value":10,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"sq4","descript":"申请书编号","symbol":"static/img/icon8@3x.png","name":"sq201809041000104","category":2,"value":8,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//
-//                {"id":"sq5","descript":"申请书编号","symbol":"static/img/icon8@3x.png","name":"sq201809041000105","category":2,"value":9,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"sq6","descript":"申请书编号","symbol":"static/img/icon8@3x.png","name":"sq201809041000106","category":2,"value":10,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"sq7","descript":"申请书编号","symbol":"static/img/icon8@3x.png","name":"sq201809041000107","category":2,"value":10,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//
-//                {"id":"K1","descript":"卡号","symbol":"static/img/icon11@3x.png","name":"201809043000101","category":3,"value":8,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"K2","descript":"卡号","symbol":"static/img/icon11@3x.png","name":"201809043000102","category":3,"value":8,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"K3","descript":"卡号","symbol":"static/img/icon11@3x.png","name":"201809043000103","category":3,"value":5,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"K4","descript":"卡号","symbol":"static/img/icon11@3x.png","name":"201809043000104","category":3,"value":7,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"K5","descript":"卡号","symbol":"static/img/icon11@3x.png","name":"201809043000105","category":3,"value":7,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//
-//
-//
-//
-//
-//                {"id":"cu1","descript":"客户号","symbol":"static/img/icon1@3x.png","name":"600118772311","category":0,"value":9,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"cu2","descript":"客户号","symbol":"static/img/icon1@3x.png","name":"600118772312","category":0,"value":5,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"cu3","descript":"客户号3","symbol":"static/img/icon1@3x.png","name":"600118772313","category":0,"value":5,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"cu4","descript":"客户号4","symbol":"static/img/icon1@3x.png","name":"600118772314","category":0,"value":5,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//
-//                {"id":"cu783","descript":"客户电话","symbol":"static/img/icon2@3x.png","name":"13009040001","category":0,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"cu784","descript":"客户电话","symbol":"static/img/icon2@3x.png","name":"13009040002","category":0,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"cu785","descript":"客户电话3","symbol":"static/img/icon2@3x.png","name":"13009040001","category":0,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"cu786","descript":"客户电话4","symbol":"static/img/icon2@3x.png","name":"13009040002","category":0,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//
-//                {"id":"sq1572","descript":"单位电话","symbol":"static/img/icon10@3x.png","name":"075586941102","category":2,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"sq1573","descript":"单位电话","symbol":"static/img/icon10@3x.png","name":"075586941103","category":2,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//
-//
-//                {"id":"cu1565","descript":"所属公司编号1","symbol":"static/img/icon3@3x.png","name":"92440300731093239W","category":0,"value":4,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"cu1566","descript":"所属公司编号2","symbol":"static/img/icon3@3x.png","name":"92440300731093239X","category":0,"value":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"cu1567","descript":"所属公司编号3","symbol":"static/img/icon3@3x.png","name":"92440300731093239Y","category":0,"value":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"cu1568","descript":"所属公司编号4","symbol":"static/img/icon3@3x.png","name":"92440300731093239Z","category":0,"value":2,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//
-//
-//                {"id":"sq786","descript":"证件号码","symbol":"static/img/icon9@3x.png","name":"230102198002012001","category":2,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"sq787","descript":"证件号码","symbol":"static/img/icon9@3x.png","name":"230102198002012002","category":2,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"sq788","descript":"证件号码","symbol":"static/img/icon9@3x.png","name":"230102198002012003","category":2,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"sq789","descript":"证件号码","symbol":"static/img/icon9@3x.png","name":"230102198202012004","category":2,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"sq790","descript":"证件号码","symbol":"static/img/icon9@3x.png","name":"230102198202012004","category":2,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"sq1571","descript":"单位电话","symbol":"static/img/icon10@3x.png","name":"075586941101","category":2,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"sq1574","descript":"单位电话","symbol":"static/img/icon10@3x.png","name":"075586941104","category":2,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"sq1575","descript":"单位电话","symbol":"static/img/icon10@3x.png","name":"075586941105","category":2,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//
-//
-//                {"id":"zh1","descript":"账户号","symbol":"static/img/icon4@3x.png","name":"2998000050900151","category":1,"value":9,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"zh2","descript":"账户号","symbol":"static/img/icon4@3x.png","name":"2998000050900152","category":1,"value":9,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"zh3","descript":"账户号","symbol":"static/img/icon4@3x.png","name":"2998000050900153","category":1,"value":6,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"zh785","descript":"邮编","symbol":"static/img/icon5@3x.png","name":"518001","category":1,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"zh786","descript":"邮编","symbol":"static/img/icon5@3x.png","name":"518002","category":1,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"zh787","descript":"邮编","symbol":"static/img/icon5@3x.png","name":"518003","category":1,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"zh1569","descript":"地址","symbol":"static/img/icon6@3x.png","name":"广东省深圳市刘村和平小区 ","category":1,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"zh1570","descript":"地址","symbol":"static/img/icon6@3x.png","name":"广东省深圳市龙华弓村和平小区 ","category":1,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"zh1571","descript":"地址","symbol":"static/img/icon6@3x.png","name":"广东省深圳市泰宁小区 ","category":1,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"zh2353","descript":"城市编号","symbol":"static/img/icon7@3x.png","name":"440301","category":1,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"zh2354","descript":"城市编号","symbol":"static/img/icon7@3x.png","name":"4403002","category":1,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
-//                {"id":"zh2355","descript":"城市编号","symbol":"static/img/icon7@3x.png","name":"440303","category":1,"value":1,"width":32,"height":32,"nodeSetting":{},"showLabelText":false}
-//
-//
-//            ],
-//            "links":[
-//
-//                {"target":"sq2356","source":"sq1","weight":2,"value":2,"relation":"从属","linkSetting":{}},
-//                {"target":"sq2356","source":"sq2","weight":2,"value":2,"relation":"从属","linkSetting":{}},
-//                {"target":"sq2356","source":"sq3","weight":7,"value":7,"relation":"从属","linkSetting":{}},
-//                {"target":"sq2356","source":"sq6","weight":1,"value":1,"relation":"从属","linkSetting":{}},
-//                {"target":"sq2356","source":"sq7","weight":1,"value":1,"relation":"从属","linkSetting":{}},
-//                {"target":"sq2356","source":"K1","weight":5,"value":5,"relation":"从属","linkSetting":{}},
-//                {"target":"sq2356","source":"K2","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//                {"target":"sq2356","source":"K5","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//
-//
-//                {"target":"sq3141","source":"sq1","weight":8,"value":8,"relation":"从属","linkSetting":{}},
-//                {"target":"sq3141","source":"sq2","weight":9,"value":9,"relation":"从属","linkSetting":{}},
-//                {"target":"sq3141","source":"sq3","weight":2,"value":2,"relation":"从属","linkSetting":{}},
-//                {"target":"sq3141","source":"sq4","weight":2,"value":2,"relation":"从属","linkSetting":{"style":"stroke: #f60; stroke-width: 1px;fill:#f3f3f3;fill:none","arrowheadStyle":"fill: #f60"}},
-//                {"target":"sq3141","source":"sq5","weight":2,"value":2,"relation":"从属","linkSetting":{}},
-//                {"target":"sq3141","source":"K1","weight":2,"value":2,"relation":"从属","linkSetting":{}},
-//                {"target":"sq3141","source":"K2","weight":2,"value":2,"relation":"从属","linkSetting":{}},
-//                {"target":"sq3141","source":"K3","weight":3,"value":3,"relation":"从属","linkSetting":{}},
-//                {"target":"sq3141","source":"K4","weight":3,"value":3,"relation":"从属","linkSetting":{}},
-//                {"target":"K3","source":"zh2","weight":3,"value":3,"relation":"对应","linkSetting":{}},
-//                {"target":"K4","source":"zh2","weight":3,"value":3,"relation":"对应","linkSetting":{}},
-//
-//                {"target":"sq1","source":"sq786","weight":3,"value":3,"relation":"从属","linkSetting":{}},
-//                {"target":"sq1","source":"sq1571","weight":2,"value":2,"relation":"从属","linkSetting":{}},
-//
-//                {"target":"sq1","source":"cu1565","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//                {"target":"sq1","source":"cu1","weight":2,"value":2,"relation":"对应","linkSetting":{}},
-//
-//                {"target":"sq2","source":"zh2","weight":4,"value":4,"relation":"对应","linkSetting":{}},
-//                {"target":"sq2","source":"sq787","weight":5,"value":5,"relation":"从属","linkSetting":{}},
-//                {"target":"sq2","source":"sq1572","weight":7,"value":7,"relation":"从属","linkSetting":{}},
-//                {"target":"sq2","source":"cu1565","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//
-//                {"target":"sq3","source":"cu1567","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//                {"target":"cu1567","source":"cu3","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//                {"target":"cu3","source":"cu785","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//                {"target":"sq3","source":"sq788","weight":9,"value":9,"relation":"从属","linkSetting":{}},
-//                {"target":"sq3","source":"sq1573","weight":2,"value":2,"relation":"从属","linkSetting":{}},
-//                {"target":"sq4","source":"cu1568","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//                {"target":"sq5","source":"cu1568","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//                {"target":"cu1568","source":"cu4","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//                {"target":"cu4","source":"cu786","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//                {"target":"sq4","source":"sq789","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//                {"target":"sq4","source":"sq1574","weight":8,"value":8,"relation":"从属","linkSetting":{}},
-//                {"target":"sq6","source":"cu1567","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//                {"target":"sq7","source":"cu1567","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//                {"target":"sq7","source":"sq790","weight":1,"value":1,"relation":"从属","linkSetting":{}},
-//                {"target":"sq7","source":"sq1575","weight":1,"value":1,"relation":"从属","linkSetting":{}},
-//
-//
-//                {"source":"cu1","target":"cu1565","weight":3,"value":3,"relation":"从属","linkSetting":{}},
-//                {"source":"cu1","target":"K1","weight":9,"value":9,"relation":"对应","linkSetting":{}},
-//                {"source":"cu1","target":"zh1","weight":2,"value":2,"relation":"对应","linkSetting":{"style":"stroke: #f60; stroke-width: 1px;fill:#f3f3f3; fill:none;","arrowheadStyle":"fill: #f60"}},
-//                {"source":"zh1","target":"K1","weight":2,"value":2,"relation":"对应","linkSetting":{}},
-//                {"source":"zh1","target":"K2","weight":2,"value":2,"relation":"对应","linkSetting":{}},
-//
-//                {"target":"cu1","source":"cu783","weight":2,"value":2,"relation":"从属","linkSetting":{}},
-//
-//
-//                {"target":"sq2","source":"cu2","weight":2,"value":2,"relation":"对应","linkSetting":{}},
-//                {"target":"cu2","source":"cu784","weight":6,"value":6,"relation":"从属","linkSetting":{}},
-//                {"source":"cu2","target":"cu1566","weight":5,"value":5,"relation":"从属","linkSetting":{}},
-//                {"source":"cu1566","target":"sq2","weight":5,"value":5,"relation":"从属","linkSetting":{}},
-//
-//                {"target":"zh1","source":"zh785","weight":1,"value":1,"relation":"从属","linkSetting":{}},
-//                {"target":"zh1","source":"zh1569","weight":1,"value":1,"relation":"从属","linkSetting":{}},
-//                {"target":"zh1","source":"zh2353","weight":2,"value":2,"relation":"从属","linkSetting":{}},
-//                {"source":"zh1","target":"K3","weight":2,"value":2,"relation":"对应"},
-//
-//                {"source":"zh1","target":"K1","weight":4,"value":4,"relation":"对应","linkSetting":{}},
-//                {"source":"zh1","target":"sq2","weight":2,"value":2,"relation":"对应","linkSetting":{}},
-//                {"target":"zh2","source":"zh786","weight":8,"value":8,"relation":"从属","linkSetting":{}},
-//                {"target":"zh2","source":"zh1570","weight":4,"value":4,"relation":"从属","linkSetting":{}},
-//                {"target":"zh2","source":"zh2354","weight":2,"value":2,"relation":"从属","linkSetting":{}},
-//                {"source":"zh2","target":"K2","weight":3,"value":3,"relation":"对应","linkSetting":{}},
-//                {"source":"zh2","target":"sq2","weight":2,"value":2,"relation":"对应","linkSetting":{}},
-//                {"source":"zh3","target":"K5","weight":3,"value":3,"relation":"对应","linkSetting":{}},
-//                {"target":"zh3","source":"zh787","weight":4,"value":4,"relation":"从属","linkSetting":{}},
-//                {"target":"zh3","source":"zh1571","weight":5,"value":5,"relation":"从属","linkSetting":{}},
-//                {"target":"zh3","source":"zh2355","weight":7,"value":7,"relation":"从属","linkSetting":{}}
-//
-//            ]
-//        };
-//
-//        json = result;
-//        var nodes = json.datas;
-//        var links =json.links;
-//        if(nodes && links && nodes.length && links.length){
-//            setNodesAndEdges(nodes,links);
-//        }
-   // });
-	
 	///////liubaichuan/////////////////////////////
 	$.getJSON("/getAllGraph",function(data){
 		json = data;
@@ -389,7 +224,7 @@ function setNodesAndEdges(pramaNodes,pramaLinks){
         var obj = {data:pramaNodes[i],label: pic(),index:i};
         var nodeSetting = $.extend({}, obj, pramaNodes[i].nodeSetting);
         g.setNode(pramaNodes[i].id, nodeSetting);
-        //console.log("g"+g)
+
         //g.append("rect").classed('node-selected', true)
         // .attr("rx",0).attr("ry",0).attr("x","-35").attr("y","-35")
     }
@@ -449,8 +284,8 @@ function renderSvg(){
     render(svgGroup, g);
 
     // Center the graph
-    var xCenterOffset = (document.body.clientWidth - g.graph().width) / 2;
-    var YCenterOffset = (document.body.clientHeight - g.graph().height) / 2;
+    //var xCenterOffset = (document.body.clientWidth - g.graph().width) / 2;
+    //var YCenterOffset = (document.body.clientHeight - g.graph().height) / 2;
 
     var gNodes = svgGroup.selectAll("g.node");
     //svgGroup.attr("transform", "translate(" + xCenterOffset + ", "+YCenterOffset+")");
@@ -472,7 +307,6 @@ function renderSvg(){
     function handleMouseDown(svgGroup,node){
         var $menu = $("#menu");
         $menu.data("node", node );
-       console.log("nodeIsExistInChooseNodes"+nodeIsExistInChooseNodes(node))
         if(nodeIsExistInChooseNodes(node)>-1){
             $menu.find("li").eq(0).html("取消选中");
         }else {
@@ -500,15 +334,21 @@ function renderSvg(){
     var $svg = document.getElementById("svg");
     var menu=document.querySelector("#menu");
     $svg.oncontextmenu = function(e){
-        var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
-        //根据事件对象中鼠标点击的位置，进行定位
-        menu.style.display='block';
-        var width = menu.clientWidth;
-        menu.style.left=(e.clientX-width)+'px';
-        menu.style.top=(e.clientY+scrollTop-20)+'px';
-        //menu.style.left = e.target.offset.left;
-        //menu.style.top = e.target.offset.top;
-        return false;
+
+            menu.style.display='none';
+       if(e.target !== e.currentTarget){
+           e.preventDefault();
+           var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+           //根据事件对象中鼠标点击的位置，进行定位
+           menu.style.display='block';
+           var width = menu.clientWidth;
+           menu.style.left=(e.clientX-width)+'px';
+           menu.style.top=(e.clientY+scrollTop-20)+'px';
+           menu.style.left = e.target.offset.top;
+           menu.style.top = e.target.offset.left;
+           return false;
+       }
+
     }
     $svg.onclick=function(e){
         //用户触发click事件就可以关闭了，因为绑定在window上，按事件冒泡处理，不会影响菜单的功能
@@ -625,8 +465,7 @@ function renderSvg(){
     //var tHeight = (svg._groups[0][0].clientHeight  - this.g.graph().height * initialScale) / 2; //垂直居中
     var tWidth = (clientWidth  - this.g.graph().width * initialScale) / 2; //水平居中
     var tHeight = (clientHeight  - this.g.graph().height * initialScale) / 2; //垂直居中
-    //alert(initialScale)
-    //alert("tWidth:"+tWidth,"tHeight:"+tHeight,"initialScale:"+initialScale)
+
     svg.call(zoom.transform, d3.zoomIdentity.translate(tWidth, tHeight).scale(initialScale)); //元素水平垂直居中
 
     var styleTooltip = function(node) {
@@ -738,10 +577,6 @@ function toggleLineToGreen(linkLine, links, isHover) {
 //用邻接矩阵表示图
 function showShortestPath(s,e){
     var G = new Array();
-    // var Nv = json.datas.length;
-    // var Ne = json.links.length
-    // var graphNodes = json.datas;
-    // var graphLinks = json.links;
     var Nv = renderNodes.length;
     var Ne = renderLinks.length
     var graphNodes = renderNodes;
@@ -834,14 +669,10 @@ function showShortestPath(s,e){
         var link3 = {};
         var link4 = {};
             link3 = {
-                // target:json.datas[darr[k]].id,
-                // source:json.datas[darr[k+1]].id
                 target:renderNodes[darr[k]].id,
                 source:renderNodes[darr[k+1]].id
             }
             link4= {
-                // target:json.datas[darr[k+1]].id,
-                // source:json.datas[darr[k]].id
                 target:renderNodes[darr[k+1]].id,
                 source:renderNodes[darr[k]].id
             };
@@ -849,11 +680,9 @@ function showShortestPath(s,e){
         var linkCommon= isInArrayLinks(graphLinks,link3) ||isInArrayLinks(graphLinks,link4);
         if(linkCommon){
             empisiLinks.push(linkCommon);
-            console.log(linkCommon +"->")
         }
     }
 
-    console.log(empisiLinks)
     return empisiLinks;
 }
 
