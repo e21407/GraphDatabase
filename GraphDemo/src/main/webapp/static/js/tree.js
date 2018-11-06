@@ -344,8 +344,8 @@ function renderSvg(){
            var width = menu.clientWidth;
            menu.style.left=(e.clientX-width)+'px';
            menu.style.top=(e.clientY+scrollTop-20)+'px';
-           menu.style.left = e.target.offset.top;
-           menu.style.top = e.target.offset.left;
+          // menu.style.left = e.target.offset.top;
+          // menu.style.top = e.target.offset.left;
            return false;
        }
 
@@ -553,7 +553,6 @@ function getNodesById(id){
 
 
 function isInLink(links,currentLink){
-    //console.log(currentLink)
     for(var i= 0;i<links.length;i++){
         if(currentLink.v === links[i].target &&currentLink.w===links[i].source){
             return true
