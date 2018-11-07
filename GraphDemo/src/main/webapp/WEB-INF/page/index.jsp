@@ -253,21 +253,21 @@
     <li for="exportData">导出</li>
 </ul>
 <div class="export-type" id="exportType" style="display: none;">
-    <from action="">
+    <from action="" id="exportData" name="exportData">
         <div class="common-radio mt20">
-            <input value="01" tabindex="1" type="radio" id="single" name="export" checked="checked"/>
+            <input value="single" tabindex="1" type="radio" id="single" name="export" checked="checked"/>
             <label for="single">单点导出</label>
         </div>
         <div class="common-radio mt20">
-            <input value="02" tabindex="2" type="radio" id="multi" name="export" />
+            <input value="multi" tabindex="2" type="radio" id="multi" name="export" />
             <label for="multi">多层导出</label>
         </div>
         <div class="common-radio mt20">
-            <input value="03" tabindex="3" type="radio" id="all" name="export" />
+            <input value="all" tabindex="3" type="radio" id="all" name="export" />
             <label for="all">全部导出</label>
         </div>
     </from>
-    <button class="blue-button text-center mt30" >现在导出</button>
+    <button class="blue-button text-center mt30" type="submit" onclick="exportData()">现在导出</button>
 </div>
 <div class="second-search text-center" id="secondSearch" style="display: none;">
     <from action="">
