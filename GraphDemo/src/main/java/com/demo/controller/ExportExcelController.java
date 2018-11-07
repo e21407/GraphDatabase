@@ -25,6 +25,10 @@ public class ExportExcelController {
 	@ResponseBody
 	public String exportExcel(HttpServletResponse response, @RequestBody(required = false) Map<String, Object> reqMap) {
 		response.setContentType("application/binary;charset=UTF-8");
+		//交付时候启用
+//		if(reqMap == null) {
+//			return "导出失败，请求节点id列表为空";
+//		}
 		try {
 			ServletOutputStream out = response.getOutputStream();
 			try {
@@ -39,7 +43,7 @@ public class ExportExcelController {
 			return "export success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "导出信息失败";
+			return "export fail";
 		}
 	}
 
