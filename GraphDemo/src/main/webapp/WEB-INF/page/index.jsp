@@ -124,8 +124,6 @@
                         </div>
                     </div>
                     <div id="condition2" class="mt10"></div>
-                    <%--<input id="forType1" type="hidden" name="forType1" />--%>
-                    <%--<input id="forType2" type="hidden" name="forType2" />--%>
                     <div class="mt20 text-center operate">
                         <button type="button" onclick="searchForm1()" class="btn btn-default btn-search">查询</button>
                         <button id="reset" type="button" class="btn btn-default btn-reset">重置</button>
@@ -167,58 +165,45 @@
     <button class="blue-button text-center mt30" type="submit" onclick="exportData()">现在导出</button>
 </div>
 <div class="second-search text-center" id="secondSearch" style="display: none;">
-    <from action="">
-        <div>
-            <div class="line row mt20">
-                <span class="col-sm-4 m-t-xs text-right f14 mt5">账户号:</span>
-                <div class="col-sm-8">
-                    <select id="attr1" name="account" class="selectpicker show-tick form-control col-sm-9" title="请选择账户号">
-                        <option value="0">请选择账户号</option>
-                        <option value="zh1">2998000050900151</option>
-                        <option value="zh2">2998000050900152</option>
-                        <option value="zh3">2998000050900153</option>
-                    </select>
-                </div>
-            </div>
-            <div class="line row mt20">
-                <span class="col-sm-4 m-t-xs text-right f14 mt5">账户号:</span>
-                <div class="col-sm-8">
-                    <select id="attr2" name="account" class="selectpicker show-tick form-control col-sm-9" title="请选择账户号">
-                        <option value="0">请选择账户号</option>
-                        <option value="zh1">2998000050900151</option>
-                        <option value="zh2">2998000050900152</option>
-                        <option value="zh3">2998000050900153</option>
-                    </select>
-                </div>
-            </div>
-            <div class="line row mt20">
-                <span class="col-sm-4 m-t-xs text-right f14 mt5">账户号:</span>
-                <div class="col-sm-8">
-                    <select id="attr3" name="account" class="selectpicker show-tick form-control col-sm-9" title="请选择账户号">
-                        <option value="0">请选择账户号</option>
-                        <option value="zh1">2998000050900151</option>
-                        <option value="zh2">2998000050900152</option>
-                        <option value="zh3">2998000050900153</option>
-                    </select>
-                </div>
+    <form id="secondSearchForm" name="secondSearchForm">
+        <div class="line row mt20">
+            <span class="col-sm-4 m-t-xs text-right f14 mt5">账户号</span>
+            <div class="col-sm-8">
+                <select id="searchType3" name="forType3" class="selectpicker show-tick form-control col-sm-9" title="请选择查询类型">
+                    <option value="0">请选择查询类型</option>
+                    <option value="customer">客户</option>
+                    <option value="card">卡</option>
+                    <option value="account">账户</option>
+                    <option value="applicationForm">申请书</option>
+                    <option value="telephone">电话</option>
+                    <option value="ip">ip</option>
+                </select>
             </div>
         </div>
-        <div class="line row mt20 f14">
-            <span class="col-sm-4 m-t-xs text-right f14">关系:</span>
-            <div class="col-sm-8 text-left">
+        <div class="condition">
+            <div id="condition3"></div>
+            <div class="line row mt20 f14">
+                <span class="col-sm-4 m-t-xs text-right f14">关系</span>
+                <div class="col-sm-8 text-left">
                 <span class="common-radio">
-                    <input value="01" tabindex="1" type="radio" id="and" name="relate" checked="checked"/>
+                    <input value="01" tabindex="1" type="radio" id="and" name="choice" checked="checked"/>
                     <label for="and">且</label>
                 </span>
-                <span class="common-radio ml20">
-                    <input value="02" tabindex="2" type="radio" id="or" name="relate" />
+                    <span class="common-radio ml20">
+                    <input value="02" tabindex="2" type="radio" id="or" name="choice" />
                     <label for="or">或</label>
                 </span>
+                </div>
             </div>
         </div>
+        <div class="line text-left">
+            <span class="col-sm-4 m-t-xs">&nbsp;</span>
+            <button class="blue-button text-center mt20" onclick="searchForm2()" >现在查询</button>
+        </div>
 
-    </from>
-    <button class="blue-button text-center mt40" >现在查询</button>
+    </form>
+
+
 </div>
 </body>
 <script type="text/javascript" src="./static/js/jquery-1.12.4.min.js" charset="utf-8"></script>

@@ -434,7 +434,7 @@ function renderSvg(){
             layer.open({
                     type: 1,
                     title: '二次查询',
-                    area:["460px","400px"],
+                    area:["460px","420px"],
                     content:$("#secondSearch")
                 },
                 function(pass, index){
@@ -692,7 +692,7 @@ function init(){
         //initSelect(domArr[i]);
     }
 
-    for(var o=1;o<3;o++){
+    for(var o=1;o<4;o++){
         searchCon(o);
     }
 
@@ -721,7 +721,7 @@ function init(){
                     for(var i=0;i<arr.length; i++){
                         html += createInput(arr[i]);
                     }
-                    $("#condition"+r).html(html)
+                    $("#condition"+r).html(html);
                 }else{
                     return ;
                 }

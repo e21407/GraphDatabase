@@ -1,19 +1,5 @@
-// function searchForm1(){
-//     var obj = {};
-//     var arrs = $("#searchForm").serializeArray();
-//     obj.option = "all";
-//     obj.vertexIds = [];
-//     $.each(arrs, function(index,arr) {
-//         if(arr.value){
-//             obj.vertexIds.push(arr.value);
-//         }
-//     });
-//     loadData(obj);
-//
-// }
-
+/******************关联关系查询START********************/
 function searchForm1(){
-    var obj = {};
     var arrs = $("#searchForm").serializeArray();
     var params ={params:arrs};
     $.ajax({
@@ -25,15 +11,38 @@ function searchForm1(){
             console.log(response)
 
         }
-    })
+    });
 
 }
+/******************关联关系查询END********************/
+
+
+/******************二次查询START********************/
+function searchForm2(){
+    var arrs = $("#secondSearchForm").serializeArray();
+    var params ={params:arrs};
+    $.ajax({
+        type: 'post',
+        url: '/searchPath',
+        contentType: 'application/json;charset=utf-8',
+        data: params,
+        success: function (response) { //返回json结果
+            console.log(response)
+
+        }
+    })
+}
+/******************二次查询END********************/
+
+
+/******************最短路径查询START********************/
 function searchShortPath(arr){
     var obj = {};
     obj.option = "shortest";
     obj.vertexIds = arr;
     loadData(obj);
 }
+
 function loadData(params) {
     var data = JSON.stringify(obj);
     $.ajax({
@@ -53,6 +62,10 @@ function loadData(params) {
     })
 }
 
+/******************最短路径查询END********************/
+
+/******************导出START********************/
+
 function exportData() {
     var arrs = $("#exportData").serializeArray();
     var value ;
@@ -67,7 +80,6 @@ function exportData() {
                     break;
                 case 'all':
                     break;
-
             }
 
             function exportFun(){
@@ -88,6 +100,5 @@ function exportData() {
 
         });
     })
-
-
 }
+/******************导出END********************/
