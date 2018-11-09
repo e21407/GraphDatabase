@@ -8,6 +8,9 @@ text {
     font-size: 14px;
 }
 
+.label table td{
+    color:#333;
+}
 .node rect {
     stroke: #f3f3f3;
     fill:transparent;
@@ -32,6 +35,10 @@ text {
 .node img{
     border:2px solid #f3f3f3;
     border-radius: 50%;
+    display: inline-block;
+}
+.node .node-txt{
+    text-align: center;
 }
 .node img:hover{
     transform: scale(1.2,1.2);

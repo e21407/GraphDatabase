@@ -237,7 +237,7 @@ function setNodesAndEdges(pramaNodes,pramaLinks){
         var node = g.node(v);
         //console.log("node"+node)
         // Round the corners of the nodes
-        //node.rx = node.ry = 0;
+        node.rx = node.ry = 11000;
        // node.width = node.height=node.data.width;
     });
     renderSvg();
@@ -689,8 +689,58 @@ function init(){
     //初始化select
     var domArr = ["account","customer","card","apply","tgr","tgjg","company"];
     for (var i=0; i<domArr.length; i++){
-        initSelect(domArr[i]);
+        //initSelect(domArr[i]);
     }
+
+    for(var o=1;o<3;o++){
+        searchCon(o);
+    }
+
+    function searchCon(r){
+        $('#searchType'+r).on('changed.bs.select',function(e){
+            var value = $(this).selectpicker("val");
+            //$("#forType"+r).val(value);
+            if(value === "0") {
+                return ;
+            }else{
+                $.ajax({
+                    type:'get',
+                    url:'static/datas/search.json',
+                    contentType: 'application/json;charset=utf-8',
+                    success:function(response){
+                        dealSearchCondition(response);
+                    }
+                })
+            }
+
+
+            function dealSearchCondition(response){
+                var arr = response[value];
+                var html = "";
+                if(arr && arr.length){
+                    for(var i=0;i<arr.length; i++){
+                        html += createInput(arr[i]);
+                    }
+                    $("#condition"+r).html(html)
+                }else{
+                    return ;
+                }
+
+                function createInput(prop){
+                    var html ="<div class='line row mt10'>" +
+                        "<span class='col-sm-4 m-t-xs text-right mt10'>"+prop.description+"</span>"+
+                        "<div class='col-sm-8'>" +
+                        "<input class='text-box' name='"+prop.name+"' type='text' value=''/>" +
+                        "</div>"+
+                        "</div>";
+                    return html;
+                }
+            }
+
+        });
+
+    }
+
     //加载节点数据；
     loadNodesDatas();
 

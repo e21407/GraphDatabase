@@ -21,8 +21,6 @@
 
 
 
-
-
     {"id":"cu1","descript":"客户号","symbol":"static/img/icon1@3x.png","name":"600118772311","category":0,"value":9,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
     {"id":"cu2","descript":"客户号","symbol":"static/img/icon1@3x.png","name":"600118772312","category":0,"value":5,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
     {"id":"cu3","descript":"客户号3","symbol":"static/img/icon1@3x.png","name":"600118772313","category":0,"value":5,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},

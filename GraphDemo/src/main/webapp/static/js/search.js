@@ -1,14 +1,31 @@
+// function searchForm1(){
+//     var obj = {};
+//     var arrs = $("#searchForm").serializeArray();
+//     obj.option = "all";
+//     obj.vertexIds = [];
+//     $.each(arrs, function(index,arr) {
+//         if(arr.value){
+//             obj.vertexIds.push(arr.value);
+//         }
+//     });
+//     loadData(obj);
+//
+// }
+
 function searchForm1(){
     var obj = {};
     var arrs = $("#searchForm").serializeArray();
-    obj.option = "all";
-    obj.vertexIds = [];
-    $.each(arrs, function(index,arr) {
-        if(arr.value){
-            obj.vertexIds .push(arr.value);
+    var params ={params:arrs};
+    $.ajax({
+        type: 'post',
+        url: '/searchPath',
+        contentType: 'application/json;charset=utf-8',
+        data: params,
+        success: function (response) { //返回json结果
+            console.log(response)
+
         }
-    });
-    loadData(obj);
+    })
 
 }
 function searchShortPath(arr){
@@ -17,13 +34,13 @@ function searchShortPath(arr){
     obj.vertexIds = arr;
     loadData(obj);
 }
-function loadData(obj) {
+function loadData(params) {
     var data = JSON.stringify(obj);
     $.ajax({
         type: 'post',
         url: '/searchPath',
         contentType: 'application/json;charset=utf-8',
-        data: data,
+        data: params,
         success: function (response) { //返回json结果
             console.log(response)
             if(obj.option ==="all"){

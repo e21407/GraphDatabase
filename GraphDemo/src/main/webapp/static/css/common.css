@@ -224,6 +224,16 @@ body,html{
     outline: none!important;
     border-color: #61A0A8!important;
 }
+.condition .text-box{
+    border:1px solid rgba(255,255,255,0.25);
+    height: 34px;
+    line-height: 34px;
+    width: 200px;
+    box-sizing: border-box;
+    background: transparent;
+    padding: 0 10px;
+    border-radius:4px
+}
 .operate .btn{
     font-size: 14px;
     border-radius:0;
