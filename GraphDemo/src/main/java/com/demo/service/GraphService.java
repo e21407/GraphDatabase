@@ -19,5 +19,8 @@ public interface GraphService {
 	
 	//路径查询，可以查询最短路径，全路径（点对点之间的所有路径），有权最短路径
 	String searchPath(Map<String,Object> reqMap);
+	
+	//二次查询
+	public Map<String,Object> secondSearch(Map<String, Object> reqMap);
 
 }

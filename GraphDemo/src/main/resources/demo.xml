@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema>
+    <!-- 点标签 -->
+	<vertexLabelList>
+		<!-- 卡标签 -->
+        <vertexLabel name="card" isPartitioned="false"/>
+        <!-- 申请书 -->
+		<vertexLabel name="applicationForm" isPartitioned="false"/>
+		<!-- 客户 -->
+		<vertexLabel name="customer" isPartitioned="false"/>
+		<!-- 账户 -->
+		<vertexLabel name="account" isPartitioned="false"/>
+		<!-- 电话 -->
+		<vertexLabel name="telephone" isPartitioned="false"/>
+		<!-- IP -->
+		<vertexLabel name="IP" isPartitioned="false"/>
+    </vertexLabelList>
+	
+	<!-- 边标签 -->
+	<edgeLabelList>
+        <edgeLabel name="card_applicationForm"></edgeLabel>
+		<edgeLabel name="card_customer"></edgeLabel>
+		<edgeLabel name="card_account"></edgeLabel>
+		<edgeLabel name="account_customer"></edgeLabel>
+		<edgeLabel name="application_customer"></edgeLabel>
+		<!-- 表示一个属于关系，可用于关联其他节点和电话号码、IP -->
+		<edgeLabel name="has"></edgeLabel>
+    </edgeLabelList>
+	
+    <propertyKeyList>
+    	<!-- 点属性 -->
+    	<!-- 卡属性：卡号 -->
+    	<propertyKey name="cardNumber" dataType="STRING"/>
+    	<!-- 卡属性：商户号  -->
+        <propertyKey name="merchantNumber" dataType="STRING"/>
+        <!-- 卡属性：还款卡号 -->
+		<propertyKey name="paymentCardNumber" dataType="STRING"/>
+		<!-- 账户属性：账户号 -->
+		<propertyKey name="accountNumber" dataType="STRING"/>
+		<!-- 客户属性：客户号 -->
+		<propertyKey name="customerNumber" dataType="STRING"/>
+		<!-- 客户属性：公司名称 -->
+		<propertyKey name="company" dataType="STRING"/>
+		<!-- 客户属性：设备号 -->
+		<propertyKey name="deviceNumber" dataType="STRING"/>
+		<!-- 客户属性：email -->
+		<propertyKey name="email" dataType="STRING"/>
+		<!-- 申请书属性：申请书编号 -->
+		<propertyKey name="applicationFormNumber" dataType="STRING"/>
+		<!-- 申请书属性：推广员 -->
+		<propertyKey name="agent" dataType="STRING"/>
+		<!-- 电话号属性：电话号码 -->
+		<propertyKey name="telepheNumber" dataType="STRING"/>
+		<!-- IP属性 -->
+		<propertyKey name="IPNumber" dataType="STRING"/>
+		
+		<!-- 前端之前定义的点属性 -->
+		<!-- 点描述，用于鼠标悬停在点上时候显示点的详细信息 -->
+		<propertyKey name="descript" dataType="STRING"/>
+		<!-- 点的图标类型 -->
+		<propertyKey name="symbol" dataType="STRING"/>
+		
+		<propertyKey name="category" dataType="STRING"/>
+		
+		<propertyKey name="value" dataType="INTEGER"/>
+		<!-- 由于数据类型类型不支持Boolean，所以用int表示：0表示false，1表示true -->
+		<propertyKey name="showLabelText" dataType="INTEGER"/>
+		
+		<!-- 边属性 -->
+		<!-- IP边属性[开卡成功IP or 开卡失败IP] -->
+		<propertyKey name="ipType" dataType="STRING"/>
+		<!-- 电话号码边属性 --> 
+		<propertyKey name="telephoneType" dataType="STRING"/>
+		
+		<!-- 前端之前定义的边属性 -->
+		<propertyKey name="weight" dataType="INTEGER"/>
+		<propertyKey name="relation" dataType="STRING"/>
+		
+		<!-- 点和边共用属性 -->
+		<propertyKey name="width" dataType="INTEGER"/>
+		<propertyKey name="height" dataType="INTEGER"/>
+    </propertyKeyList>
+	 
+	<graphIndexList>
+		<graphIndex name="weight_index" elementCategory="EDGE" type="MIXED" unique="false">
+            <keyTextTypeList name="weight" textType="DEFAULT"/>
+        </graphIndex>
+    </graphIndexList>	
+
+</schema>

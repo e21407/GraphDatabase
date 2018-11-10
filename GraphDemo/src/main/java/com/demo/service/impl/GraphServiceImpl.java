@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+
+import javax.el.ArrayELResolver;
+
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
@@ -15,9 +20,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huawei.request.CentricEdgeSearchReqObj;
 import com.huawei.request.LineSearchReqObj;
 import com.huawei.request.PathSearchReqObj;
+import com.huawei.request.PropertyFilter;
 import com.huawei.request.VertexElement;
+import com.huawei.request.VertexFilter;
 import com.huawei.request.VertexSearchReqObj;
 import com.huawei.request.VertexSearchRspObj;
+import com.huawei.util.PropertyPredicate;
 
 @Service("graphService")
 public class GraphServiceImpl implements GraphService {
@@ -29,37 +37,37 @@ public class GraphServiceImpl implements GraphService {
 		// TODO Auto-generated method stub
 		return api.getInt();
 	}
-	
+
 	@Override
-	public Map<String, Object> getGraph(Map<String,Object> reqMap) {
+	public Map<String, Object> getGraph(Map<String, Object> reqMap) {
 		// TODO Auto-generated method stub
-		//查询全图节点
+		// 查询全图节点
 		Integer vertexNumLimit = (Integer) reqMap.get("vertexNumLimit");
 		VertexSearchReqObj vertexSearchReqObj = new VertexSearchReqObj();
-		if(null != vertexNumLimit) {
+		if (null != vertexNumLimit) {
 			vertexSearchReqObj.setLimit(vertexNumLimit);
-		}else {
-			vertexSearchReqObj.setLimit(100);	//默认查询100个节点
+		} else {
+			vertexSearchReqObj.setLimit(100); // 默认查询100个节点
 		}
-		VertexSearchRspObj vertexSearchRspObj = api.searchVertex(vertexSearchReqObj);	//Vertex的全图条件查询
-		//获取节点id
+		VertexSearchRspObj vertexSearchRspObj = api.searchVertex(vertexSearchReqObj); // Vertex的全图条件查询
+		// 获取节点id
 		List<Integer> vertexIdList = new ArrayList<Integer>();
 		List<VertexElement> vertexList = vertexSearchRspObj.getVertexList();
 		for (VertexElement vertexElement : vertexList) {
 			String id = vertexElement.getId();
 			vertexIdList.add(Integer.valueOf(id));
 		}
-		//查询与点相关的边
+		// 查询与点相关的边
 		Integer edgeNumLimit = (Integer) reqMap.get("edgeNumLimit");
 		CentricEdgeSearchReqObj centricEdgeSearchReqObj = new CentricEdgeSearchReqObj();
-		if(null != edgeNumLimit) {
+		if (null != edgeNumLimit) {
 			centricEdgeSearchReqObj.setLimit(edgeNumLimit);
-		}else {
-			centricEdgeSearchReqObj.setLimit(100);	//默认查询100条边
+		} else {
+			centricEdgeSearchReqObj.setLimit(100); // 默认查询100条边
 		}
 		centricEdgeSearchReqObj.setVertexIdList(vertexIdList);
 		String centricEdgeSearchResult = api.centricEdgeSearch(centricEdgeSearchReqObj);
-		//封装返回结果
+		// 封装返回结果
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("vertexs", vertexSearchRspObj);
 		resultMap.put("links", centricEdgeSearchResult);
@@ -139,19 +147,98 @@ public class GraphServiceImpl implements GraphService {
 		}
 		PathSearchReqObj pathSearchReqObj = new PathSearchReqObj();
 		pathSearchReqObj.setVertexIdList(vertexIdList);
-		if("shortest".equals(option.trim().toLowerCase())) {
-			pathSearchReqObj.setOption("shortest");	//最短路径
-		}else if("circle".equals(option.trim().toLowerCase())) {
-			pathSearchReqObj.setOption("circle");	//查询回环路径
-		}else if("weighted".equals(option.trim().toLowerCase())) {
-			pathSearchReqObj.setOption("weighted");		//查询有权最短路径
+		if ("shortest".equals(option.trim().toLowerCase())) {
+			pathSearchReqObj.setOption("shortest"); // 最短路径
+		} else if ("circle".equals(option.trim().toLowerCase())) {
+			pathSearchReqObj.setOption("circle"); // 查询回环路径
+		} else if ("weighted".equals(option.trim().toLowerCase())) {
+			pathSearchReqObj.setOption("weighted"); // 查询有权最短路径
 			String weightedPropertyName = (String) reqMap.get("weightedPropertyName");
 			pathSearchReqObj.setWeightedPropertyName(weightedPropertyName);
-		}else {
-			pathSearchReqObj.setOption("all"); 		//默认查询全路径
+		} else {
+			pathSearchReqObj.setOption("all"); // 默认查询全路径
 		}
-		pathSearchReqObj.setLayer(10);	//设置跳数
+		pathSearchReqObj.setLayer(10); // 设置跳数
 		return api.searchPath(pathSearchReqObj);
+	}
+
+	// 二次查询
+	public Map<String, Object> secondSearch(Map<String, Object> reqMap) {
+		if (null == reqMap) {
+			return null;
+		}
+		String vertexLabel = (String) reqMap.get("vertexLabel");
+		String choice = (String) reqMap.get("choice");
+		Integer vertexId = (Integer) reqMap.get("vertexId");
+		List<Integer> vertexIdList = new ArrayList<Integer>();
+		Map<String, String> propertyList = (Map<String, String>) reqMap.get("propertyList");
+		vertexIdList.add(vertexId);
+		//多次查询列表
+		List<LineSearchReqObj> lineSearchReqObjList = new ArrayList<LineSearchReqObj>();
+		
+		if ("and".equals(choice)) {
+			LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
+			lineSearchReqObj.setVertexIdList(vertexIdList);
+			List<VertexFilter> vertexFilterList = new ArrayList<VertexFilter>();
+			VertexFilter vertexFilter = new VertexFilter();
+			ArrayList<String> labelList = new ArrayList<String>();
+			labelList.add(vertexLabel);
+			vertexFilter.setVertexLabelList(labelList);
+			List<PropertyFilter> propertyFilterList = new ArrayList<PropertyFilter>();
+			Set<Entry<String, String>> entrySet = propertyList.entrySet();
+			for (Entry<String, String> entry : entrySet) {
+				PropertyFilter filter = new PropertyFilter();
+				filter.setPropertyName(entry.getKey());
+				List<String> values = new ArrayList<String>();
+				values.add(entry.getValue());
+				filter.setValues(values);
+				filter.setPredicate(PropertyPredicate.EQUAL);
+				propertyFilterList.add(filter);
+				vertexFilter.setFilterList(propertyFilterList);
+			}
+			vertexFilterList.add(vertexFilter);
+			lineSearchReqObj.setVertexFilterList(vertexFilterList);
+			lineSearchReqObj.setLayer(4);
+			lineSearchReqObjList.add(lineSearchReqObj);
+		}
+		
+		if("or".equals(choice)) {
+			//为每个属性创建一个查询对象
+			Set<Entry<String, String>> entrySet = propertyList.entrySet();
+			for (Entry<String, String> entry : entrySet) {
+				LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
+				lineSearchReqObj.setVertexIdList(vertexIdList);
+				List<VertexFilter> vertexFilterList = new ArrayList<VertexFilter>();
+				VertexFilter vertexFilter = new VertexFilter();
+				ArrayList<String> labelList = new ArrayList<String>();
+				labelList.add(vertexLabel);
+				vertexFilter.setVertexLabelList(labelList);
+				List<PropertyFilter> propertyFilterList = new ArrayList<PropertyFilter>();
+				
+				PropertyFilter filter = new PropertyFilter();
+				filter.setPropertyName(entry.getKey());
+				List<String> values = new ArrayList<String>();
+				values.add(entry.getValue());
+				filter.setValues(values);
+				filter.setPredicate(PropertyPredicate.EQUAL);
+				propertyFilterList.add(filter);
+				vertexFilter.setFilterList(propertyFilterList);
+				
+				vertexFilterList.add(vertexFilter);
+				lineSearchReqObj.setVertexFilterList(vertexFilterList);
+				lineSearchReqObj.setLayer(4);
+				lineSearchReqObjList.add(lineSearchReqObj);
+			}
+		}
+		//封装返回数据
+		Map<String, Object> result = new HashMap<String, Object>();
+		List<String> resultItem = new ArrayList<String>();
+		for (LineSearchReqObj lineSearchReqObj : lineSearchReqObjList) {
+			String searchLineResult = api.searchLines(lineSearchReqObj);
+			resultItem.add(searchLineResult);
+		}
+		result.put("data", resultItem);
+		return result;
 	}
 
 }
