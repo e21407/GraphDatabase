@@ -19,11 +19,10 @@ public class TestClass {
 
 	@Test
 	public void testJson() {
-		File JsonFile = new File("temp.json");
+		File JsonFile = new File("simulationData.json");
 		String strFromFile = FileTool.getStrFromFile(JsonFile);
-		JSONObject jsonObject = new JSONObject(strFromFile);
-		Object object = jsonObject.get("msg");
-		System.out.println(object);
+		JSONObject inJsonObject = new JSONObject(strFromFile);
+		System.out.println(inJsonObject.toString());
 	}
 
 }
