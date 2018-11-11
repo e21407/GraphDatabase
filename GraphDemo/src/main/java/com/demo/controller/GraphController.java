@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.demo.entity.EdgeObj;
 import com.demo.entity.VertexObj;
 import com.demo.service.GraphService;
+import com.demo.tool.FileTool;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -95,11 +98,19 @@ public class GraphController {
 		return result;
 
 	}
-	
+
 	@RequestMapping("/getGraph")
 	@ResponseBody
-	public Map<String, Object> getGraph(@RequestBody Map<String, Object> reqMap) {
-		return graphService.getGraph(reqMap);
+	public Map<String, Object> getGraph(@RequestBody(required = false) Map<String, Object> reqMap) {
+		File JsonFile = new File("simulationData.json");
+		String strFromFile = FileTool.getStrFromFile(JsonFile);
+		JSONObject inJsonObject = new JSONObject(strFromFile);
+		JSONArray vJsonArray = inJsonObject.getJSONArray("vertexList");
+		JSONArray eJsonArray = inJsonObject.getJSONArray("edgeList");
+		Map<String, Object> resutlMap = new HashMap<String, Object>();
+//		resutlMap.put("data", jsonObject);
+		return resutlMap;
+		// return graphService.getGraph(reqMap);
 	}
 
 	// 二次查询，根据一个点的id查询它附近的关系
@@ -115,16 +126,17 @@ public class GraphController {
 	public String searchRelationshipByVertexsId(@RequestBody Map<String, Object> reqMap) {
 		return graphService.searchLines(reqMap);
 	}
-	
+
 	/**
-	 * 路径查询，必要参数：节点id列表vertexIdList，路径类型option=（all，shortest， circle， weighted） 
+	 * 路径查询，必要参数：节点id列表vertexIdList，路径类型option=（all，shortest， circle， weighted）
+	 * 
 	 * @param reqMap
 	 * @return
 	 */
 	@RequestMapping(value = "/searchPath", method = { RequestMethod.POST })
 	@ResponseBody
 	public String searchPath(@RequestBody Map<String, Object> reqMap) {
-//		return graphService.searchPath(reqMap);
+		// return graphService.searchPath(reqMap);
 		return "searchPath: " + reqMap.get("vertexIds") + ", option: " + reqMap.get("option");
 	}
 

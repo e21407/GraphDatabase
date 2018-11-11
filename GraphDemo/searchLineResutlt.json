@@ -1,0 +1,71 @@
+{
+    "msg": "success",
+    "code": "0",
+    "data": {
+        "edgeList": [
+            {
+                "propertyList": [{
+                    "name": "weight",
+                    "value": "0.4"
+                }],
+                "start": "1261176",
+                "end": "1747680",
+                "id": "ew5r-r14o-bj9x-11gio",
+                "label": "knows",
+                "type": "edge"
+            },
+            {
+                "propertyList": [{
+                    "name": "weight",
+                    "value": "0.8"
+                }],
+                "start": "1508048",
+                "end": "1747680",
+                "id": "qlzu-wbm8-ecet-11gio",
+                "label": "has",
+                "type": "edge"
+            }
+        ],
+        "vertexList": [
+            {
+                "labelList": ["person"],
+                "propertyList": [
+                    {
+                        "name": "name",
+                        "value": "marko"
+                    },
+                    {
+                        "name": "age",
+                        "value": "29"
+                    }
+                ],
+                "id": "1261176",
+                "type": "vertex"
+            },
+            {
+                "labelList": ["person"],
+                "propertyList": [
+                    {
+                        "name": "name",
+                        "value": "vadas"
+                    },
+                    {
+                        "name": "age",
+                        "value": "27"
+                    }
+                ],
+                "id": "1747680",
+                "type": "vertex"
+            },
+            {
+                "labelList": ["phone"],
+                "propertyList": [{
+                    "name": "telephone",
+                    "value": "13729584211"
+                }],
+                "id": "1508048",
+                "type": "vertex"
+            }
+        ]
+    }
+}

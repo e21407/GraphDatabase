@@ -1,0 +1,219 @@
+{
+	"msg": "success",
+	"code": "0",
+	"data": {
+		"pathSet": [
+			{
+				"edgeList": [
+					{
+						"propertyList": [
+							{
+								"name": "weight",
+								"value": "0.8"
+							}
+						],
+						"start": "2842456",
+						"end": "1683696",
+						"id": "a4x7-1ox94-700l-1035c",
+						"label": "has",
+						"type": "edge"
+					},
+					{
+						"propertyList": [
+							{
+								"name": "weight",
+								"value": "0.6"
+							}
+						],
+						"start": "1561040",
+						"end": "1683696",
+						"id": "3hkq-xgi8-5lg5-1035c",
+						"label": "call",
+						"type": "edge"
+					},
+					{
+						"propertyList": [
+							{
+								"name": "weight",
+								"value": "0.4"
+							}
+						],
+						"start": "2016584",
+						"end": "2842456",
+						"id": "6kdl-17808-46vp-1ox94",
+						"label": "knows",
+						"type": "edge"
+					},
+					{
+						"propertyList": [
+							{
+								"name": "weight",
+								"value": "0.4"
+							}
+						],
+						"start": "1793880",
+						"end": "3065160",
+						"id": "4inf-12g60-46vp-1tp3c",
+						"label": "knows",
+						"type": "edge"
+					},
+					{
+						"propertyList": [
+							{
+								"name": "weight",
+								"value": "0.6"
+							}
+						],
+						"start": "1683696",
+						"end": "1561040",
+						"id": "3pni-1035c-5lg5-xgi8",
+						"label": "call",
+						"type": "edge"
+					},
+					{
+						"propertyList": [
+							{
+								"name": "weight",
+								"value": "0.8"
+							}
+						],
+						"start": "3065160",
+						"end": "1561040",
+						"id": "9dih-1tp3c-700l-xgi8",
+						"label": "has",
+						"type": "edge"
+					},
+					{
+						"propertyList": [
+							{
+								"name": "weight",
+								"value": "1.0"
+							}
+						],
+						"start": "1793880",
+						"end": "2016584",
+						"id": "cy23-12g60-2sb9-17808",
+						"label": "friend",
+						"type": "edge"
+					}
+				],
+				"start": "1793880",
+				"vertexList": [
+					{
+						"labelList": [
+							"phone"
+						],
+						"propertyList": [
+							{
+								"name": "telephone",
+								"value": "13612493615"
+							}
+						],
+						"id": "1683696",
+						"type": "vertex"
+					},
+					{
+						"labelList": [
+							"person"
+						],
+						"propertyList": [
+							{
+								"name": "name",
+								"value": "josh"
+							},
+							{
+								"name": "age",
+								"value": "32"
+							}
+						],
+						"id": "2016584",
+						"type": "vertex"
+					},
+					{
+						"labelList": [
+							"person"
+						],
+						"propertyList": [
+							{
+								"name": "name",
+								"value": "vadas"
+							},
+							{
+								"name": "age",
+								"value": "27"
+							}
+						],
+						"id": "3065160",
+						"type": "vertex"
+					},
+					{
+						"labelList": [
+							"person"
+						],
+						"propertyList": [
+							{
+								"name": "name",
+								"value": "marko"
+							},
+							{
+								"name": "age",
+								"value": "29"
+							}
+						],
+						"id": "1793880",
+						"type": "vertex"
+					},
+					{
+						"labelList": [
+							"person"
+						],
+						"propertyList": [
+							{
+								"name": "name",
+								"value": "blame"
+							},
+							{
+								"name": "age",
+								"value": "30"
+							}
+						],
+						"id": "2842456",
+						"type": "vertex"
+					},
+					{
+						"labelList": [
+							"phone"
+						],
+						"propertyList": [
+							{
+								"name": "telephone",
+								"value": "13729584211"
+							}
+						],
+						"id": "1561040",
+						"type": "vertex"
+					}
+				],
+				"end": "2842456",
+				"pathList": [
+					[
+						"cy23-12g60-2sb9-17808",
+						"6kdl-17808-46vp-1ox94"
+					],
+					[
+						"4inf-12g60-46vp-1tp3c",
+						"9dih-1tp3c-700l-xgi8",
+						"3pni-1035c-5lg5-xgi8",
+						"a4x7-1ox94-700l-1035c"
+					],
+					[
+						"4inf-12g60-46vp-1tp3c",
+						"9dih-1tp3c-700l-xgi8",
+						"3hkq-xgi8-5lg5-1035c",
+						"a4x7-1ox94-700l-1035c"
+					]
+				]
+			}
+		]
+	}
+}
