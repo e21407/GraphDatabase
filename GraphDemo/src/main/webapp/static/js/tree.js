@@ -157,7 +157,8 @@ function initSelect(id){
 function loadNodesDatas(){
 
 	///////liubaichuan/////////////////////////////
-	$.getJSON("/getAllGraph",function(data){
+	$.getJSON("/getGraph",function(data){
+	    console.log("Data:"+data)
 		json = data;
 		var nodes = json.datas;
         var links = json.links;
