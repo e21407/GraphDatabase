@@ -1,0 +1,26 @@
+{
+  "datas":[
+
+    {"id":"1111","descript":"客户：1111","symbol":"static/img/icon12@3x.png","name":"客户：1111","category":3,"value":12,"width":52,"height":52,"nodeSetting":{},"showLabelText":true},
+    {"id":"1112","descript":"卡号","symbol":"static/img/icon13@3x.png","name":"卡号","category":3,"value":8,"width":32,"height":32,"nodeSetting":{},"showLabelText":true},
+
+    {"id":"1113","descript":"账户号","symbol":"static/img/icon8@3x.png","name":"1113","category":2,"value":10,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+    {"id":"1114","descript":"申请书","symbol":"static/img/icon8@3x.png","name":"1114","category":2,"value":10,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+    {"id":"1115","descript":"电话号码","symbol":"static/img/icon8@3x.png","name":"1115","category":2,"value":10,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+    {"id":"1116","descript":"电话号码","symbol":"static/img/icon8@3x.png","name":"1116","category":2,"value":8,"width":32,"height":32,"nodeSetting":{},"showLabelText":false},
+
+    {"id":"1117","descript":"IP","symbol":"static/img/icon8@3x.png","name":"1.1.1.1","category":2,"value":9,"width":32,"height":32,"nodeSetting":{},"showLabelText":false}
+  ],
+  "links":[
+
+    {"target":"1111","source":"1112","weight":4,"value":2,"relation":"对应","linkSetting":{}},
+    {"target":"1111","source":"1113","weight":8,"value":2,"relation":"对应","linkSetting":{}},
+    {"target":"1111","source":"1114","weight":8,"value":2,"relation":"对应","linkSetting":{}},
+    {"target":"1114","source":"1112","weight":7,"value":2,"relation":"对应","linkSetting":{}},
+    {"target":"1113","source":"1112","weight":6,"value":2,"relation":"对应","linkSetting":{}},
+    {"target":"1115","source":"1112","weight":8,"value":2,"relation":"对应","linkSetting":{}},
+    {"target":"1116","source":"1112","weight":8,"value":2,"relation":"从属","linkSetting":{}},
+    {"target":"1115","source":"1111","weight":8,"value":2,"relation":"从属","linkSetting":{}},
+    {"target":"1116","source":"1114","weight":7,"value":2,"relation":"从属","linkSetting":{}}
+  ]
+}
