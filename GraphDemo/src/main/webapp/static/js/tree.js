@@ -533,6 +533,8 @@ function renderSvg(){
         .each(function(v) { $(this).tipsy({ gravity: "w", opacity: 1, html: true }); });
 }
 
+
+
 function handleClick(node){
     shortArr = [];
     var mes = '';
@@ -806,3 +808,4 @@ function init(){
 }
 
 init();
+

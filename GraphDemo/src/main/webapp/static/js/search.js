@@ -17,23 +17,26 @@ function searchForm1(){
 /******************关联关系查询END********************/
 
 
+
 /******************二次查询START********************/
 function searchForm2(){
     var arrs = $("#secondSearchForm").serializeArray();
     var params ={params:arrs};
+    console.log('params:'+params);
     $.ajax({
         type: 'post',
-        url: '/searchPath',
+        url: '/secondSearch',
         contentType: 'application/json;charset=utf-8',
         data: params,
         success: function (response) { //返回json结果
+           // alert(response)
             console.log(response)
 
         }
     })
+    return false;
 }
 /******************二次查询END********************/
-
 
 
 

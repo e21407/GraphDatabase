@@ -200,7 +200,7 @@
         </div>
         <div class="line text-left">
             <span class="col-sm-4 m-t-xs">&nbsp;</span>
-            <button class="blue-button text-center mt20" onclick="searchForm2()" >现在查询</button>
+            <button class="blue-button text-center mt20" onclick="searchForm2()" type="button">现在查询</button>
         </div>
 
     </form>
@@ -224,7 +224,6 @@
         $(".common-radio input").iCheck({
             radioClass:'iradio_square-aero'
         });
-
 
     });
 
