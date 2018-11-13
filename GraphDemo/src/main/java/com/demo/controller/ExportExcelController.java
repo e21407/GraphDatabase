@@ -22,7 +22,7 @@ public class ExportExcelController {
 	@Autowired
 	ExportExcelService exportExcelService;
 
-	@RequestMapping(value = StringTool.projectPrefix + "/exportExcel", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/exportExcel", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public String exportExcel(HttpServletResponse response, @RequestBody(required = false) Map<String, Object> reqMap) {
 		response.setContentType("application/binary;charset=UTF-8");

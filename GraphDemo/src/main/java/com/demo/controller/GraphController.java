@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.demo.entity.EdgeObj;
 import com.demo.entity.VertexObj;
@@ -30,11 +29,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 public class GraphController {
+	
+	private static final String DEFAULT_DATA_FILE = "src" + File.separator + "main" + File.separator + "resources"
+			+ File.separator + "simulationData.json";
 
 	@Autowired
 	private GraphService graphService;
 
-	@RequestMapping(StringTool.projectPrefix + "/getAllGraph")
+	@RequestMapping("/getAllGraph")
 	@ResponseBody
 	public Map<String, Object> getAllGraph() {
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -101,10 +103,10 @@ public class GraphController {
 
 	}
 
-	@RequestMapping(value = StringTool.projectPrefix + "/getGraph", produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/getGraph", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Map<String, Object> getGraph(@RequestBody(required = false) Map<String, Object> reqMap) {
-		File JsonFile = new File("simulationData.json");
+		File JsonFile = new File(System.getProperty("user.dir") + File.separator + DEFAULT_DATA_FILE);
 		String strFromFile = FileTool.getStrFromFile(JsonFile);
 		JSONObject inJsonObject = JSON.parseObject(strFromFile);
 		Map<String, Object> resultMap = JsonParseTool.parsePathJson(inJsonObject);
@@ -131,7 +133,7 @@ public class GraphController {
 	 * @param reqMap
 	 * @return
 	 */
-	@RequestMapping(value = StringTool.projectPrefix + "/searchPath", method = { RequestMethod.POST })
+	@RequestMapping(value = "/searchPath", method = { RequestMethod.POST })
 	@ResponseBody
 	public String searchPath(@RequestBody Map<String, Object> reqMap) {
 		// return graphService.searchPath(reqMap);

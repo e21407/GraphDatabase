@@ -18,12 +18,12 @@ public class HomePageController {
 	}
 
 	
-	@RequestMapping(StringTool.projectPrefix + "/index")
+	@RequestMapping("/index")
 	public String helloPage() {
 		return "index";
 	}
 
-	@RequestMapping(StringTool.projectPrefix + "/test")
+	@RequestMapping("/test")
 	public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name,
 			Model model) {
 		model.addAttribute("name", name);
