@@ -169,7 +169,7 @@
 <div class="second-search text-center" id="secondSearch" style="display: none;">
     <form id="secondSearchForm" name="secondSearchForm">
         <div class="line row mt20">
-            <span class="col-sm-4 m-t-xs text-right f14 mt5">账户号</span>
+            <span class="col-sm-4 m-t-xs text-right f14 mt5">查询类型</span>
             <div class="col-sm-8">
                 <select id="searchType3" name="forType3" class="selectpicker show-tick form-control col-sm-9" title="请选择查询类型">
                     <option value="0">请选择查询类型</option>
