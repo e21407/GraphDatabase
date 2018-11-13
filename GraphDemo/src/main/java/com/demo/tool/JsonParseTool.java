@@ -68,6 +68,7 @@ public class JsonParseTool {
 							proEdge.put("target", proID);
 							proEdge.put("source", id);
 							proEdge.put("relation", "从属");
+							proEdge.put("id", "propertyEdge");
 							links.add(proEdge);
 						}
 
@@ -114,6 +115,7 @@ public class JsonParseTool {
 							proEdge.put("target", proID);
 							proEdge.put("source", id);
 							proEdge.put("relation", "从属");
+							proEdge.put("id", "propertyEdge");
 							links.add(proEdge);
 						}
 
@@ -160,6 +162,7 @@ public class JsonParseTool {
 							proEdge.put("target", proID);
 							proEdge.put("source", id);
 							proEdge.put("relation", "从属");
+							proEdge.put("id", "propertyEdge");
 							links.add(proEdge);
 						}
 

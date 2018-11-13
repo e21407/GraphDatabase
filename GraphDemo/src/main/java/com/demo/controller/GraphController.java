@@ -116,7 +116,7 @@ public class GraphController {
 	}
 
 	// 二次查询，根据一个点的id查询它附近的关系
-	@RequestMapping(value = "/secondSearch"/*, method = { RequestMethod.POST }*/)
+	@RequestMapping(value = "/secondSearch"/* , method = { RequestMethod.POST } */)
 	@ResponseBody
 	public Map<String, Object> secondSearch(@RequestBody(required = false) Map<String, Object> reqMap) {
 		System.out.println("secondSearch");
@@ -125,15 +125,19 @@ public class GraphController {
 		JSONObject inJsonObject = JSON.parseObject(strFromFile);
 		Map<String, Object> resultMap = JsonParseTool.parsePathJsonWithoutProperty(inJsonObject);
 		return resultMap;
-//		return graphService.searchLines(reqMap);
+		// return graphService.searchLines(reqMap);
 	}
 
 	// 关联查询，根据点的id产出它们的关系
 	@RequestMapping(value = "/searchRelationship"/* , method = { RequestMethod.POST } */)
 	@ResponseBody
-	public String searchRelationshipByVertexsId(@RequestBody(required = false) Map<String, Object> reqMap) {
+	public Map<String, Object> searchRelationship(@RequestBody(required = false) Map<String, Object> reqMap) {
 		System.out.println("searchRelationship");
-		return null;
+		File JsonFile = new File("searcPathSimRes.json");
+		String strFromFile = FileTool.getStrFromFile(JsonFile);
+		JSONObject inJsonObject = JSON.parseObject(strFromFile);
+		Map<String, Object> resultMap = JsonParseTool.parsePathJsonWithoutProperty(inJsonObject);
+		return resultMap;
 		// return graphService.searchLines(reqMap);
 	}
 

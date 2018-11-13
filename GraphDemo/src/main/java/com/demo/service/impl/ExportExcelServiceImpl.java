@@ -52,6 +52,9 @@ public class ExportExcelServiceImpl implements ExportExcelService {
 		// 点信息写入表格
 		for (int i = 0; i < vertexIdList.size(); i++) {
 			String vId = vertexIdList.get(i);
+			if(vId != null && vId.startsWith("property")) {
+				continue;
+			}
 			VertexQueryRspObj vertex = api.queryVertex(vId);
 			if (null == vertex) {
 				continue;
@@ -88,6 +91,9 @@ public class ExportExcelServiceImpl implements ExportExcelService {
 		// 边信息写入表格
 		for (int i = 0; i < edgeIdList.size(); i++) {
 			String eId = edgeIdList.get(i);
+			if(eId != null && eId.startsWith("property")) {
+				continue;
+			}
 			EdgeQueryRspObj edge = api.queryEdge(eId);
 			if (null == edge) {
 				continue;

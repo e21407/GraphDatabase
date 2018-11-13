@@ -155,72 +155,71 @@ public class GraphServiceImpl implements GraphService {
 		}
 		//////////////////////////////////////////////////////////////
 		// 多次查询列表
-		List<LineSearchReqObj> lineSearchReqObjList = new ArrayList<LineSearchReqObj>();
+		// List<LineSearchReqObj> lineSearchReqObjList = new
+		// ArrayList<LineSearchReqObj>();
 
-		if ("01".equals(choice)) {
-			LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
-			lineSearchReqObj.setVertexIdList(vertexIdList);
-			List<VertexFilter> vertexFilterList = new ArrayList<VertexFilter>();
-			VertexFilter vertexFilter = new VertexFilter();
-			ArrayList<String> labelList = new ArrayList<String>();
-			labelList.add(vertexLabel);
-			vertexFilter.setVertexLabelList(labelList);
-			List<PropertyFilter> propertyFilterList = new ArrayList<PropertyFilter>();
-			Set<Entry<String, String>> entrySet = propertyList.entrySet();
-			for (Entry<String, String> entry : entrySet) {
-				PropertyFilter filter = new PropertyFilter();
-				filter.setPropertyName(entry.getKey());
-				List<String> values = new ArrayList<String>();
-				values.add(entry.getValue());
-				filter.setValues(values);
-				filter.setPredicate(PropertyPredicate.EQUAL);
-				propertyFilterList.add(filter);
-				vertexFilter.setFilterList(propertyFilterList);
-			}
-			vertexFilterList.add(vertexFilter);
-			lineSearchReqObj.setVertexFilterList(vertexFilterList);
-			lineSearchReqObj.setLayer(5);
-			lineSearchReqObjList.add(lineSearchReqObj);
+		LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
+		lineSearchReqObj.setVertexIdList(vertexIdList);
+		List<VertexFilter> vertexFilterList = new ArrayList<VertexFilter>();
+		VertexFilter vertexFilter = new VertexFilter();
+		ArrayList<String> labelList = new ArrayList<String>();
+		labelList.add(vertexLabel);
+		vertexFilter.setVertexLabelList(labelList);
+		List<PropertyFilter> propertyFilterList = new ArrayList<PropertyFilter>();
+		Set<Entry<String, String>> entrySet = propertyList.entrySet();
+		for (Entry<String, String> entry : entrySet) {
+			PropertyFilter filter = new PropertyFilter();
+			filter.setPropertyName(entry.getKey());
+			List<String> values = new ArrayList<String>();
+			values.add(entry.getValue());
+			filter.setValues(values);
+			filter.setPredicate(PropertyPredicate.EQUAL);
+			propertyFilterList.add(filter);
+			vertexFilter.setFilterList(propertyFilterList);
 		}
+		vertexFilterList.add(vertexFilter);
+		lineSearchReqObj.setVertexFilterList(vertexFilterList);
+		lineSearchReqObj.setLayer(5);
+		// lineSearchReqObjList.add(lineSearchReqObj);
 
-		if ("02".equals(choice)) {
-			// 为每个属性创建一个查询对象
-			Set<Entry<String, String>> entrySet = propertyList.entrySet();
-			for (Entry<String, String> entry : entrySet) {
-				LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
-				lineSearchReqObj.setVertexIdList(vertexIdList);
-				List<VertexFilter> vertexFilterList = new ArrayList<VertexFilter>();
-				VertexFilter vertexFilter = new VertexFilter();
-				ArrayList<String> labelList = new ArrayList<String>();
-				labelList.add(vertexLabel);
-				vertexFilter.setVertexLabelList(labelList);
-				List<PropertyFilter> propertyFilterList = new ArrayList<PropertyFilter>();
-
-				PropertyFilter filter = new PropertyFilter();
-				filter.setPropertyName(entry.getKey());
-				List<String> values = new ArrayList<String>();
-				values.add(entry.getValue());
-				filter.setValues(values);
-				filter.setPredicate(PropertyPredicate.EQUAL);
-				propertyFilterList.add(filter);
-				vertexFilter.setFilterList(propertyFilterList);
-
-				vertexFilterList.add(vertexFilter);
-				lineSearchReqObj.setVertexFilterList(vertexFilterList);
-				lineSearchReqObj.setLayer(5);
-				lineSearchReqObjList.add(lineSearchReqObj);
-			}
-		}
-		JSONObject allSearchLineResult = new JSONObject();
-		JSONArray vertexList = new JSONArray();
-		JSONArray edgeList = new JSONArray();
-		for (LineSearchReqObj lineSearchReqObj : lineSearchReqObjList) {
-			String searchLineResult = api.searchLines(lineSearchReqObj);
-			JSONObject aRes = JSONObject.parseObject(searchLineResult);
-			vertexList.addAll(aRes.getJSONArray("vertexList"));
-			allSearchLineResult.put("vertexList", aRes.getJSONArray("vertexList"));
-			allSearchLineResult.put("edgeList", aRes.getJSONArray("edgeList"));
-		}
+		// if ("02".equals(choice)) {
+		// // 为每个属性创建一个查询对象
+		// Set<Entry<String, String>> entrySet = propertyList.entrySet();
+		// for (Entry<String, String> entry : entrySet) {
+		// LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
+		// lineSearchReqObj.setVertexIdList(vertexIdList);
+		// List<VertexFilter> vertexFilterList = new ArrayList<VertexFilter>();
+		// VertexFilter vertexFilter = new VertexFilter();
+		// ArrayList<String> labelList = new ArrayList<String>();
+		// labelList.add(vertexLabel);
+		// vertexFilter.setVertexLabelList(labelList);
+		// List<PropertyFilter> propertyFilterList = new ArrayList<PropertyFilter>();
+		//
+		// PropertyFilter filter = new PropertyFilter();
+		// filter.setPropertyName(entry.getKey());
+		// List<String> values = new ArrayList<String>();
+		// values.add(entry.getValue());
+		// filter.setValues(values);
+		// filter.setPredicate(PropertyPredicate.EQUAL);
+		// propertyFilterList.add(filter);
+		// vertexFilter.setFilterList(propertyFilterList);
+		//
+		// vertexFilterList.add(vertexFilter);
+		// lineSearchReqObj.setVertexFilterList(vertexFilterList);
+		// lineSearchReqObj.setLayer(5);
+		// lineSearchReqObjList.add(lineSearchReqObj);
+		// }
+		// }
+		
+		String searchLineResultStr = api.searchLines(lineSearchReqObj);
+		JSONObject allSearchLineResult = JSONObject.parseObject(searchLineResultStr);
+		// for (LineSearchReqObj lineSearchReqObj : lineSearchReqObjList) {
+		// String searchLineResult = api.searchLines(lineSearchReqObj);
+		// JSONObject aRes = JSONObject.parseObject(searchLineResult);
+		// vertexList.addAll(aRes.getJSONArray("vertexList"));
+		// allSearchLineResult.put("vertexList", aRes.getJSONArray("vertexList"));
+		// allSearchLineResult.put("edgeList", aRes.getJSONArray("edgeList"));
+		// }
 		// 封装返回数据
 		Map<String, Object> result = JsonParseTool.parsePathJsonWithProperty(allSearchLineResult);
 		return result;
