@@ -22,6 +22,13 @@ function searchForm1(){
 function searchForm2(){
     var arrs = $("#secondSearchForm").serializeArray();
     var params ={params:arrs};
+    params.chooseNodesId = [];
+    if(chooseNodes && chooseNodes.length){
+        for(var i=0;i<chooseNodes.length;i++){
+            params.chooseNodesId.push(chooseNodes[i].data.id);
+        }
+    }
+
     var data = JSON.stringify(params);
     console.log('params:'+data);
     $.ajax({
