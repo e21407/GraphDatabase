@@ -463,23 +463,15 @@ function renderSvg(){
         function searchShortPath(arr) {
             var obj = {};
             obj.option = "shortest";
-            obj.vertexIds = arr;
+            obj.vertexIds = [];
+            obj.vertexIds.push(arr[0].data.id);
+            obj.vertexIds.push(arr[1].data.id);
             var params = JSON.stringify(obj);
             $.ajax({
                 type: 'post',
                 url: '/searchPath',
-                contentType: 'application/json;charset=utf-8',
                 data: params,
                 success: function (response) { //返回json结果
-                    //console.log(response);
-                    //alert(response)
-                    // if(obj.option ==="all"){
-                    //     //更新节点关系图
-                    // }else{
-                    //     //展示最短路径
-                    // }
-
-                    //return response.links;
                     var links = response.links;
                     toggleLineToGreen(linkLine, links, true);
 
