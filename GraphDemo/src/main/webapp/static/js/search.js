@@ -22,12 +22,13 @@ function searchForm1(){
 function searchForm2(){
     var arrs = $("#secondSearchForm").serializeArray();
     var params ={params:arrs};
-    console.log('params:'+params);
+    var data = JSON.stringify(params);
+    console.log('params:'+data);
     $.ajax({
         type: 'post',
         url: '/secondSearch',
         contentType: 'application/json;charset=utf-8',
-        data: params,
+        data: data,
         success: function (response) { //返回json结果
            // alert(response)
             console.log(response)
