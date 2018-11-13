@@ -164,10 +164,35 @@ function loadNodesDatas(){
         var links = json.links;
         if(nodes && links && nodes.length && links.length){
             setNodesAndEdges(nodes,links);
+            renderDataTable(nodes);
         }
     });
 	//////////////////////////////////////////////
 }
+
+/*********渲染列表  START*********/
+function renderDataTable(nodes){
+
+    $('#table').DataTable( {
+        //"ajax": "./static/datas/data.txt",
+        data:nodes,
+        pageLength:6,
+        lengthChange: false,
+        searching: false,
+        info: "",
+        columns: [
+            { "data": "id" },
+            { "data": "name" },
+            { "data": "descript" },
+            { "data": "symbol" },
+            { "data": "type" },
+            { "data": "showLabelText" },
+            { "data": "width" },
+            { "data": "height" }
+        ]
+    } );
+}
+/*********渲染列表  END*********/
 
 function bindEvent(domArr){
 //查询
@@ -215,7 +240,7 @@ function setNodesAndEdges(pramaNodes,pramaLinks){
                 display = "block";
             }
             var div = document.createElement("div"),
-                p=d3.select(div).append("p").attr("class","node-text").html(pramaNodes[i].name).attr("style","display:"+display),
+                p=d3.select(div).append("p").attr("class","node-text").html(pramaNodes[i].descript).attr("style","display:"+display),
                 img = d3.select(div).append("img").attr("width",pramaNodes[i].width).attr("height",pramaNodes[i].height);
                 img.attr("src",pramaNodes[i].symbol);
             return div;
@@ -321,7 +346,7 @@ function renderSvg(){
     var nodeCircle  = svg.selectAll("g.node");
     nodeCircle.append("rect").attr("x","-25").attr("y","-25").classed('node-selected', true)
     //鼠标移动上去的交互效果
-    nodeCircle.on("mouseenter", function(currNode){
+    nodeCircle.on("mouseover", function(currNode){
         toggleNode(nodeCircle, currNode, true);
         toggleLine(linkLine, currNode, true);
         toggleLineText(lineText, currNode, true);

@@ -287,3 +287,6 @@ table.dataTable.no-footer{
 .dataTables_wrapper.dataTables_info{
     display: none;
 }
+.table-box table.dataTable thead th,.table-box table.dataTable thead td{
+    padding: 10px;
+}
