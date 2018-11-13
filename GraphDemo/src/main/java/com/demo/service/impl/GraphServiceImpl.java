@@ -12,6 +12,7 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.demo.dao.GraphApi;
 import com.demo.entity.VertexObj;
@@ -49,7 +50,7 @@ public class GraphServiceImpl implements GraphService {
 		// 查询全图节点
 		VertexSearchReqObj vertexSearchReqObj = new VertexSearchReqObj();
 		vertexSearchReqObj.setVertexLabel("customer");
-		vertexSearchReqObj.setLimit(5);	//查询5个客户节点
+		vertexSearchReqObj.setLimit(5); // 查询5个客户节点
 		VertexSearchRspObj vertexSearchRspObj = api.searchVertex(vertexSearchReqObj); // Vertex的全图条件查询
 		// 获取节点id
 		List<Integer> vertexIdList = new ArrayList<Integer>();
@@ -58,68 +59,16 @@ public class GraphServiceImpl implements GraphService {
 			String id = vertexElement.getId();
 			vertexIdList.add(Integer.valueOf(id));
 		}
-		//扩线查询
+		// 扩线查询
 		LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
-		lineSearchReqObj.setVertexIdList(vertexIdList);	//设置id列表，必选
-		lineSearchReqObj.setLayer(2);	//设置扩线层数，必选
+		lineSearchReqObj.setVertexIdList(vertexIdList); // 设置id列表，必选
+		lineSearchReqObj.setLayer(2); // 设置扩线层数，必选
 		String searchLinesResult = api.searchLines(lineSearchReqObj);
-		
+
 		// 封装返回结果
 		JSONObject resultJson = JSONObject.parseObject(searchLinesResult);
 		Map<String, Object> resultMap = JsonParseTool.parsePathJsonWithProperty(resultJson);
 		return resultMap;
-	}
-
-	@Override
-	public String searchLines(Map<String, Object> reqMap) {
-		// TODO Auto-generated method stub
-		// 账户号
-		Integer accountId = (Integer) reqMap.get("account");
-		// 客户号
-		Integer customerId = (Integer) reqMap.get("customer");
-		// 卡号
-		Integer cardId = (Integer) reqMap.get("card");
-		// 申请书标号
-		Integer applyId = (Integer) reqMap.get("apply");
-		// 推广人id
-		Integer tgrId = (Integer) reqMap.get("tgr");
-		// 推广机构id
-		Integer tgjgId = (Integer) reqMap.get("tgjg");
-		// 所属公司
-		Integer companyId = (Integer) reqMap.get("company");
-
-		// 扩线层数
-		Integer layer = (Integer) reqMap.get("layer");
-
-		List<Integer> vertexIdList = new ArrayList<Integer>();
-		if (null != accountId) {
-			vertexIdList.add(accountId);
-		}
-		if (null != customerId) {
-			vertexIdList.add(customerId);
-		}
-		if (null != cardId) {
-			vertexIdList.add(cardId);
-		}
-		if (null != applyId) {
-			vertexIdList.add(applyId);
-		}
-		if (null != tgrId) {
-			vertexIdList.add(tgrId);
-		}
-		if (null != tgjgId) {
-			vertexIdList.add(tgjgId);
-		}
-		if (null != companyId) {
-			vertexIdList.add(companyId);
-		}
-		LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
-		lineSearchReqObj.setVertexIdList(vertexIdList);
-		// 扩线层数必须设置，范围(0,10]
-		if (null != layer)
-			lineSearchReqObj.setLayer(layer);
-
-		return api.searchLines(lineSearchReqObj);
 	}
 
 	@Override
@@ -161,21 +110,54 @@ public class GraphServiceImpl implements GraphService {
 		return parsePathJson;
 	}
 
-	// 二次查询
+	/**
+	 * 二次查询方法，未经测试！！！！！！！！
+	 */
 	public Map<String, Object> secondSearch(Map<String, Object> reqMap) {
 		if (null == reqMap) {
 			return null;
 		}
-		String vertexLabel = (String) reqMap.get("vertexLabel");
-		String choice = (String) reqMap.get("choice");
-		Integer vertexId = (Integer) reqMap.get("vertexId");
+		String chooseNodesIdStr = reqMap.get("chooseNodesId").toString();
+		if (null == chooseNodesIdStr) {
+			return null;
+		}
+		JSONArray chooseNodesId = JSONArray.parseArray(chooseNodesIdStr);
 		List<Integer> vertexIdList = new ArrayList<Integer>();
-		Map<String, String> propertyList = (Map<String, String>) reqMap.get("propertyList");
-		vertexIdList.add(vertexId);
-		//多次查询列表
+		for (Object object : chooseNodesId) {
+			Integer id = Integer.valueOf(object.toString());
+			vertexIdList.add(id);
+		}
+
+		String paramsStr = reqMap.get("params").toString();
+		if (null == paramsStr) {
+			return null;
+		}
+		JSONArray paramsJsonArray = JSONArray.parseArray(paramsStr);
+		String vertexLabel = null;
+		String choice = "";
+		Map<String, String> propertyList = new HashMap<String, String>();
+
+		for (Object object : paramsJsonArray) {
+			JSONObject property = (JSONObject) object;
+			String propertyName = property.get("name").toString();
+			String propertyValue = property.getString("value");
+			if ("forType3".equals(propertyName)) {
+				vertexLabel = propertyValue;
+				continue;
+			}
+			if ("choice".equals(propertyName)) {
+				choice = propertyValue;
+				continue;
+			}
+			if (null != propertyValue && !propertyValue.trim().equals("")) {
+				propertyList.put(propertyName, propertyValue);
+			}
+		}
+		//////////////////////////////////////////////////////////////
+		// 多次查询列表
 		List<LineSearchReqObj> lineSearchReqObjList = new ArrayList<LineSearchReqObj>();
-		
-		if ("and".equals(choice)) {
+
+		if ("01".equals(choice)) {
 			LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
 			lineSearchReqObj.setVertexIdList(vertexIdList);
 			List<VertexFilter> vertexFilterList = new ArrayList<VertexFilter>();
@@ -197,12 +179,12 @@ public class GraphServiceImpl implements GraphService {
 			}
 			vertexFilterList.add(vertexFilter);
 			lineSearchReqObj.setVertexFilterList(vertexFilterList);
-			lineSearchReqObj.setLayer(4);
+			lineSearchReqObj.setLayer(5);
 			lineSearchReqObjList.add(lineSearchReqObj);
 		}
-		
-		if("or".equals(choice)) {
-			//为每个属性创建一个查询对象
+
+		if ("02".equals(choice)) {
+			// 为每个属性创建一个查询对象
 			Set<Entry<String, String>> entrySet = propertyList.entrySet();
 			for (Entry<String, String> entry : entrySet) {
 				LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
@@ -213,7 +195,7 @@ public class GraphServiceImpl implements GraphService {
 				labelList.add(vertexLabel);
 				vertexFilter.setVertexLabelList(labelList);
 				List<PropertyFilter> propertyFilterList = new ArrayList<PropertyFilter>();
-				
+
 				PropertyFilter filter = new PropertyFilter();
 				filter.setPropertyName(entry.getKey());
 				List<String> values = new ArrayList<String>();
@@ -222,21 +204,25 @@ public class GraphServiceImpl implements GraphService {
 				filter.setPredicate(PropertyPredicate.EQUAL);
 				propertyFilterList.add(filter);
 				vertexFilter.setFilterList(propertyFilterList);
-				
+
 				vertexFilterList.add(vertexFilter);
 				lineSearchReqObj.setVertexFilterList(vertexFilterList);
-				lineSearchReqObj.setLayer(4);
+				lineSearchReqObj.setLayer(5);
 				lineSearchReqObjList.add(lineSearchReqObj);
 			}
 		}
-		//封装返回数据
-		Map<String, Object> result = new HashMap<String, Object>();
-		List<String> resultItem = new ArrayList<String>();
+		JSONObject allSearchLineResult = new JSONObject();
+		JSONArray vertexList = new JSONArray();
+		JSONArray edgeList = new JSONArray();
 		for (LineSearchReqObj lineSearchReqObj : lineSearchReqObjList) {
 			String searchLineResult = api.searchLines(lineSearchReqObj);
-			resultItem.add(searchLineResult);
+			JSONObject aRes = JSONObject.parseObject(searchLineResult);
+			vertexList.addAll(aRes.getJSONArray("vertexList"));
+			allSearchLineResult.put("vertexList", aRes.getJSONArray("vertexList"));
+			allSearchLineResult.put("edgeList", aRes.getJSONArray("edgeList"));
 		}
-		result.put("data", resultItem);
+		// 封装返回数据
+		Map<String, Object> result = JsonParseTool.parsePathJsonWithProperty(allSearchLineResult);
 		return result;
 	}
 

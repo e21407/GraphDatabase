@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.demo.entity.EdgeObj;
 import com.demo.entity.VertexObj;
@@ -111,21 +112,29 @@ public class GraphController {
 		JSONObject inJsonObject = JSON.parseObject(strFromFile);
 		Map<String, Object> resultMap = JsonParseTool.parsePathJsonWithProperty(inJsonObject);
 		return resultMap;
-//		return graphService.getGraph(reqMap);
+		// return graphService.getGraph(reqMap);
 	}
 
 	// 二次查询，根据一个点的id查询它附近的关系
-	@RequestMapping(value = "/secondSearch", method = { RequestMethod.POST })
+	@RequestMapping(value = "/secondSearch"/*, method = { RequestMethod.POST }*/)
 	@ResponseBody
-	public String secondSearch(@RequestBody Map<String, Object> reqMap) {
-		return graphService.searchLines(reqMap);
+	public Map<String, Object> secondSearch(@RequestBody(required = false) Map<String, Object> reqMap) {
+		System.out.println("secondSearch");
+		File JsonFile = new File("searcPathSimRes.json");
+		String strFromFile = FileTool.getStrFromFile(JsonFile);
+		JSONObject inJsonObject = JSON.parseObject(strFromFile);
+		Map<String, Object> resultMap = JsonParseTool.parsePathJsonWithoutProperty(inJsonObject);
+		return resultMap;
+//		return graphService.searchLines(reqMap);
 	}
 
 	// 关联查询，根据点的id产出它们的关系
 	@RequestMapping(value = "/searchRelationship"/* , method = { RequestMethod.POST } */)
 	@ResponseBody
-	public String searchRelationshipByVertexsId(@RequestBody Map<String, Object> reqMap) {
-		return graphService.searchLines(reqMap);
+	public String searchRelationshipByVertexsId(@RequestBody(required = false) Map<String, Object> reqMap) {
+		System.out.println("searchRelationship");
+		return null;
+		// return graphService.searchLines(reqMap);
 	}
 
 	/**
@@ -137,12 +146,16 @@ public class GraphController {
 	@RequestMapping(value = "/searchPath")
 	@ResponseBody
 	public Map<String, Object> searchPath(@RequestBody(required = false) Map<String, Object> reqMap) {
+		String option = (String) reqMap.get("option");
+		List<String> vertexIds = (List<String>) reqMap.get("vertexIds");
+		System.out.println(option);
+		System.out.println(vertexIds);
 		File JsonFile = new File("searcPathSimRes.json");
 		String strFromFile = FileTool.getStrFromFile(JsonFile);
 		JSONObject inJsonObject = JSON.parseObject(strFromFile);
 		Map<String, Object> resultMap = JsonParseTool.parsePathJsonWithoutProperty(inJsonObject);
 		return resultMap;
-//		return graphService.searchPath(reqMap);
+		// return graphService.searchPath(reqMap);
 	}
 
 }

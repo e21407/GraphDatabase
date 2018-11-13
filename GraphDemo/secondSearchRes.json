@@ -1,0 +1,206 @@
+{
+	"vertexList": [
+		{
+			"labelList": [
+				"customer"
+			],
+			"propertyList": [
+				{
+					"name": "customerNumber",
+					"value": "1111"
+				},
+				{
+					"name": "company",
+					"value": "sun"
+				},
+				{
+					"name": "deviceNumber",
+					"value": "1111"
+				},
+				{
+					"name": "email",
+					"value": "1111@sun.com"
+				},
+				{
+					"name": "symbol",
+					"value": "static/img/icon12@3x.png"
+				},
+				{
+					"name": "descript",
+					"value": "客户：1111"
+				}
+			],
+			"id": "1111",
+			"type": "vertex"
+		},
+		{
+			"labelList": [
+				"card"
+			],
+			"propertyList": [
+				{
+					"name": "cardNumber",
+					"value": "1112"
+				},
+				{
+					"name": "merchantNumber",
+					"value": "1112"
+				},
+				{
+					"name": "paymentCardNumber",
+					"value": "11123"
+				},
+				{
+					"name": "symbol",
+					"value": "static/img/icon11@3x.png"
+				},
+				{
+					"name": "descript",
+					"value": "卡号"
+				}
+			],
+			"id": "1112",
+			"type": "vertex"
+		},
+		{
+			"labelList": [
+				"IP"
+			],
+			"propertyList": [
+				{
+					"name": "IPNumber",
+					"value": "1.1.1.1"
+				},
+				{
+					"name": "symbol",
+					"value": "static/img/icon5@3x.png"
+				}
+			],
+			"id": "1117",
+			"type": "vertex"
+		},
+		{
+			"labelList": [
+				"card"
+			],
+			"propertyList": [
+				{
+					"name": "cardNumber",
+					"value": "1118"
+				},
+				{
+					"name": "merchantNumber",
+					"value": "1112"
+				},
+				{
+					"name": "paymentCardNumber",
+					"value": "11123"
+				},
+				{
+					"name": "symbol",
+					"value": "static/img/icon11@3x.png"
+				}
+			],
+			"id": "1118",
+			"type": "vertex"
+		},
+		{
+			"labelList": [
+				"IP"
+			],
+			"propertyList": [
+				{
+					"name": "IPNumber",
+					"value": "1.1.1.2"
+				},
+				{
+					"name": "symbol",
+					"value": "static/img/icon5@3x.png"
+				}
+			],
+			"id": "1120",
+			"type": "vertex"
+		}
+	],
+	"edgeList": [
+		{
+			"propertyList": [
+				{
+					"name": "weight",
+					"value": 8
+				},{
+					"name": "ipType",
+					"value": "开卡成功IP"
+				},{
+					"name": "value",
+					"value": 2
+				}
+			],
+			"start": "1112",
+			"end": "1117",
+			"id": "e1117",
+			"label": "has",
+			"type": "edge"
+		},	
+		{
+			"propertyList": [
+				{
+					"name": "weight",
+					"value": 4
+				},{
+					"name": "relation",
+					"value": "对应"
+				},{
+					"name": "value",
+					"value": 2
+				}
+			],
+			"start": "1112",
+			"end": "1111",
+			"id": "e1111",
+			"label": "card_customer",
+			"type": "edge"
+		},
+		{
+			"propertyList": [
+				{
+					"name": "weight",
+					"value": 4
+				},{
+					"name": "relation",
+					"value": "对应"
+				},{
+					"name": "value",
+					"value": 2
+				}
+			],
+			"start": "1118",
+			"end": "1111",
+			"id": "e1120",
+			"label": "card_customer",
+			"type": "edge"
+		},
+		{
+			"propertyList": [
+				{
+					"name": "weight",
+					"value": 7
+				},{
+					"name": "ipType",
+					"value": "开卡成功IP"
+				},{
+					"name": "relation",
+					"value": "从属"
+				},{
+					"name": "value",
+					"value": 2
+				}
+			],
+			"start": "1118",
+			"end": "1120",
+			"id": "e1123",
+			"label": "has",
+			"type": "edge"
+		}
+	]
+}
