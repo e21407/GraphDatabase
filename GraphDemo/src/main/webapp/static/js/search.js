@@ -35,34 +35,7 @@ function searchForm2(){
 /******************二次查询END********************/
 
 
-/******************最短路径查询START********************/
-function searchShortPath(arr){
-    var obj = {};
-    obj.option = "shortest";
-    obj.vertexIds = arr;
-    loadData(obj);
-}
 
-function loadData(params) {
-    var data = JSON.stringify(obj);
-    $.ajax({
-        type: 'post',
-        url: '/searchPath',
-        contentType: 'application/json;charset=utf-8',
-        data: params,
-        success: function (response) { //返回json结果
-            console.log(response)
-            if(obj.option ==="all"){
-                //更新节点关系图
-            }else{
-                //展示最短路径
-            }
-
-        }
-    })
-}
-
-/******************最短路径查询END********************/
 
 /******************导出START********************/
 

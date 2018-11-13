@@ -442,8 +442,9 @@ function renderSvg(){
                         $(this).addClass("active");
                     }
                 });
-                var links = showShortestPath(shortArr[0].index,shortArr[1].index);
-                toggleLineToGreen(linkLine, links, true);
+                //var links = showShortestPath(shortArr[0].index,shortArr[1].index);
+                searchShortPath(shortArr);
+
             }else{
                 toggleLineToGreen(linkLine, [], false);
                 gNodes.each(function(v) {
@@ -455,6 +456,40 @@ function renderSvg(){
                 });
             }
         }
+
+
+        /******************最短路径查询START********************/
+
+        function searchShortPath(arr) {
+            var obj = {};
+            obj.option = "shortest";
+            obj.vertexIds = arr;
+            var params = JSON.stringify(obj);
+            $.ajax({
+                type: 'post',
+                url: '/searchPath',
+                contentType: 'application/json;charset=utf-8',
+                data: params,
+                success: function (response) { //返回json结果
+                    //console.log(response);
+                    //alert(response)
+                    // if(obj.option ==="all"){
+                    //     //更新节点关系图
+                    // }else{
+                    //     //展示最短路径
+                    // }
+
+                    //return response.links;
+                    var links = response.links;
+                    toggleLineToGreen(linkLine, links, true);
+
+
+                }
+            })
+        }
+
+        /******************最短路径查询END********************/
+
 
         function secondSearch(){
             layer.open({
