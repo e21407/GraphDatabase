@@ -29,7 +29,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 public class GraphController {
-	
+
 	private static final String DEFAULT_DATA_FILE = "src" + File.separator + "main" + File.separator + "resources"
 			+ File.separator + "simulationData.json";
 
@@ -121,7 +121,7 @@ public class GraphController {
 	}
 
 	// 关联查询，根据点的id产出它们的关系
-	@RequestMapping(value = "/searchRelationship", method = { RequestMethod.POST })
+	@RequestMapping(value = "/searchRelationship"/* , method = { RequestMethod.POST } */)
 	@ResponseBody
 	public String searchRelationshipByVertexsId(@RequestBody Map<String, Object> reqMap) {
 		return graphService.searchLines(reqMap);
@@ -135,9 +135,10 @@ public class GraphController {
 	 */
 	@RequestMapping(value = "/searchPath", method = { RequestMethod.POST })
 	@ResponseBody
-	public String searchPath(@RequestBody Map<String, Object> reqMap) {
-		// return graphService.searchPath(reqMap);
-		return "searchPath: " + reqMap.get("vertexIds") + ", option: " + reqMap.get("option");
+	public Map<String, Object> searchPath(@RequestBody(required = false) Map<String, Object> reqMap) {
+		return graphService.searchPath(reqMap);
+		// return "searchPath: " + reqMap.get("vertexIds") + ", option: " +
+		// reqMap.get("option");
 	}
 
 }

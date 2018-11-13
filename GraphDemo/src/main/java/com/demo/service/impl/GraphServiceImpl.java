@@ -129,7 +129,7 @@ public class GraphServiceImpl implements GraphService {
 	}
 
 	@Override
-	public String searchPath(Map<String, Object> reqMap) {
+	public Map<String, Object> searchPath(Map<String, Object> reqMap) {
 		String vertexIdLstStr = (String) reqMap.get("vertexIds");
 		String option = (String) reqMap.get("option");
 		ObjectMapper mapper = new ObjectMapper();
@@ -155,7 +155,10 @@ public class GraphServiceImpl implements GraphService {
 			pathSearchReqObj.setOption("all"); // 默认查询全路径
 		}
 		pathSearchReqObj.setLayer(10); // 设置跳数
-		return api.searchPath(pathSearchReqObj);
+		String searchPathRsultStr = api.searchPath(pathSearchReqObj);
+		JSONObject json = JSONObject.parseObject(searchPathRsultStr);
+		Map<String, Object> parsePathJson = JsonParseTool.parsePathJson(json);
+		return parsePathJson;
 	}
 
 	// 二次查询
