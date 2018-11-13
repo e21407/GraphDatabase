@@ -470,8 +470,12 @@ function renderSvg(){
             $.ajax({
                 type: 'post',
                 url: '/searchPath',
+                contentType: 'application/json;charset=utf-8',
                 data: params,
                 success: function (response) { //返回json结果
+
+
+                    //return response.links;
                     var links = response.links;
                     toggleLineToGreen(linkLine, links, true);
 
