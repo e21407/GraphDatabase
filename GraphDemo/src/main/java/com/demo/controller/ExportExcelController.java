@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.demo.service.ExportExcelService;
+import com.demo.tool.StringTool;
 
 @Controller
 public class ExportExcelController {
 	@Autowired
 	ExportExcelService exportExcelService;
 
-	@RequestMapping(value = "/exportExcel", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = StringTool.projectPrefix + "/exportExcel", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public String exportExcel(HttpServletResponse response, @RequestBody(required = false) Map<String, Object> reqMap) {
 		response.setContentType("application/binary;charset=UTF-8");

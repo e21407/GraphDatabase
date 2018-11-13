@@ -12,9 +12,11 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.demo.dao.GraphApi;
 import com.demo.entity.VertexObj;
 import com.demo.service.GraphService;
+import com.demo.tool.JsonParseTool;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huawei.request.CentricEdgeSearchReqObj;
@@ -38,17 +40,16 @@ public class GraphServiceImpl implements GraphService {
 		return api.getInt();
 	}
 
+	/**
+	 * 获取初始化主页图谱时候数据，先查询几个客户节点，然后做扩线查询
+	 */
 	@Override
 	public Map<String, Object> getGraph(Map<String, Object> reqMap) {
 		// TODO Auto-generated method stub
 		// 查询全图节点
-		Integer vertexNumLimit = (Integer) reqMap.get("vertexNumLimit");
 		VertexSearchReqObj vertexSearchReqObj = new VertexSearchReqObj();
-		if (null != vertexNumLimit) {
-			vertexSearchReqObj.setLimit(vertexNumLimit);
-		} else {
-			vertexSearchReqObj.setLimit(100); // 默认查询100个节点
-		}
+		vertexSearchReqObj.setVertexLabel("customer");
+		vertexSearchReqObj.setLimit(5);	//查询5个客户节点
 		VertexSearchRspObj vertexSearchRspObj = api.searchVertex(vertexSearchReqObj); // Vertex的全图条件查询
 		// 获取节点id
 		List<Integer> vertexIdList = new ArrayList<Integer>();
@@ -57,20 +58,15 @@ public class GraphServiceImpl implements GraphService {
 			String id = vertexElement.getId();
 			vertexIdList.add(Integer.valueOf(id));
 		}
-		// 查询与点相关的边
-		Integer edgeNumLimit = (Integer) reqMap.get("edgeNumLimit");
-		CentricEdgeSearchReqObj centricEdgeSearchReqObj = new CentricEdgeSearchReqObj();
-		if (null != edgeNumLimit) {
-			centricEdgeSearchReqObj.setLimit(edgeNumLimit);
-		} else {
-			centricEdgeSearchReqObj.setLimit(100); // 默认查询100条边
-		}
-		centricEdgeSearchReqObj.setVertexIdList(vertexIdList);
-		String centricEdgeSearchResult = api.centricEdgeSearch(centricEdgeSearchReqObj);
+		//扩线查询
+		LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
+		lineSearchReqObj.setVertexIdList(vertexIdList);	//设置id列表，必选
+		lineSearchReqObj.setLayer(2);	//设置扩线层数，必选
+		String searchLinesResult = api.searchLines(lineSearchReqObj);
+		
 		// 封装返回结果
-		Map<String, Object> resultMap = new HashMap<String, Object>();
-		resultMap.put("vertexs", vertexSearchRspObj);
-		resultMap.put("links", centricEdgeSearchResult);
+		JSONObject resultJson = JSONObject.parseObject(searchLinesResult);
+		Map<String, Object> resultMap = JsonParseTool.parsePathJson(resultJson);
 		return resultMap;
 	}
 

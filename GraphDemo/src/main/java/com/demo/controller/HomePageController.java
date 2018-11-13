@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.demo.tool.StringTool;
+
 @Controller
 public class HomePageController {
 	@RequestMapping("/")
@@ -16,12 +18,12 @@ public class HomePageController {
 	}
 
 	
-	@RequestMapping("/index")
+	@RequestMapping(StringTool.projectPrefix + "/index")
 	public String helloPage() {
 		return "index";
 	}
 
-	@RequestMapping("/test")
+	@RequestMapping(StringTool.projectPrefix + "/test")
 	public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name,
 			Model model) {
 		model.addAttribute("name", name);

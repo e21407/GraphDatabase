@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.service.GraphService;
+import com.demo.tool.StringTool;
 
 @RestController
 public class TestController {
@@ -18,7 +19,7 @@ public class TestController {
 	@Autowired
 	private GraphService graphService;
 	
-	@RequestMapping("/testTurn")
+	@RequestMapping(StringTool.projectPrefix + "/testTurn")
 	@ResponseBody
 	public Map<String, String> testTurn(@RequestBody Map<String, Object> reqMap) {
 		Map<String, String> properttList = (Map<String, String>) reqMap.get("propertyList");
@@ -29,7 +30,7 @@ public class TestController {
 		return properttList;
 	}
 	
-	@RequestMapping("/testLineSearch")
+	@RequestMapping(StringTool.projectPrefix + "/testLineSearch")
 	@ResponseBody
 	public Map<String, Object> testLineSearch(@RequestBody Map<String, Object> reqMap) {
 		Map<String, Object> result = graphService.secondSearch(reqMap);
