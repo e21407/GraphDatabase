@@ -109,7 +109,7 @@ public class GraphController {
 		File JsonFile = new File(System.getProperty("user.dir") + File.separator + DEFAULT_DATA_FILE);
 		String strFromFile = FileTool.getStrFromFile(JsonFile);
 		JSONObject inJsonObject = JSON.parseObject(strFromFile);
-		Map<String, Object> resultMap = JsonParseTool.parsePathJson(inJsonObject);
+		Map<String, Object> resultMap = JsonParseTool.parsePathJsonWithProperty(inJsonObject);
 		return resultMap;
 //		return graphService.getGraph(reqMap);
 	}
@@ -140,7 +140,7 @@ public class GraphController {
 		File JsonFile = new File("searcPathSimRes.json");
 		String strFromFile = FileTool.getStrFromFile(JsonFile);
 		JSONObject inJsonObject = JSON.parseObject(strFromFile);
-		Map<String, Object> resultMap = JsonParseTool.parsePathJson(inJsonObject);
+		Map<String, Object> resultMap = JsonParseTool.parsePathJsonWithoutProperty(inJsonObject);
 		return resultMap;
 //		return graphService.searchPath(reqMap);
 	}

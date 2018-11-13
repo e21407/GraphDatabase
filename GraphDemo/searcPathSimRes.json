@@ -127,6 +127,25 @@
 			"propertyList": [
 				{
 					"name": "weight",
+					"value": 8
+				},{
+					"name": "ipType",
+					"value": "开卡成功IP"
+				},{
+					"name": "value",
+					"value": 2
+				}
+			],
+			"start": "1112",
+			"end": "1117",
+			"id": "e1117",
+			"label": "has",
+			"type": "edge"
+		},	
+		{
+			"propertyList": [
+				{
+					"name": "weight",
 					"value": 4
 				},{
 					"name": "relation",

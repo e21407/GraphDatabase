@@ -66,7 +66,7 @@ public class GraphServiceImpl implements GraphService {
 		
 		// 封装返回结果
 		JSONObject resultJson = JSONObject.parseObject(searchLinesResult);
-		Map<String, Object> resultMap = JsonParseTool.parsePathJson(resultJson);
+		Map<String, Object> resultMap = JsonParseTool.parsePathJsonWithProperty(resultJson);
 		return resultMap;
 	}
 
@@ -157,7 +157,7 @@ public class GraphServiceImpl implements GraphService {
 		pathSearchReqObj.setLayer(10); // 设置跳数
 		String searchPathRsultStr = api.searchPath(pathSearchReqObj);
 		JSONObject json = JSONObject.parseObject(searchPathRsultStr);
-		Map<String, Object> parsePathJson = JsonParseTool.parsePathJson(json);
+		Map<String, Object> parsePathJson = JsonParseTool.parsePathJsonWithProperty(json);
 		return parsePathJson;
 	}
 
