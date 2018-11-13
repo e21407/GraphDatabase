@@ -111,6 +111,7 @@ public class GraphController {
 		JSONObject inJsonObject = JSON.parseObject(strFromFile);
 		Map<String, Object> resultMap = JsonParseTool.parsePathJson(inJsonObject);
 		return resultMap;
+//		return graphService.getGraph(reqMap);
 	}
 
 	// 二次查询，根据一个点的id查询它附近的关系
@@ -133,12 +134,15 @@ public class GraphController {
 	 * @param reqMap
 	 * @return
 	 */
-	@RequestMapping(value = "/searchPath", method = { RequestMethod.POST })
+	@RequestMapping(value = "/searchPath")
 	@ResponseBody
 	public Map<String, Object> searchPath(@RequestBody(required = false) Map<String, Object> reqMap) {
-		return graphService.searchPath(reqMap);
-		// return "searchPath: " + reqMap.get("vertexIds") + ", option: " +
-		// reqMap.get("option");
+		File JsonFile = new File("searcPathSimRes.json");
+		String strFromFile = FileTool.getStrFromFile(JsonFile);
+		JSONObject inJsonObject = JSON.parseObject(strFromFile);
+		Map<String, Object> resultMap = JsonParseTool.parsePathJson(inJsonObject);
+		return resultMap;
+//		return graphService.searchPath(reqMap);
 	}
 
 }

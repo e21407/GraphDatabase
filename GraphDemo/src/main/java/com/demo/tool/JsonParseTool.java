@@ -193,7 +193,7 @@ public class JsonParseTool {
 							oriNode.put("height", 52);
 							oriNode.put("showLabelText", true);
 							datas.add(oriNode);
-						} else if ("IP".equals(propertyName)) {
+						} else if ("IPNumber".equals(propertyName)) {
 							JSONObject oriNode = new JSONObject();
 							oriNode.put("type", "node");
 							oriNode.put("id", id);
