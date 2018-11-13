@@ -72,8 +72,10 @@
                         <th>name</th>
                         <th>descript</th>
                         <th>symbol</th>
-                        <th>category</th>
-                        <th>value</th>
+                        <th>type</th>
+                        <th>showLabelText</th>
+                        <th>width</th>
+                        <th>height</th>
                     </tr>
                 </thead>
             </table>
@@ -223,22 +225,7 @@
             radioClass:'iradio_square-aero'
         });
 
-        //table
-        $('#table').DataTable( {
-            "ajax": "./static/datas/data.txt",
-            "pageLength":6,
-            "lengthChange": false,
-            "searching": false,
-            "info": "",
-            "columns": [
-                { "data": "id" },
-                { "data": "name" },
-                { "data": "descript" },
-                { "data": "symbol" },
-                { "data": "category" },
-                { "data": "value" }
-            ]
-        } );
+
     });
 
 </script>
