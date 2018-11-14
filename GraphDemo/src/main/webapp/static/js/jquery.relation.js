@@ -118,6 +118,7 @@
         };
         getNodesById(target,node.data.id);
     }
+
     function getNodesById(target,id){
         var state = $.data(target, "relationPicture" );
         var opts = state.options;
@@ -219,6 +220,7 @@
         state.svg = svg;
 
         var inner =d3.select("svg g");
+        //var inner =d3.select("#"+id +"g");
 
 
         var zoom = d3.zoom().on("zoom", function () { //添加鼠标滚轮放大缩小事件
@@ -434,6 +436,9 @@
         params.edgeIds = [];
         for(var i=0;i<renderNodes.length;i++){
             params.vertexIds.push(renderNodes[i].id);
+
+        }
+        for(var i=0;i<renderLinks.length;i++){
             params.edgeIds.push(renderLinks[i].id);
         }
         var data = JSON.stringify(params);
