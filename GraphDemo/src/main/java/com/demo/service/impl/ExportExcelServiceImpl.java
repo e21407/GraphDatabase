@@ -136,10 +136,10 @@ public class ExportExcelServiceImpl implements ExportExcelService {
 	// 假数据测试方法
 	@Override
 	public void exportExcel_test(ServletOutputStream out, Map<String, Object> reqMap) {
-		List<String> vertexIdList = (List<String>) reqMap.get("vertexIds");
-		List<String> edgeIdList = (List<String>) reqMap.get("edgeIds");
-		System.out.println(vertexIdList);
-		System.out.println(edgeIdList);
+//		List<String> vertexIdList = (List<String>) reqMap.get("vertexIds");
+//		List<String> edgeIdList = (List<String>) reqMap.get("edgeIds");
+//		System.out.println(vertexIdList);
+//		System.out.println(edgeIdList);
 		// 第一步，创建一个workbook，对应一个Excel文件
 		HSSFWorkbook workbook = new HSSFWorkbook();
 		// 第二步，在webbook中添加一个sheet,对应Excel文件中的sheet

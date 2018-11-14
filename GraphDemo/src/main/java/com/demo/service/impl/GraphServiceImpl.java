@@ -46,7 +46,6 @@ public class GraphServiceImpl implements GraphService {
 	 */
 	@Override
 	public Map<String, Object> getGraph(Map<String, Object> reqMap) {
-		// TODO Auto-generated method stub
 		// 查询全图节点
 		VertexSearchReqObj vertexSearchReqObj = new VertexSearchReqObj();
 		vertexSearchReqObj.setVertexLabel("customer");
@@ -86,7 +85,7 @@ public class GraphServiceImpl implements GraphService {
 			JSONObject property = (JSONObject) object;
 			String propertyName = property.get("name").toString();
 			String propertyValue = property.getString("value");
-			if(null == propertyValue || propertyValue.trim().equals("")) {
+			if (null == propertyValue || propertyValue.trim().equals("")) {
 				continue;
 			}
 			propertyName = propertyName.trim();
@@ -94,35 +93,34 @@ public class GraphServiceImpl implements GraphService {
 				if (propertyName.startsWith("forType")) {
 					label1 = propertyValue.trim();
 				} else {
-					propertyValue=propertyValue.trim();
-					if(null == propertyList1) {
+					propertyValue = propertyValue.trim();
+					if (null == propertyList1) {
 						propertyList1 = new HashMap<String, String>();
 					}
-					propertyList1.put(propertyName, propertyValue);
+					propertyList1.put(propertyName.split("_")[0], propertyValue);
 				}
-			}
-			if (propertyName.endsWith("2")) {
+			} else if (propertyName.endsWith("2")) {
 				if (propertyName.startsWith("forType")) {
 					label2 = propertyValue.trim();
 				} else {
-					propertyValue=propertyValue.trim();
-					if(null == propertyList2) {
+					propertyValue = propertyValue.trim();
+					if (null == propertyList2) {
 						propertyList2 = new HashMap<String, String>();
 					}
-					propertyList2.put(propertyName, propertyValue);
+					propertyList2.put(propertyName.split("_")[0], propertyValue);
 				}
 			}
 		}
 		String vID1 = null;
 		String vID2 = null;
-		if(null != label1 && null != propertyList1) {
+		if (null != label1 && null != propertyList1) {
 			vID1 = api.getVertexIdByProperty(label1, propertyList1);
 		}
-		if(null != label2 && null != propertyList2) {
+		if (null != label2 && null != propertyList2) {
 			vID2 = api.getVertexIdByProperty(label2, propertyList2);
 		}
 		// 有两个点，选择全路径查询
-		if(null != vID1 && null != vID2) {
+		if (null != vID1 && null != vID2) {
 			List<String> vertexIdList = new ArrayList<String>();
 			vertexIdList.add(vID1);
 			vertexIdList.add(vID2);
@@ -134,8 +132,8 @@ public class GraphServiceImpl implements GraphService {
 			JSONObject jsonSearchPathResult = JSONObject.parseObject(strSearchPathResult);
 			return JsonParseTool.parsePathJsonWithProperty(jsonSearchPathResult);
 		}
-		//单个点选择扩线查询
-		if(null != vID1) {
+		// 单个点选择扩线查询
+		if (null != vID1) {
 			LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
 			List<Integer> vertexIdList = new ArrayList<Integer>();
 			vertexIdList.add(Integer.valueOf(vID1));
@@ -145,7 +143,7 @@ public class GraphServiceImpl implements GraphService {
 			JSONObject jsonSearchLinesResult = JSONObject.parseObject(strSearchLinesResult);
 			return JsonParseTool.parsePathJsonWithProperty(jsonSearchLinesResult);
 		}
-		if(null != vID2) {
+		if (null != vID2) {
 			LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
 			List<Integer> vertexIdList = new ArrayList<Integer>();
 			vertexIdList.add(Integer.valueOf(vID2));
@@ -197,27 +195,14 @@ public class GraphServiceImpl implements GraphService {
 		if (null == reqMap) {
 			return null;
 		}
-		String chooseNodesIdStr = reqMap.get("chooseNodesId").toString();
-		if (null == chooseNodesIdStr) {
-			return null;
-		}
-		JSONArray chooseNodesId = JSONArray.parseArray(chooseNodesIdStr);
-		List<Integer> vertexIdList = new ArrayList<Integer>();
-		for (Object object : chooseNodesId) {
-			Integer id = Integer.valueOf(object.toString());
-			vertexIdList.add(id);
-		}
-
-		String paramsStr = reqMap.get("params").toString();
-		if (null == paramsStr) {
-			return null;
-		}
-		JSONArray paramsJsonArray = JSONArray.parseArray(paramsStr);
+		JSONObject jsonParams = (JSONObject) JSONObject.toJSON(reqMap);
+		JSONArray params = jsonParams.getJSONArray("params");
+		JSONArray chooseNodesId = jsonParams.getJSONArray("chooseNodesId");
 		String vertexLabel = null;
 		String choice = "";
 		Map<String, String> propertyList = new HashMap<String, String>();
 
-		for (Object object : paramsJsonArray) {
+		for (Object object : params) {
 			JSONObject property = (JSONObject) object;
 			String propertyName = property.get("name").toString();
 			String propertyValue = property.getString("value");
@@ -230,7 +215,7 @@ public class GraphServiceImpl implements GraphService {
 				continue;
 			}
 			if (null != propertyValue && !propertyValue.trim().equals("")) {
-				propertyList.put(propertyName, propertyValue);
+				propertyList.put(propertyName.split("_")[0], propertyValue);
 			}
 		}
 		//////////////////////////////////////////////////////////////
@@ -238,6 +223,8 @@ public class GraphServiceImpl implements GraphService {
 		// List<LineSearchReqObj> lineSearchReqObjList = new
 		// ArrayList<LineSearchReqObj>();
 
+		List<Integer> vertexIdList = new ArrayList<Integer>();
+		vertexIdList.add(chooseNodesId.getInteger(0));
 		LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
 		lineSearchReqObj.setVertexIdList(vertexIdList);
 		List<VertexFilter> vertexFilterList = new ArrayList<VertexFilter>();

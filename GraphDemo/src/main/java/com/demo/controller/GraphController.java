@@ -40,6 +40,7 @@ public class GraphController {
 	@RequestMapping(value = "/getGraph", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Map<String, Object> getGraph(@RequestBody(required = false) Map<String, Object> reqMap) {
+		System.out.println("==================================>Controller: /getGraph");
 		File JsonFile = new File(System.getProperty("user.dir") + File.separator + DEFAULT_DATA_FILE);
 		String strFromFile = FileTool.getStrFromFile(JsonFile);
 		JSONObject inJsonObject = JSON.parseObject(strFromFile);
@@ -52,8 +53,13 @@ public class GraphController {
 	@RequestMapping(value = "/secondSearch"/* , method = { RequestMethod.POST } */)
 	@ResponseBody
 	public Map<String, Object> secondSearch(@RequestBody(required = false) Map<String, Object> reqMap) {
-		System.out.println("==============================>secondSearch");
-		System.out.println(reqMap);
+		System.out.println("==============================>Controller: /secondSearch");
+		JSONObject jsonParams = (JSONObject) JSONObject.toJSON(reqMap);
+		JSONArray params = jsonParams.getJSONArray("params");
+		JSONArray chooseNodesId = jsonParams.getJSONArray("chooseNodesId");
+//		Integer nodeId = chooseNodesId.getInteger(0);
+		System.out.println(params);
+		System.out.println("node id: " + chooseNodesId);
 		File JsonFile = new File("searcPathSimRes.json");
 		String strFromFile = FileTool.getStrFromFile(JsonFile);
 		JSONObject inJsonObject = JSON.parseObject(strFromFile);
@@ -66,7 +72,7 @@ public class GraphController {
 	@RequestMapping(value = "/searchRelationship"/* , method = { RequestMethod.POST } */)
 	@ResponseBody
 	public Map<String, Object> searchRelationship(@RequestBody(required = false) Map<String, Object> reqMap) {
-		System.out.println("=============================>searchRelationship");
+		System.out.println("==============================>Controller: /searchRelationship");
 		JSONObject params = (JSONObject) JSONObject.toJSON(reqMap);
 		System.out.println(params.getJSONArray("params"));
 		File JsonFile = new File("searcPathSimRes.json");
@@ -86,6 +92,7 @@ public class GraphController {
 	@RequestMapping(value = "/searchPath")
 	@ResponseBody
 	public Map<String, Object> searchPath(@RequestBody(required = false) Map<String, Object> reqMap) {
+		System.out.println("==============================>Controller: /searchPath");
 		String option = (String) reqMap.get("option");
 		List<String> vertexIds = (List<String>) reqMap.get("vertexIds");
 		System.out.println(option);

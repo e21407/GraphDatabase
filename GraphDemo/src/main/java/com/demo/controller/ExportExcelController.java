@@ -27,6 +27,7 @@ public class ExportExcelController {
 	@RequestMapping(value = "/exportExcel", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public String exportExcel(HttpServletResponse response, @RequestBody(required = false) Map<String, Object> reqMap) {
+		System.out.println("===========================>Controller: /exportExcel");
 		response.setContentType("application/binary;charset=UTF-8");
 		//交付时候启用
 //		if(reqMap == null) {
