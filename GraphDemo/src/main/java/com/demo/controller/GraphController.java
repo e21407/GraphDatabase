@@ -52,7 +52,8 @@ public class GraphController {
 	@RequestMapping(value = "/secondSearch"/* , method = { RequestMethod.POST } */)
 	@ResponseBody
 	public Map<String, Object> secondSearch(@RequestBody(required = false) Map<String, Object> reqMap) {
-		System.out.println("secondSearch");
+		System.out.println("==============================>secondSearch");
+		System.out.println(reqMap);
 		File JsonFile = new File("searcPathSimRes.json");
 		String strFromFile = FileTool.getStrFromFile(JsonFile);
 		JSONObject inJsonObject = JSON.parseObject(strFromFile);
@@ -65,7 +66,9 @@ public class GraphController {
 	@RequestMapping(value = "/searchRelationship"/* , method = { RequestMethod.POST } */)
 	@ResponseBody
 	public Map<String, Object> searchRelationship(@RequestBody(required = false) Map<String, Object> reqMap) {
-		System.out.println("searchRelationship");
+		System.out.println("=============================>searchRelationship");
+		JSONObject params = (JSONObject) JSONObject.toJSON(reqMap);
+		System.out.println(params.getJSONArray("params"));
 		File JsonFile = new File("searcPathSimRes.json");
 		String strFromFile = FileTool.getStrFromFile(JsonFile);
 		JSONObject inJsonObject = JSON.parseObject(strFromFile);

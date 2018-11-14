@@ -76,8 +76,8 @@ public class GraphServiceImpl implements GraphService {
 		if (null == reqMap) {
 			return null;
 		}
-		String strParams = reqMap.get("params").toString();
-		JSONArray JsonParams = JSONArray.parseArray(strParams);
+		JSONObject params = (JSONObject) JSONObject.toJSON(reqMap);
+		JSONArray JsonParams = params.getJSONArray("params");
 		Map<String, String> propertyList1 = null;
 		Map<String, String> propertyList2 = null;
 		String label1 = null;

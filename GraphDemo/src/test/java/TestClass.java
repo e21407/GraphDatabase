@@ -1,8 +1,8 @@
 import java.io.File;
 
-import org.json.JSONObject;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSONObject;
 import com.demo.tool.FileTool;
 
 public class TestClass {
@@ -21,8 +21,17 @@ public class TestClass {
 	public void testJson() {
 		File JsonFile = new File("simulationData.json");
 		String strFromFile = FileTool.getStrFromFile(JsonFile);
-		JSONObject inJsonObject = new JSONObject(strFromFile);
+		JSONObject inJsonObject = JSONObject.parseObject(strFromFile);
 		System.out.println(inJsonObject.toString());
 	}
+	
+	@Test
+	public void testJson2() {
+		JSONObject jObject = new JSONObject();
+		jObject.put("985", "211");
+		jObject.put("985", "214");
+		System.out.println(jObject.toString());
+	}
+	
 
 }
