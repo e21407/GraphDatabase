@@ -64,7 +64,7 @@ $(function(){
             var links = response.links;
             json = response;
             if(nodes && links && nodes.length && links.length){
-                $("#svg").relationPicture({json:response})
+                $("#svg").relationPicture({id:"svg",json:response})
                 renderDataTable(nodes);
             }
         });
@@ -197,7 +197,20 @@ function secondSearchRender(response){
         var links = response.links;
         if(nodes && links && nodes.length && links.length){
             $("#secondResult").show();
-            $("#svg2").relationPicture({json:response,id:"svg2",width:600,height:600,hideSecondSearch:true});
+            $("#svg2").relationPicture({
+                id:"svg2",
+                width:600,
+                height:600,
+                nodeIds: [],
+                links:  [],
+                shortArr : [],
+                json:response,
+                renderNodes : [],
+                renderLinks : [],
+                chooseNodes : [],
+                hideSecondSearch:false,
+                secondSearchLayer: null
+            });
             layer.open({
                     type: 1,
                     //shade: false,

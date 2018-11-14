@@ -138,12 +138,12 @@
     <a id="look" class="look" href="javascript:;">查看所有关系</a>
 </div>
 
-<ul  id="menu" class="operate-menu" style="display: none">
-    <li class="active" for="chooseNode">选中节点</li>
-    <li for="showPath">设置开始点</li>
-    <li for="secondSearch">二次查询</li>
-    <li for="exportData">导出</li>
-</ul>
+<%--<ul  id="menu" class="operate-menu" style="display: none">--%>
+    <%--<li class="active" for="chooseNode">选中节点</li>--%>
+    <%--<li for="showPath">设置开始点</li>--%>
+    <%--<li for="secondSearch">二次查询</li>--%>
+    <%--<li for="exportData">导出</li>--%>
+<%--</ul>--%>
 <div class="export-type" id="exportType" style="display: none;">
     <from action="" id="exportData" name="exportData">
         <div class="common-radio mt20">

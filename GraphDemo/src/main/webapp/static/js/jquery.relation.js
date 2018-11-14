@@ -226,7 +226,17 @@
         state.inner = inner;
         svg.call(zoom);
 
+        var $menu = $("<ul class='operate-menu' style='display: none'>");
+        var $li1 = $("<li class='active' for='chooseNode'>").html("选中节点").appendTo($menu);
+        var $li2 = $("<li for='showPath'>").html("设置开始点").appendTo($menu);
+        var $li3 = $("<li for='secondSearch'>").html("二次查询").appendTo($menu);
+        //var $li4 = $("<li for='exportData'>").html("导出").appendTo($menu);
+        var a = $("<a style='display: block' href='/exportExcel'  target='view_window'>导出</a>");
+        var $li4 = $("<li for='exportData'></li>").append(a).appendTo($menu);
 
+
+        $menu.appendTo("body");
+        state.menu = $menu;
 
         //设置边和节点；
         setNodesAndEdges(target,opts.json.datas,opts.json.links);
@@ -322,6 +332,8 @@
         var svgGroup =state.svgGroup ;
         var inner = state.inner;
 
+        var $menu = state.menu;
+
         var gNodes = svgGroup.selectAll("g.node");
 
         svgGroup.selectAll("g.node").each(function(v) {
@@ -339,7 +351,6 @@
         });
 
         function handleMouseDown(target,svgGroup,node){
-            var $menu = $("#menu");
             $menu.data("node", node );
             if(nodeIsExistInChooseNodes(target,node)>-1){
                 $menu.find("li").eq(0).html("取消选中");
@@ -366,20 +377,14 @@
 
 
         var $svg = document.getElementById(opts.id);
-        var menu=  document.getElementById("menu");
+        //var menu=  document.getElementById("menu");
+        var menu = state.menu[0];
+
         $svg.oncontextmenu = function(e){
             menu.style.display='none';
             if(e.target !== e.currentTarget){
                 e.preventDefault();
                 var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
-
-                var $menu = $("#menu")
-                if(opts.hideSecondSearch){
-                    $menu.find("li").eq(2).hide();
-                }else{
-                    $menu.find("li").eq(2).show();
-                }
-
 
                 //根据事件对象中鼠标点击的位置，进行定位
                 menu.style.display='block';
@@ -397,17 +402,13 @@
             menu.style.display="none";
         }
 
-        var $menu = $("#menu");
-        var $li = $("#menu").find("li");
+        var $li = $menu.find("li");
         $li.off().click(function(e){
             gNodes = svg.selectAll("g.node");
             e.preventDefault();
             e.stopPropagation();
             var node =$menu.data("node");
             var forOpt = $(this).attr("for");
-
-
-
             switch (forOpt){
                 case "chooseNode":
                     chooseNode(target,node);
@@ -419,9 +420,9 @@
 
                     secondSearch(target);
                     break;
-                case "exportData":
-                    exportData(target);
-                    break;
+                // case "exportData":
+                //     exportData(target);
+                //     break;
             }
             $menu.hide();
         });
@@ -476,7 +477,10 @@
                 type: 1,
                 title: '二次查询',
                 area:["460px","420px"],
-                content:$("#secondSearch")
+                content:$("#secondSearch"),
+                cancel:function(){
+                    state.svg.empty()
+                }
             });
     }
     /*********二次查询弹窗  END*********/
@@ -628,25 +632,18 @@
 
     /******************初始化属性 START******************/
     $.fn.relationPicture.defaults =  {
-        id:"svg",
+        id:"",
         width:document.body.clientWidth,
         height:600,
         nodeIds: [],
         links:  [],
-        nodeIds2:  [],
-        links2:  [],
-        isClicked: false,
-        params : {},
         shortArr : [],
         json : {},
         renderNodes : [],
         renderLinks : [],
         chooseNodes : [],
         hideSecondSearch:false,
-        secondSearchLayer: null,
-        onClick: function(jq){
-
-        }
+        secondSearchLayer: null
     };
     /******************初始化属性 END******************/
 })(jQuery);
