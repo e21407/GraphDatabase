@@ -204,7 +204,12 @@
 </div>
 <%--二次查询条件弹窗 END--%>
 
+<%--二次查询结果弹窗 START--%>
+<div class="second-result" id="secondResult" style="display: block;">
+    <svg class="svg" id="svg2" width=100% height=500></svg>
+</div>
 
+<%--二次查询结果弹窗 END--%>
 
 
 </body>
@@ -216,17 +221,9 @@
 <script type="text/javascript" src="./static/js/d3.v4.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="./static/js/dagre-d3.js"></script>
 <script type="text/javascript" src="./static/js/tipsy.js"></script>
-<script type="text/javascript" src="./static/js/tree.js"></script>
+<%--<script type="text/javascript" src="./static/js/tree.js"></script>--%>
+<script type="text/javascript" src="./static/js/jquery.relation.js"></script>
 <script type="text/javascript" src="./static/js/search.js"></script>
 <script type="text/javascript" src="./static/js/icheck/icheck.min.js"></script>
-<script>
-    $(function(){
-        $(".common-radio input").iCheck({
-            radioClass:'iradio_square-aero'
-        });
-
-    });
-
-</script>
 </html>
 
