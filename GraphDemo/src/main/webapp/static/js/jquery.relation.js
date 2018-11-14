@@ -225,6 +225,15 @@
         state.zoom = zoom;
         state.inner = inner;
         svg.call(zoom);
+        var $menu = $("#menu")
+        if(opts.hideSecondSearch){
+            $menu.find("li").eq(2).hide();
+        }else{
+            $menu.find("li").eq(2).show();
+        }
+
+
+
         //设置边和节点；
         setNodesAndEdges(target,opts.json.datas,opts.json.links);
     }
@@ -365,7 +374,6 @@
         var $svg = document.getElementById(opts.id);
         var menu=  document.getElementById("menu");
         $svg.oncontextmenu = function(e){
-
             menu.style.display='none';
             if(e.target !== e.currentTarget){
                 e.preventDefault();
@@ -394,6 +402,9 @@
             e.stopPropagation();
             var node =$menu.data("node");
             var forOpt = $(this).attr("for");
+
+
+
             switch (forOpt){
                 case "chooseNode":
                     chooseNode(target,node);
@@ -402,6 +413,7 @@
                     showPath(target,node,$(this));
                     break;
                 case "secondSearch":
+
                     secondSearch(target);
                     break;
                 case "exportData":
@@ -635,6 +647,7 @@
         renderNodes : [],
         renderLinks : [],
         chooseNodes : [],
+        hideSecondSearch:false,
         secondSearchLayer: null,
         onClick: function(jq){
 

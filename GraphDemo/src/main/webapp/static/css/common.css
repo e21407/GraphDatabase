@@ -255,6 +255,7 @@ body,html{
 }
 .operate-menu{
     position: absolute;
+    z-index: 100000000000;
     background: #fff;
     cursor: pointer;
     border-radius: 4px;

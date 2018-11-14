@@ -196,7 +196,7 @@ function secondSearchRender(response){
         var nodes = response.datas;
         var links = response.links;
         if(nodes && links && nodes.length && links.length){
-            $("#svg2").relationPicture({json:response,id:"svg2",width:600,height:600});
+            $("#svg2").relationPicture({json:response,id:"svg2",width:600,height:600,hideSecondSearch:true});
             layer.open({
                     type: 1,
                     //shade: false,
