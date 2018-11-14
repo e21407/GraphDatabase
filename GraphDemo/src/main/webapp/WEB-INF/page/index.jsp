@@ -205,7 +205,7 @@
 <%--二次查询条件弹窗 END--%>
 
 <%--二次查询结果弹窗 START--%>
-<div class="second-result" id="secondResult" style="display: block;">
+<div class="second-result" id="secondResult" style="display: none">
     <svg class="svg" id="svg2" width=100% height=550></svg>
 </div>
 

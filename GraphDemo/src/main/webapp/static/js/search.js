@@ -180,8 +180,8 @@ function searchForm2(){
         data: data,
         success: function (response) { //返回json结果
 
-            var index =$svg.relationPicture("getSecondLayerIndex");
-            layer.close(index);
+            // var index =$svg.relationPicture("getSecondLayerIndex");
+            // layer.close(index);
             secondSearchRender(response);
         }
     })
@@ -196,6 +196,7 @@ function secondSearchRender(response){
         var nodes = response.datas;
         var links = response.links;
         if(nodes && links && nodes.length && links.length){
+            $("#secondResult").show();
             $("#svg2").relationPicture({json:response,id:"svg2",width:600,height:600,hideSecondSearch:true});
             layer.open({
                     type: 1,
@@ -203,11 +204,9 @@ function secondSearchRender(response){
                     title: '二次查询结果',
                     area:["600px","600px"],
                     content:$("#secondResult")
-                },
-                function(pass, index){
-                    layer.close(index);
                 });
             }
+
         }
 
 

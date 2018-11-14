@@ -225,12 +225,6 @@
         state.zoom = zoom;
         state.inner = inner;
         svg.call(zoom);
-        var $menu = $("#menu")
-        if(opts.hideSecondSearch){
-            $menu.find("li").eq(2).hide();
-        }else{
-            $menu.find("li").eq(2).show();
-        }
 
 
 
@@ -378,6 +372,15 @@
             if(e.target !== e.currentTarget){
                 e.preventDefault();
                 var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+
+                var $menu = $("#menu")
+                if(opts.hideSecondSearch){
+                    $menu.find("li").eq(2).hide();
+                }else{
+                    $menu.find("li").eq(2).show();
+                }
+
+
                 //根据事件对象中鼠标点击的位置，进行定位
                 menu.style.display='block';
                 var width = menu.clientWidth;
@@ -474,10 +477,7 @@
                 title: '二次查询',
                 area:["460px","420px"],
                 content:$("#secondSearch")
-            },
-            function(pass, index){
-                layer.close(index);
-        });
+            });
     }
     /*********二次查询弹窗  END*********/
 
@@ -559,7 +559,6 @@
         var g = state.g;
         var svg = state.svg;
         var svgGroup = state.svgGroup;
-        var chooseNodes = opts.chooseNodes;
 
         var gNodes = svgGroup.selectAll("g.node");
         var linkLine = svg.selectAll("g.edgePath");
@@ -573,9 +572,9 @@
             if(currentNode.data.id ===node.data.id ) {
                 var index =nodeIsExistInChooseNodes(target,node);
                 if(index>-1){
-                    chooseNodes.splice(index,1);
+                    opts.chooseNodes.splice(index,1);
                 }else{
-                    chooseNodes.push(node);
+                    opts.chooseNodes.push(node);
                 }
                 _this.toggleClass("selected");
             }
@@ -619,14 +618,10 @@
             });
         },
         getSecondLayerIndex:function(jq){
-            jq.each(function(){
-                return $.data(jq[0], 'relationPicture').options.secondSearchLayer;
-            });
+            return $.data(jq[0], 'relationPicture').options.secondSearchLayer;
         },
         getChooseNodes:function(jq){
-            jq.each(function(){
-                return $.data(jq[0], 'relationPicture').options.chooseNodes;
-            });
+            return $.data(jq[0], 'relationPicture').options.chooseNodes;
         }
     };
     /******************relationPicture的方法 END******************/
