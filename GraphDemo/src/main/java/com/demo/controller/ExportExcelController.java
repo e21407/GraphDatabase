@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.demo.service.ExportExcelService;
 import com.demo.tool.StringTool;
 
@@ -40,7 +42,7 @@ public class ExportExcelController {
 				e1.printStackTrace();
 			}
 //			exportExcelService.exportExcel(out, reqMap);
-			exportExcelService.exportExcel_test(out);
+			exportExcelService.exportExcel_test(out,reqMap);
 			return "export success";
 		} catch (Exception e) {
 			e.printStackTrace();

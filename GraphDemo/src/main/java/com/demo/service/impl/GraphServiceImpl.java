@@ -72,8 +72,89 @@ public class GraphServiceImpl implements GraphService {
 	}
 
 	@Override
-	public String searchRelationshipByVertexsId(Map<String, Object> reqMap) {
-		// TODO Auto-generated method stub
+	public Map<String, Object> searchRelationship(Map<String, Object> reqMap) {
+		if (null == reqMap) {
+			return null;
+		}
+		String strParams = reqMap.get("params").toString();
+		JSONArray JsonParams = JSONArray.parseArray(strParams);
+		Map<String, String> propertyList1 = null;
+		Map<String, String> propertyList2 = null;
+		String label1 = null;
+		String label2 = null;
+		for (Object object : JsonParams) {
+			JSONObject property = (JSONObject) object;
+			String propertyName = property.get("name").toString();
+			String propertyValue = property.getString("value");
+			if(null == propertyValue || propertyValue.trim().equals("")) {
+				continue;
+			}
+			propertyName = propertyName.trim();
+			if (propertyName.endsWith("1")) {
+				if (propertyName.startsWith("forType")) {
+					label1 = propertyValue.trim();
+				} else {
+					propertyValue=propertyValue.trim();
+					if(null == propertyList1) {
+						propertyList1 = new HashMap<String, String>();
+					}
+					propertyList1.put(propertyName, propertyValue);
+				}
+			}
+			if (propertyName.endsWith("2")) {
+				if (propertyName.startsWith("forType")) {
+					label2 = propertyValue.trim();
+				} else {
+					propertyValue=propertyValue.trim();
+					if(null == propertyList2) {
+						propertyList2 = new HashMap<String, String>();
+					}
+					propertyList2.put(propertyName, propertyValue);
+				}
+			}
+		}
+		String vID1 = null;
+		String vID2 = null;
+		if(null != label1 && null != propertyList1) {
+			vID1 = api.getVertexIdByProperty(label1, propertyList1);
+		}
+		if(null != label2 && null != propertyList2) {
+			vID2 = api.getVertexIdByProperty(label2, propertyList2);
+		}
+		// 有两个点，选择全路径查询
+		if(null != vID1 && null != vID2) {
+			List<String> vertexIdList = new ArrayList<String>();
+			vertexIdList.add(vID1);
+			vertexIdList.add(vID2);
+			PathSearchReqObj pathSearchReqObj = new PathSearchReqObj();
+			pathSearchReqObj.setVertexIdList(vertexIdList);
+			pathSearchReqObj.setOption("all");
+			pathSearchReqObj.setLayer(6);
+			String strSearchPathResult = api.searchPath(pathSearchReqObj);
+			JSONObject jsonSearchPathResult = JSONObject.parseObject(strSearchPathResult);
+			return JsonParseTool.parsePathJsonWithProperty(jsonSearchPathResult);
+		}
+		//单个点选择扩线查询
+		if(null != vID1) {
+			LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
+			List<Integer> vertexIdList = new ArrayList<Integer>();
+			vertexIdList.add(Integer.valueOf(vID1));
+			lineSearchReqObj.setVertexIdList(vertexIdList);
+			lineSearchReqObj.setLayer(8);
+			String strSearchLinesResult = api.searchLines(lineSearchReqObj);
+			JSONObject jsonSearchLinesResult = JSONObject.parseObject(strSearchLinesResult);
+			return JsonParseTool.parsePathJsonWithProperty(jsonSearchLinesResult);
+		}
+		if(null != vID2) {
+			LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
+			List<Integer> vertexIdList = new ArrayList<Integer>();
+			vertexIdList.add(Integer.valueOf(vID2));
+			lineSearchReqObj.setVertexIdList(vertexIdList);
+			lineSearchReqObj.setLayer(8);
+			String strSearchLinesResult = api.searchLines(lineSearchReqObj);
+			JSONObject jsonSearchLinesResult = JSONObject.parseObject(strSearchLinesResult);
+			return JsonParseTool.parsePathJsonWithProperty(jsonSearchLinesResult);
+		}
 		return null;
 	}
 
@@ -87,7 +168,6 @@ public class GraphServiceImpl implements GraphService {
 			vertexIdList = mapper.readValue(vertexIdLstStr, new TypeReference<List<String>>() {
 			});
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		PathSearchReqObj pathSearchReqObj = new PathSearchReqObj();
@@ -106,7 +186,7 @@ public class GraphServiceImpl implements GraphService {
 		pathSearchReqObj.setLayer(10); // 设置跳数
 		String searchPathRsultStr = api.searchPath(pathSearchReqObj);
 		JSONObject json = JSONObject.parseObject(searchPathRsultStr);
-		Map<String, Object> parsePathJson = JsonParseTool.parsePathJsonWithProperty(json);
+		Map<String, Object> parsePathJson = JsonParseTool.parsePathJsonWithoutProperty(json);
 		return parsePathJson;
 	}
 
@@ -210,7 +290,7 @@ public class GraphServiceImpl implements GraphService {
 		// lineSearchReqObjList.add(lineSearchReqObj);
 		// }
 		// }
-		
+
 		String searchLineResultStr = api.searchLines(lineSearchReqObj);
 		JSONObject allSearchLineResult = JSONObject.parseObject(searchLineResultStr);
 		// for (LineSearchReqObj lineSearchReqObj : lineSearchReqObjList) {

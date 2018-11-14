@@ -16,6 +16,8 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.demo.dao.GraphApi;
 import com.demo.service.ExportExcelService;
 import com.huawei.request.EdgeQueryRspObj;
@@ -52,7 +54,7 @@ public class ExportExcelServiceImpl implements ExportExcelService {
 		// 点信息写入表格
 		for (int i = 0; i < vertexIdList.size(); i++) {
 			String vId = vertexIdList.get(i);
-			if(vId != null && vId.startsWith("property")) {
+			if (vId != null && vId.startsWith("property")) {
 				continue;
 			}
 			VertexQueryRspObj vertex = api.queryVertex(vId);
@@ -91,7 +93,7 @@ public class ExportExcelServiceImpl implements ExportExcelService {
 		// 边信息写入表格
 		for (int i = 0; i < edgeIdList.size(); i++) {
 			String eId = edgeIdList.get(i);
-			if(eId != null && eId.startsWith("property")) {
+			if (eId != null && eId.startsWith("property")) {
 				continue;
 			}
 			EdgeQueryRspObj edge = api.queryEdge(eId);
@@ -133,7 +135,11 @@ public class ExportExcelServiceImpl implements ExportExcelService {
 
 	// 假数据测试方法
 	@Override
-	public void exportExcel_test(ServletOutputStream out/*, Map<String, Object> reqMap*/) {
+	public void exportExcel_test(ServletOutputStream out, Map<String, Object> reqMap) {
+		List<String> vertexIdList = (List<String>) reqMap.get("vertexIds");
+		List<String> edgeIdList = (List<String>) reqMap.get("edgeIds");
+		System.out.println(vertexIdList);
+		System.out.println(edgeIdList);
 		// 第一步，创建一个workbook，对应一个Excel文件
 		HSSFWorkbook workbook = new HSSFWorkbook();
 		// 第二步，在webbook中添加一个sheet,对应Excel文件中的sheet
