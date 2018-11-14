@@ -789,7 +789,7 @@ function init(){
                     var html ="<div class='line row mt10'>" +
                         "<span class='col-sm-4 m-t-xs text-right mt10'>"+prop.description+"</span>"+
                         "<div class='col-sm-8'>" +
-                        "<input class='text-box' name='"+prop.name+"' type='text' value=''/>" +
+                         "<input class='text-box' name='"+prop.name+"_"+r+"' type='text' value=''/>" +
                         "</div>"+
                         "</div>";
                     return html;

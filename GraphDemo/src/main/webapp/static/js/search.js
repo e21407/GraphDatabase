@@ -2,13 +2,20 @@
 function searchForm1(){
     var arrs = $("#searchForm").serializeArray();
     var params ={params:arrs};
+    var data = JSON.stringify(params);
     $.ajax({
         type: 'post',
-        url: '/searchPath',
+        url: '/searchRelationship',
         contentType: 'application/json;charset=utf-8',
-        data: params,
-        success: function (response) { //返回json结果
-            console.log(response)
+        data: data,
+        success: function (response){
+            var nodes = response.datas;
+            var links = response.links;
+            if(nodes && links && nodes.length && links.length){
+                setNodesAndEdges(nodes,links);
+                $('#table').dataTable().fnClearTable();   //将数据清除
+                $('#table').dataTable().fnAddData(nodes,true);
+            }
 
         }
     });

@@ -94,7 +94,7 @@
                     <div class="line row mt10">
                         <span class="col-sm-4 m-t-xs text-right mt10">查询类型</span>
                         <div class="col-sm-8">
-                            <select id="searchType1" name="forType1" class="selectpicker show-tick form-control col-sm-9" title="请选择查询类型">
+                            <select id="searchType1" name="forType_1" class="selectpicker show-tick form-control col-sm-9" title="请选择查询类型">
                                 <option value="0">请选择查询类型</option>
                                 <option value="customer">客户</option>
                                 <option value="card">卡</option>
@@ -105,16 +105,11 @@
                             </select>
                         </div>
                     </div>
-                    <div id="condition1" class="mt10">
-
-
-
-
-                    </div>
+                    <div id="condition1" class="mt10"></div>
                     <div class="line row mt10">
                         <span class="col-sm-4 m-t-xs text-right mt10">查询类型</span>
                         <div class="col-sm-8">
-                            <select id="searchType2" name="forType2" class="selectpicker show-tick form-control col-sm-9" title="请选择查询类型">
+                            <select id="searchType2" name="forType_2" class="selectpicker show-tick form-control col-sm-9" title="请选择查询类型">
                                 <option value="0">请选择查询类型</option>
                                 <option value="customer">客户</option>
                                 <option value="card">卡</option>
@@ -200,7 +195,7 @@
         </div>
         <div class="line text-left">
             <span class="col-sm-4 m-t-xs">&nbsp;</span>
-            <button class="blue-button text-center mt20" onclick="searchForm2()" type="button">现在查询</button>
+            <button class="blue-button text-center mt20" onclick="searchForm2()" type="button">查询</button>
         </div>
 
     </form>
