@@ -1,5 +1,5 @@
 
-
+var json = {};
 $(function(){
 
     /******************初始化START********************/
@@ -62,6 +62,7 @@ $(function(){
         $.getJSON("/getGraph",function(response){
             var nodes = response.datas;
             var links = response.links;
+            json = response;
             if(nodes && links && nodes.length && links.length){
                 $("#svg").relationPicture({json:response})
                 renderDataTable(nodes);
@@ -195,12 +196,12 @@ function secondSearchRender(response){
         var nodes = response.datas;
         var links = response.links;
         if(nodes && links && nodes.length && links.length){
-            $("#svg2").relationPicture({json:response,id:"svg2",width:1200,height:600});
+            $("#svg2").relationPicture({json:response,id:"svg2",width:600,height:600});
             layer.open({
                     type: 1,
                     //shade: false,
                     title: '二次查询结果',
-                    area:["1200px","600px"],
+                    area:["600px","600px"],
                     content:$("#secondResult")
                 },
                 function(pass, index){
@@ -212,3 +213,13 @@ function secondSearchRender(response){
 
 }
 /******************二次查询渲染 END********************/
+
+/*****重置操作处理  START******/
+function handleReset(){
+    $(".selectpicker").selectpicker("val","");
+    $('.selectpicker').selectpicker('refresh');
+    $(".condition .text-box").val("");
+}
+/*****重置操作处理  END******/
+
+

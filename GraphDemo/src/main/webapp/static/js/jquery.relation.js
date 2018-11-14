@@ -190,19 +190,16 @@
         var state = $.data(target, "relationPicture" );
         var opts = state.options;
         var json = opts.json;
-        document.getElementById('info').style.display ="none";
-        $(".selectpicker").selectpicker("val","");
-        $('.selectpicker').selectpicker('refresh');
-        params = {};
-        nodeIds2 =[];
-        links2 = [];
-        nodeIds = [];
-        links = [];
+        opts.nodeIds = [];
+        opts.links = [];
         setNodesAndEdges(target,json.datas,json.links,"svg");
         reRenderDataTable(json.datas);
     }
     /*****重置操作处理  END******/
 
+
+
+    /*****初始化  START******/
     function init(target){
 
         var state = $.data(target, "relationPicture" );
@@ -219,8 +216,7 @@
         state.svgGroup = svg.append("g");
         state.svg = svg;
 
-        var inner =d3.select("svg g");
-        //var inner =d3.select("#"+id +"g");
+        var inner =d3.select("#"+id +" g");
 
 
         var zoom = d3.zoom().on("zoom", function () { //添加鼠标滚轮放大缩小事件
@@ -232,6 +228,8 @@
         //设置边和节点；
         setNodesAndEdges(target,opts.json.datas,opts.json.links);
     }
+    /*****初始化  END******/
+
 
     function setNodesAndEdges(target,pramaNodes,pramaLinks){
         var state = $.data(target, "relationPicture" );
@@ -314,6 +312,7 @@
     /*********绑定事件  START*********/
     function bindEvent(target){
         var state = $.data(target, "relationPicture" );
+        var opts = state.options;
 
         var svg =state.svg ;
         var g = state.g;
@@ -363,8 +362,8 @@
         });
 
 
-        var $svg = document.getElementById("svg");
-        var menu=document.querySelector("#menu");
+        var $svg = document.getElementById(opts.id);
+        var menu=  document.getElementById("menu");
         $svg.oncontextmenu = function(e){
 
             menu.style.display='none';
@@ -412,13 +411,13 @@
             $menu.hide();
         });
 
-        // inner.selectAll("g.node").attr("title", function(v) { return styleTooltip(g.node(v)) })
-        //     .each(function(v) { $(this).tipsy({ gravity: "w", opacity: 1, html: true }); });
+        inner.selectAll("g.node").attr("title", function(v) { return styleTooltip(g.node(v)) })
+            .each(function(v) { $(this).tipsy({ gravity: "w", opacity: 1, html: true }); });
 
-        // function styleTooltip(node) {
-        //     return "<p class='name'>" + node.data.descript + "：</p>" +
-        //         "<p class='description'>" + node.data.name + "</p>" ;
-        // };
+        function styleTooltip(node) {
+            return "<p class='name'>" + node.data.descript + "：</p>" +
+                "<p class='description'>" + node.data.name + "</p>" ;
+        };
     }
     /*********绑定事件  END*********/
 

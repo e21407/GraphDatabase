@@ -206,7 +206,7 @@
 
 <%--二次查询结果弹窗 START--%>
 <div class="second-result" id="secondResult" style="display: block;">
-    <svg class="svg" id="svg2" width=100% height=500></svg>
+    <svg class="svg" id="svg2" width=100% height=550></svg>
 </div>
 
 <%--二次查询结果弹窗 END--%>

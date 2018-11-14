@@ -281,6 +281,10 @@ body,html{
     cursor: pointer;
     background: #f3f3f3;
 }
+.second-result{
+    background: #f3f3f3;
+    height: 100%;
+}
 table.dataTable.no-footer{
     border-bottom: none !important;
 }
