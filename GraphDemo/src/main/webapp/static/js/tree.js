@@ -1,4 +1,3 @@
-
 var nodeIds = [];
 var links = [];
 var nodeIds2 = [];
@@ -11,6 +10,7 @@ var json = {};
 var renderNodes = [];
 var renderLinks = [];
 var chooseNodes = [];
+var secondSearchLayer= null;
 function isInArray(arr,value){
     for(var i = 0; i < arr.length; i++){
         if(value === arr[i]){
@@ -37,13 +37,7 @@ function isLinkNode(currNode, node) {
     }
     return isInArray(getNode(currNode),node) ;
 }
-function isEqualNode(currNode, node) {
-    if (currNode === node) {
-        return true;
-    }else{
-        return false;
-    }
-}
+
 function getNode(id){
     var nodeIds = [];
     for(var j=0; j<json.links.length;j++){
@@ -123,9 +117,6 @@ function getNodesById2(id){
         }
 
     }
-
-    //console.log("nodeIds2:"+nodeIds2.length)
-    //console.log("links2:"+links2.length)
     return nodes2;
 }
 
@@ -137,38 +128,11 @@ function loadDatas2(){
     for(var i in params){
         nodes = getNodesById2(params[i]);
     }
-    setNodesAndEdges(nodes,links2);
+    setNodesAndEdges(nodes,links2,"svg");
 }
 
-function initSelect(id){
-    $('#'+id).on('changed.bs.select',function(e){
-        var value = $(this).selectpicker("val");
-        params[id] =value;
-        if(value === "0") {
-            for (var i in params) {
-                if(i ==="id"){
-                    delete params[i];
-                }
-            }
-        }
-    });
-}
 
-function loadNodesDatas(){
 
-	///////liubaichuan/////////////////////////////
-	$.getJSON("/getGraph",function(data){
-	    console.log("Data:"+data)
-		json = data;
-		var nodes = json.datas;
-        var links = json.links;
-        if(nodes && links && nodes.length && links.length){
-            setNodesAndEdges(nodes,links);
-            renderDataTable(nodes);
-        }
-    });
-	//////////////////////////////////////////////
-}
 
 /*********渲染列表  START*********/
 function renderDataTable(nodes){
@@ -226,7 +190,7 @@ function bindEvent(domArr){
 
 
 
-function setNodesAndEdges(pramaNodes,pramaLinks){
+function setNodesAndEdges(pramaNodes,pramaLinks,svgId){
      renderNodes = pramaNodes;
      renderLinks = pramaLinks;
      g = new dagreD3.graphlib.Graph({compound:true})
@@ -261,12 +225,11 @@ function setNodesAndEdges(pramaNodes,pramaLinks){
     }
     g.nodes().forEach(function(v) {
         var node = g.node(v);
-        //console.log("node"+node)
         // Round the corners of the nodes
         node.rx = node.ry = 11000;
        // node.width = node.height=node.data.width;
     });
-    renderSvg();
+    renderSvg(svgId);
 }
 
 function nodeIsExistInChooseNodes(node){
@@ -277,21 +240,15 @@ function nodeIsExistInChooseNodes(node){
     }
     return -1;
 }
-function deleteNodeInChooseNodes(node){
-    for(var o = 0; o < chooseNodes.length;o++){
-        if(chooseNodes[o].data.id ===node.data.id){
-            chooseNodes.splice(o,1);
-        }
-    }
-}
 
-function renderSvg(){
+
+function renderSvg(svgId){
     // Create the renderer
 
     var width = document.body.clientWidth;
     var height = 600;
     // Set up an SVG group so that we can translate the final graph.
-    var svg = d3.select("svg").attr("viewBox","0 0 "+width+" "+height).attr("preserveAspectRatio","xMidYMid meet");
+    var svg = d3.select("#"+svgId).attr("viewBox","0 0 "+width+" "+height).attr("preserveAspectRatio","xMidYMid meet");
     svg.select("g").remove();
 
     var svgGroup = svg.append("g");
@@ -488,7 +445,7 @@ function renderSvg(){
 
 
         function secondSearch(){
-            layer.open({
+            secondSearchLayer = layer.open({
                     type: 1,
                     title: '二次查询',
                     area:["460px","420px"],
@@ -498,18 +455,41 @@ function renderSvg(){
                     layer.close(index);
             });
         }
+
+
         function exportData(){
-            layer.open({
-                    type: 1,
-                    //shade: false,
-                    title: '导出',
-                    area:["300px","300px"],
-                    content:$("#exportType")
-                },
-                function(pass, index){
-                    layer.close(index);
-                });
+            var params = {};
+            params.vertexIds = [];
+            params.edgeIds = [];
+            for(var i=0;i<renderNodes.length;i++){
+                params.vertexIds.push(renderNodes[i].id);
+                params.edgeIds.push(renderLinks[i].id);
+            }
+            var data = JSON.stringify(params);
+            $.ajax({
+                type:'post',
+                url:'/exportExcel',
+                contentType: 'application/json;charset=utf-8',
+                data: data,
+                success:function(response){
+                    console.log("response:"+response);
+                }
+            });
         }
+
+
+        // function exportData(){
+        //     layer.open({
+        //             type: 1,
+        //             //shade: false,
+        //             title: '导出',
+        //             area:["300px","300px"],
+        //             content:$("#exportType")
+        //         },
+        //         function(pass, index){
+        //             layer.close(index);
+        //         });
+        // }
     });
 
     //设置放大缩小
@@ -525,12 +505,12 @@ function renderSvg(){
 
     svg.call(zoom.transform, d3.zoomIdentity.translate(tWidth, tHeight).scale(initialScale)); //元素水平垂直居中
 
-    var styleTooltip = function(node) {
-        return "<p class='name'>" + node.data.descript + "：</p>" +
-               "<p class='description'>" + node.data.name + "</p>" ;
-    };
-    inner.selectAll("g.node").attr("title", function(v) { return styleTooltip(g.node(v)) })
-        .each(function(v) { $(this).tipsy({ gravity: "w", opacity: 1, html: true }); });
+    // var styleTooltip = function(node) {
+    //     return "<p class='name'>" + node.data.descript + "：</p>" +
+    //            "<p class='description'>" + node.data.name + "</p>" ;
+    // };
+    // inner.selectAll("g.node").attr("title", function(v) { return styleTooltip(g.node(v)) })
+    //     .each(function(v) { $(this).tipsy({ gravity: "w", opacity: 1, html: true }); });
 }
 
 
@@ -553,18 +533,9 @@ function handleClick(node){
     };
     getData(node);
 }
-function handleReset(){
-    document.getElementById('info').style.display ="none";
-     $(".selectpicker").selectpicker("val","");
-     $('.selectpicker').selectpicker('refresh');
-    params = {};
-    nodeIds2 =[];
-    links2 = [];
-    nodeIds = [];
-    links = [];
-    //echart.showLoading();
-    setNodesAndEdges(json.datas,json.links)
-}
+
+
+
 
 function getData(param) {
     // if (param.data.value === 1 && isClicked === true) {
@@ -605,9 +576,8 @@ function getNodesById(id){
                 nodes.push(json.datas[i]);
             }
         }
-
     }
-    setNodesAndEdges(nodes,links);
+    setNodesAndEdges(nodes,links,"svg");
 }
 
 
@@ -632,7 +602,154 @@ function toggleLineToGreen(linkLine, links, isHover) {
             .classed('link-short-active', false);
     }
 }
-//用邻接矩阵表示图
+
+function init(){
+    //初始化select
+    var domArr = ["account","customer","card","apply","tgr","tgjg","company"];
+    // for (var i=0; i<domArr.length; i++){
+    //     //initSelect(domArr[i]);
+    // }
+
+    for(var o=1;o<4;o++){
+        searchCon(o);
+    }
+
+    function searchCon(r){
+        $('#searchType'+r).on('changed.bs.select',function(e){
+            var value = $(this).selectpicker("val");
+            if(value === "0") {
+                return ;
+            }else{
+                $.ajax({
+                    type:'get',
+                    url:'static/datas/search.json',
+                    contentType: 'application/json;charset=utf-8',
+                    success:function(response){
+                        dealSearchCondition(response);
+                    }
+                })
+            }
+
+
+            function dealSearchCondition(response){
+                var arr = response[value];
+                var html = "";
+                if(arr && arr.length){
+                    for(var i=0;i<arr.length; i++){
+                        html += createInput(arr[i]);
+                    }
+                    $("#condition"+r).html(html);
+                }else{
+                    return ;
+                }
+
+                function createInput(prop){
+                    var html ="<div class='line row mt10'>" +
+                        "<span class='col-sm-4 m-t-xs text-right mt10'>"+prop.description+"</span>"+
+                        "<div class='col-sm-8'>" +
+                         "<input class='text-box' name='"+prop.name+"_"+r+"' type='text' value=''/>" +
+                        "</div>"+
+                        "</div>";
+                    return html;
+                }
+            }
+
+        });
+
+    }
+
+    //加载节点数据；
+    loadNodesDatas();
+
+    //绑定事件
+    bindEvent();
+}
+
+init();
+
+/*********初始化加载数据  START*********/
+function loadNodesDatas(){
+    $.getJSON("/getGraph",function(data){
+        console.log("Data:"+data)
+        json = data;
+        var nodes = json.datas;
+        var links = json.links;
+        if(nodes && links && nodes.length && links.length){
+            setNodesAndEdges(nodes,links,"svg");
+            renderDataTable(nodes);
+        }
+    });
+}
+/*********初始化加载数据  END*********/
+
+/*****重置操作处理  START******/
+function handleReset(){
+    document.getElementById('info').style.display ="none";
+    $(".selectpicker").selectpicker("val","");
+    $('.selectpicker').selectpicker('refresh');
+    params = {};
+    nodeIds2 =[];
+    links2 = [];
+    nodeIds = [];
+    links = [];
+    setNodesAndEdges(json.datas,json.links,"svg");
+    reRenderDataTable(json.datas);
+}
+/*****重置操作处理  END******/
+
+
+
+
+
+
+
+
+
+
+
+
+/*********在选中的节点中删除指定节点 START************/
+function deleteNodeInChooseNodes(node){
+    for(var o = 0; o < chooseNodes.length;o++){
+        if(chooseNodes[o].data.id ===node.data.id){
+            chooseNodes.splice(o,1);
+        }
+    }
+}
+/*********在选中的节点中删除指定节点 END************/
+
+
+
+/*********判断两个节点是否为同一个节点 START************/
+function isEqualNode(currNode, node) {
+    if (currNode === node) {
+        return true;
+    }else{
+        return false;
+    }
+}
+
+/*********判断两个节点是否为同一个节点 END************/
+
+
+/*********初始化select START************/
+function initSelect(id){
+    $('#'+id).on('changed.bs.select',function(e){
+        var value = $(this).selectpicker("val");
+        params[id] =value;
+        if(value === "0") {
+            for (var i in params) {
+                if(i ==="id"){
+                    delete params[i];
+                }
+            }
+        }
+    });
+}
+/*********初始化select END************/
+
+
+/*********用邻接矩阵表示图计算最短路径 START************/
 function showShortestPath(s,e){
     var G = new Array();
     var Nv = renderNodes.length;
@@ -726,14 +843,14 @@ function showShortestPath(s,e){
         console.log(json.datas[darr[k]].id+"=>");
         var link3 = {};
         var link4 = {};
-            link3 = {
-                target:renderNodes[darr[k]].id,
-                source:renderNodes[darr[k+1]].id
-            }
-            link4= {
-                target:renderNodes[darr[k+1]].id,
-                source:renderNodes[darr[k]].id
-            };
+        link3 = {
+            target:renderNodes[darr[k]].id,
+            source:renderNodes[darr[k+1]].id
+        }
+        link4= {
+            target:renderNodes[darr[k+1]].id,
+            source:renderNodes[darr[k]].id
+        };
 
         var linkCommon= isInArrayLinks(graphLinks,link3) ||isInArrayLinks(graphLinks,link4);
         if(linkCommon){
@@ -744,68 +861,4 @@ function showShortestPath(s,e){
     return empisiLinks;
 }
 
-function init(){
-    //初始化select
-    var domArr = ["account","customer","card","apply","tgr","tgjg","company"];
-    for (var i=0; i<domArr.length; i++){
-        //initSelect(domArr[i]);
-    }
-
-    for(var o=1;o<4;o++){
-        searchCon(o);
-    }
-
-    function searchCon(r){
-        $('#searchType'+r).on('changed.bs.select',function(e){
-            var value = $(this).selectpicker("val");
-            //$("#forType"+r).val(value);
-            if(value === "0") {
-                return ;
-            }else{
-                $.ajax({
-                    type:'get',
-                    url:'static/datas/search.json',
-                    contentType: 'application/json;charset=utf-8',
-                    success:function(response){
-                        dealSearchCondition(response);
-                    }
-                })
-            }
-
-
-            function dealSearchCondition(response){
-                var arr = response[value];
-                var html = "";
-                if(arr && arr.length){
-                    for(var i=0;i<arr.length; i++){
-                        html += createInput(arr[i]);
-                    }
-                    $("#condition"+r).html(html);
-                }else{
-                    return ;
-                }
-
-                function createInput(prop){
-                    var html ="<div class='line row mt10'>" +
-                        "<span class='col-sm-4 m-t-xs text-right mt10'>"+prop.description+"</span>"+
-                        "<div class='col-sm-8'>" +
-                         "<input class='text-box' name='"+prop.name+"_"+r+"' type='text' value=''/>" +
-                        "</div>"+
-                        "</div>";
-                    return html;
-                }
-            }
-
-        });
-
-    }
-
-    //加载节点数据；
-    loadNodesDatas();
-
-    //绑定事件
-    bindEvent();
-}
-
-init();
-
+/*********用邻接矩阵表示图计算最短路径  END************/

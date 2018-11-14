@@ -161,6 +161,8 @@
     </from>
     <button class="blue-button text-center mt30" type="submit" onclick="exportData()">现在导出</button>
 </div>
+
+<%--二次查询条件弹窗 START--%>
 <div class="second-search text-center" id="secondSearch" style="display: none;">
     <form id="secondSearchForm" name="secondSearchForm">
         <div class="line row mt20">
@@ -199,9 +201,12 @@
         </div>
 
     </form>
-
-
 </div>
+<%--二次查询条件弹窗 END--%>
+
+
+
+
 </body>
 <script type="text/javascript" src="./static/js/jquery-1.12.4.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="./static/js/layer/layer.js" charset="utf-8"></script>
