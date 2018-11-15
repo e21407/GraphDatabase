@@ -500,39 +500,39 @@
         var state = $.data(target, "relationPicture" );
         var opts = state.options;
 
-        var shortArr = opts.shortArr;
+
         var g = state.g;
         var svg = state.svg;
         var svgGroup = state.svgGroup;
 
         var gNodes = svgGroup.selectAll("g.node");
         var linkLine = svg.selectAll("g.edgePath");
-        if(shortArr.length=== 2){
-            shortArr = [];
+        if(opts.shortArr.length=== 2){
+            opts.shortArr = [];
         }
-        shortArr.push(node);
-        if (shortArr.length === 1) {
+        opts.shortArr.push(node);
+        if (opts.shortArr.length === 1) {
             $this.html("显示路径");
         } else {
             $this.html("设置开始点");
         }
-        if(shortArr.length ===2){
+        if(opts.shortArr.length ===2){
             gNodes.each(function(v) {
                 $(this).removeClass("active").removeClass("selected");
                 var currentNode = g.node(v);
-                if(currentNode.data.id ===shortArr[0].data.id ||currentNode.data.id ===shortArr[1].data.id){
+                if(currentNode.data.id ===opts.shortArr[0].data.id ||currentNode.data.id ===opts.shortArr[1].data.id){
                     $(this).addClass("active");
                 }
             });
             //var links = showShortestPath(shortArr[0].index,shortArr[1].index);
-            searchShortPath(target,shortArr);
+            searchShortPath(target,opts.shortArr);
 
         }else{
             toggleLineToGreen(linkLine, [], false);
             gNodes.each(function(v) {
                 $(this).removeClass("active").removeClass("selected");
                 var currentNode = g.node(v);
-                if(currentNode.data.id ===shortArr[0].data.id){
+                if(currentNode.data.id ===opts.shortArr[0].data.id){
                     $(this).addClass("active");
                 }
             });
