@@ -227,13 +227,14 @@
         svg.call(zoom);
 
         var $menu = $("<ul class='operate-menu' style='display: none'>");
-        var $li1 = $("<li class='active' for='chooseNode'>").html("选中节点").appendTo($menu);
-        var $li2 = $("<li for='showPath'>").html("设置开始点").appendTo($menu);
-        var $li3 = $("<li for='secondSearch'>").html("二次查询").appendTo($menu);
-        //var $li4 = $("<li for='exportData'>").html("导出").appendTo($menu);
-        var a = $("<a style='display: block' href='/exportExcel'  target='view_window'>导出</a>");
-        var $li4 = $("<li for='exportData'></li>").append(a).appendTo($menu);
+        $("<li class='active' for='chooseNode'>").html("选中节点").appendTo($menu);
 
+        $("<li for='showPath'>").html("设置开始点").appendTo($menu);
+
+        if(!opts.hideSecondSearch){
+            $("<li for='secondSearch'>").html("二次查询").appendTo($menu);
+        }
+        $("<li for='exportData' onclick='window.open(\"/exportExcel\")' >").html("导出").appendTo($menu);
 
         $menu.appendTo("body");
         state.menu = $menu;
@@ -420,9 +421,9 @@
 
                     secondSearch(target);
                     break;
-                // case "exportData":
-                //     exportData(target);
-                //     break;
+                case "exportData":
+                    exportData(target);
+                    break;
             }
             $menu.hide();
         });
@@ -464,6 +465,16 @@
             data: data,
             success:function(response){
                 //console.log("response:"+response);
+
+                // var $eleBtn1 = $("#btn1");
+                // var $eleBtn2 = $("#btn2");
+                //
+                // //已知一个下载文件的后端接口：https://codeload.github.com/douban/douban-client/legacy.zip/master
+                // //方法一：window.open()
+                // $eleBtn1.click(function(){
+                    window.open("/exportExcel");
+                //});
+
             }
         });
     }

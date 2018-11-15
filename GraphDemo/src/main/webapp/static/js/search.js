@@ -208,7 +208,7 @@ function secondSearchRender(response){
                 renderNodes : [],
                 renderLinks : [],
                 chooseNodes : [],
-                hideSecondSearch:false,
+                hideSecondSearch:true,
                 secondSearchLayer: null
             });
             layer.open({
