@@ -3,7 +3,7 @@ package com.huawei.request;
 import java.util.List;
 
 public class LineSearchReqObj {
-    private List<Integer> vertexIdList;
+    private List<String> vertexIdList;
     private int layer;
     private List<VertexFilter> vertexFilterList;
     private List<EdgeFilter> edgeFilterList;
@@ -11,11 +11,11 @@ public class LineSearchReqObj {
     private List<String> vertexPropertyList;
     private int limit;
 
-    public List<Integer> getVertexIdList() {
+    public List<String> getVertexIdList() {
         return vertexIdList;
     }
 
-    public void setVertexIdList(List<Integer> vertexIdList) {
+    public void setVertexIdList(List<String> vertexIdList) {
         this.vertexIdList = vertexIdList;
     }
 

@@ -20,14 +20,6 @@
 				{
 					"name": "email",
 					"value": "1111@sun.com"
-				},
-				{
-					"name": "symbol",
-					"value": "static/img/icon12@3x.png"
-				},
-				{
-					"name": "descript",
-					"value": "客户：1111"
 				}
 			],
 			"id": "1111",
@@ -49,14 +41,6 @@
 				{
 					"name": "paymentCardNumber",
 					"value": "11123"
-				},
-				{
-					"name": "symbol",
-					"value": "static/img/icon11@3x.png"
-				},
-				{
-					"name": "descript",
-					"value": "卡号"
 				}
 			],
 			"id": "1112",
@@ -87,14 +71,6 @@
 				{
 					"name": "agent",
 					"value": "孙"
-				},
-				{
-					"name": "symbol",
-					"value": "static/img/icon4@3x.png"
-				},
-				{
-					"name": "descript",
-					"value": "申请书"
 				}
 			],
 			"id": "1114",
@@ -108,14 +84,6 @@
 				{
 					"name": "telepheNumber",
 					"value": "1115"
-				},
-				{
-					"name": "symbol",
-					"value": "static/img/icon4@3x.png"
-				},
-				{
-					"name": "descript",
-					"value": "电话号码"
 				}
 			],
 			"id": "1115",
@@ -129,10 +97,6 @@
 				{
 					"name": "telepheNumber",
 					"value": "1116"
-				},
-				{
-					"name": "symbol",
-					"value": "static/img/icon4@3x.png"
 				}
 			],
 			"id": "1116",
@@ -146,10 +110,6 @@
 				{
 					"name": "IPNumber",
 					"value": "1.1.1.1"
-				},
-				{
-					"name": "symbol",
-					"value": "static/img/icon5@3x.png"
 				}
 			],
 			"id": "1117",
@@ -171,10 +131,6 @@
 				{
 					"name": "paymentCardNumber",
 					"value": "11123"
-				},
-				{
-					"name": "symbol",
-					"value": "static/img/icon11@3x.png"
 				}
 			],
 			"id": "1118",
@@ -201,10 +157,6 @@
 				{
 					"name": "IPNumber",
 					"value": "1.1.1.2"
-				},
-				{
-					"name": "symbol",
-					"value": "static/img/icon5@3x.png"
 				}
 			],
 			"id": "1120",
@@ -215,14 +167,8 @@
 		{
 			"propertyList": [
 				{
-					"name": "weight",
-					"value": 4
-				},{
 					"name": "relation",
 					"value": "对应"
-				},{
-					"name": "value",
-					"value": 2
 				}
 			],
 			"start": "1112",
@@ -234,14 +180,8 @@
 		{
 			"propertyList": [
 				{
-					"name": "weight",
-					"value": 8
-				},{
 					"name": "relation",
 					"value": "对应"
-				},{
-					"name": "value",
-					"value": 2
 				}
 			],
 			"start": "1113",
@@ -253,14 +193,8 @@
 		{
 			"propertyList": [
 				{
-					"name": "weight",
-					"value": 8
-				},{
 					"name": "relation",
 					"value": "对应"
-				},{
-					"name": "value",
-					"value": 2
 				}
 			],
 			"start": "1114",
@@ -272,14 +206,8 @@
 		{
 			"propertyList": [
 				{
-					"name": "weight",
-					"value": 7
-				},{
 					"name": "relation",
 					"value": "对应"
-				},{
-					"name": "value",
-					"value": 2
 				}
 			],
 			"start": "1112",
@@ -291,14 +219,8 @@
 		{
 			"propertyList": [
 				{
-					"name": "weight",
-					"value": 6
-				},{
 					"name": "relation",
 					"value": "对应"
-				},{
-					"name": "value",
-					"value": 2
 				}
 			],
 			"start": "1112",
@@ -310,17 +232,11 @@
 		{
 			"propertyList": [
 				{
-					"name": "weight",
-					"value": 8
-				},{
 					"name": "telephoneType",
 					"value": "开卡成功电话"
 				},{
 					"name": "relation",
 					"value": "对应"
-				},{
-					"name": "value",
-					"value": 2
 				}
 			],
 			"start": "1112",
@@ -332,14 +248,8 @@
 		{
 			"propertyList": [
 				{
-					"name": "weight",
-					"value": 8
-				},{
 					"name": "ipType",
 					"value": "开卡成功IP"
-				},{
-					"name": "value",
-					"value": 2
 				}
 			],
 			"start": "1112",
@@ -351,17 +261,11 @@
 		{
 			"propertyList": [
 				{
-					"name": "weight",
-					"value": 8
-				},{
 					"name": "telephoneType",
 					"value": "单位电话"
 				},{
 					"name": "relation",
 					"value": "从属"
-				},{
-					"name": "value",
-					"value": 2
 				}
 			],
 			"start": "1111",
@@ -373,17 +277,11 @@
 		{
 			"propertyList": [
 				{
-					"name": "weight",
-					"value": 7
-				},{
 					"name": "telephoneType",
 					"value": "联络人一电话"
 				},{
 					"name": "relation",
 					"value": "从属"
-				},{
-					"name": "value",
-					"value": 2
 				}
 			],
 			"start": "1114",
@@ -395,14 +293,8 @@
 		{
 			"propertyList": [
 				{
-					"name": "weight",
-					"value": 4
-				},{
 					"name": "relation",
 					"value": "对应"
-				},{
-					"name": "value",
-					"value": 2
 				}
 			],
 			"start": "1118",
@@ -414,14 +306,8 @@
 		{
 			"propertyList": [
 				{
-					"name": "weight",
-					"value": 8
-				},{
 					"name": "relation",
 					"value": "对应"
-				},{
-					"name": "value",
-					"value": 2
 				}
 			],
 			"start": "1119",
@@ -433,14 +319,8 @@
 		{
 			"propertyList": [
 				{
-					"name": "weight",
-					"value": 6
-				},{
 					"name": "relation",
 					"value": "对应"
-				},{
-					"name": "value",
-					"value": 2
 				}
 			],
 			"start": "1118",
@@ -452,17 +332,11 @@
 		{
 			"propertyList": [
 				{
-					"name": "weight",
-					"value": 7
-				},{
 					"name": "ipType",
 					"value": "开卡成功IP"
 				},{
 					"name": "relation",
 					"value": "从属"
-				},{
-					"name": "value",
-					"value": 2
 				}
 			],
 			"start": "1118",

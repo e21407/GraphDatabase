@@ -52,16 +52,17 @@ public class GraphServiceImpl implements GraphService {
 		vertexSearchReqObj.setLimit(5); // 查询5个客户节点
 		VertexSearchRspObj vertexSearchRspObj = api.searchVertex(vertexSearchReqObj); // Vertex的全图条件查询
 		// 获取节点id
-		List<Integer> vertexIdList = new ArrayList<Integer>();
+		List<String> vertexIdList = new ArrayList<String>();
 		List<VertexElement> vertexList = vertexSearchRspObj.getVertexList();
 		for (VertexElement vertexElement : vertexList) {
 			String id = vertexElement.getId();
-			vertexIdList.add(Integer.valueOf(id));
+			vertexIdList.add(id);
 		}
 		// 扩线查询
 		LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
 		lineSearchReqObj.setVertexIdList(vertexIdList); // 设置id列表，必选
-		lineSearchReqObj.setLayer(2); // 设置扩线层数，必选
+		lineSearchReqObj.setLayer(4); // 设置扩线层数，必选
+		lineSearchReqObj.setLimit(150);
 		String searchLinesResult = api.searchLines(lineSearchReqObj);
 
 		// 封装返回结果
@@ -130,13 +131,14 @@ public class GraphServiceImpl implements GraphService {
 			pathSearchReqObj.setLayer(6);
 			String strSearchPathResult = api.searchPath(pathSearchReqObj);
 			JSONObject jsonSearchPathResult = JSONObject.parseObject(strSearchPathResult);
+			jsonSearchPathResult = jsonSearchPathResult.getJSONArray("pathSet").getJSONObject(0);
 			return JsonParseTool.parsePathJsonWithProperty(jsonSearchPathResult);
 		}
 		// 单个点选择扩线查询
 		if (null != vID1) {
 			LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
-			List<Integer> vertexIdList = new ArrayList<Integer>();
-			vertexIdList.add(Integer.valueOf(vID1));
+			List<String> vertexIdList = new ArrayList<String>();
+			vertexIdList.add(vID1);
 			lineSearchReqObj.setVertexIdList(vertexIdList);
 			lineSearchReqObj.setLayer(8);
 			String strSearchLinesResult = api.searchLines(lineSearchReqObj);
@@ -145,8 +147,8 @@ public class GraphServiceImpl implements GraphService {
 		}
 		if (null != vID2) {
 			LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
-			List<Integer> vertexIdList = new ArrayList<Integer>();
-			vertexIdList.add(Integer.valueOf(vID2));
+			List<String> vertexIdList = new ArrayList<String>();
+			vertexIdList.add(vID2);
 			lineSearchReqObj.setVertexIdList(vertexIdList);
 			lineSearchReqObj.setLayer(8);
 			String strSearchLinesResult = api.searchLines(lineSearchReqObj);
@@ -158,18 +160,19 @@ public class GraphServiceImpl implements GraphService {
 
 	@Override
 	public Map<String, Object> searchPath(Map<String, Object> reqMap) {
-		String vertexIdLstStr = (String) reqMap.get("vertexIds");
+//		String vertexIdLstStr = (String) reqMap.get("vertexIds");
+		List<String> vertexIds = (List<String>) reqMap.get("vertexIds");
 		String option = (String) reqMap.get("option");
-		ObjectMapper mapper = new ObjectMapper();
-		List<String> vertexIdList = null;
-		try {
-			vertexIdList = mapper.readValue(vertexIdLstStr, new TypeReference<List<String>>() {
-			});
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		ObjectMapper mapper = new ObjectMapper();
+//		List<String> vertexIdList = null;
+//		try {
+//			vertexIdList = mapper.readValue(vertexIdLstStr, new TypeReference<List<String>>() {
+//			});
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		PathSearchReqObj pathSearchReqObj = new PathSearchReqObj();
-		pathSearchReqObj.setVertexIdList(vertexIdList);
+		pathSearchReqObj.setVertexIdList(vertexIds);
 		if ("shortest".equals(option.trim().toLowerCase())) {
 			pathSearchReqObj.setOption("shortest"); // 最短路径
 		} else if ("circle".equals(option.trim().toLowerCase())) {
@@ -184,6 +187,7 @@ public class GraphServiceImpl implements GraphService {
 		pathSearchReqObj.setLayer(10); // 设置跳数
 		String searchPathRsultStr = api.searchPath(pathSearchReqObj);
 		JSONObject json = JSONObject.parseObject(searchPathRsultStr);
+		json = json.getJSONArray("pathSet").getJSONObject(0);
 		Map<String, Object> parsePathJson = JsonParseTool.parsePathJsonWithoutProperty(json);
 		return parsePathJson;
 	}
@@ -223,8 +227,8 @@ public class GraphServiceImpl implements GraphService {
 		// List<LineSearchReqObj> lineSearchReqObjList = new
 		// ArrayList<LineSearchReqObj>();
 
-		List<Integer> vertexIdList = new ArrayList<Integer>();
-		vertexIdList.add(chooseNodesId.getInteger(0));
+		List<String> vertexIdList = new ArrayList<String>();
+		vertexIdList.add(chooseNodesId.getString(0));
 		LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
 		lineSearchReqObj.setVertexIdList(vertexIdList);
 		List<VertexFilter> vertexFilterList = new ArrayList<VertexFilter>();
@@ -232,6 +236,7 @@ public class GraphServiceImpl implements GraphService {
 		ArrayList<String> labelList = new ArrayList<String>();
 		labelList.add(vertexLabel);
 		vertexFilter.setVertexLabelList(labelList);
+		vertexFilter.setLimit(50);
 		List<PropertyFilter> propertyFilterList = new ArrayList<PropertyFilter>();
 		Set<Entry<String, String>> entrySet = propertyList.entrySet();
 		for (Entry<String, String> entry : entrySet) {
@@ -246,7 +251,8 @@ public class GraphServiceImpl implements GraphService {
 		}
 		vertexFilterList.add(vertexFilter);
 		lineSearchReqObj.setVertexFilterList(vertexFilterList);
-		lineSearchReqObj.setLayer(5);
+		lineSearchReqObj.setLayer(4);
+		lineSearchReqObj.setLayer(150);
 		// lineSearchReqObjList.add(lineSearchReqObj);
 
 		// if ("02".equals(choice)) {

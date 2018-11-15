@@ -28,18 +28,21 @@ import com.huawei.request.VertexQueryRspObj;
 public class ExportExcelServiceImpl implements ExportExcelService {
 	GraphApi api = GraphApi.getGraphApi_test();
 
+	List<String> vertexIdList;
+	List<String> edgeIdList;
+
 	@Override
 	public void exportExcel(ServletOutputStream out, Map<String, Object> reqMap) {
-		if(null == reqMap) {
-			return;
+		Object vertexIds = null;
+		Object edgeIds = null;
+		if (null != reqMap) {
+			vertexIds = reqMap.get("vertexIds");
+			edgeIds = reqMap.get("edgeIds");
 		}
-		Object vertexIds = reqMap.get("vertexIds");
-		Object edgeIds = reqMap.get("edgeIds");
-		if (null == vertexIds || edgeIds == null) {
-			return;
+		if (null != vertexIds) {
+			vertexIdList = (List<String>) vertexIds;
+			edgeIdList = (List<String>) edgeIds;
 		}
-		List<String> vertexIdList = (List<String>) vertexIds;
-		List<String> edgeIdList = (List<String>) edgeIds;
 		System.out.println(vertexIdList);
 		System.out.println(edgeIdList);
 		// 第一步，创建一个workbook，对应一个Excel文件
@@ -62,7 +65,7 @@ public class ExportExcelServiceImpl implements ExportExcelService {
 		}
 
 		// 获取点的id列表
-//		List<String> vertexIdList = (List<String>) reqMap.get("vertexIds");
+		// List<String> vertexIdList = (List<String>) reqMap.get("vertexIds");
 		// 点信息写入表格
 		for (int i = 0; i < vertexIdList.size(); i++) {
 			String vId = vertexIdList.get(i);
@@ -101,7 +104,7 @@ public class ExportExcelServiceImpl implements ExportExcelService {
 			hssfCell.setCellStyle(hssfCellStyle);// 列居中显示
 		}
 		// 获取点的id列表
-//		List<String> edgeIdList = (List<String>) reqMap.get("edgeIds");
+		// List<String> edgeIdList = (List<String>) reqMap.get("edgeIds");
 		// 边信息写入表格
 		for (int i = 0; i < edgeIdList.size(); i++) {
 			String eId = edgeIdList.get(i);
@@ -148,13 +151,15 @@ public class ExportExcelServiceImpl implements ExportExcelService {
 	// 假数据测试方法
 	@Override
 	public void exportExcel_test(ServletOutputStream out, Map<String, Object> reqMap) {
-		if(null == reqMap) {
-			return;
+		Object vertexIds = null;
+		Object edgeIds = null;
+		if (null != reqMap) {
+			vertexIds = reqMap.get("vertexIds");
+			edgeIds = reqMap.get("edgeIds");
 		}
-		Object vertexIds = reqMap.get("vertexIds");
-		Object edgeIds = reqMap.get("edgeIds");
-		if (null == vertexIds || edgeIds == null) {
-			return;
+		if (null != vertexIds) {
+			vertexIdList = (List<String>) vertexIds;
+			edgeIdList = (List<String>) edgeIds;
 		}
 		List<String> vertexIdList = (List<String>) vertexIds;
 		List<String> edgeIdList = (List<String>) edgeIds;

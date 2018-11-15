@@ -34,7 +34,7 @@ public class GraphApi {
 	private static GraphApi graphApiInstance;
 	
 	//图数据库名字，随环境而更改
-	private static final String graphName = "graphtest";
+	private static final String graphName = "case_check_graph";
 
 	static RestApi api;
 

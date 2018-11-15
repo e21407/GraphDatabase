@@ -41,8 +41,7 @@ public class JsonParseTool {
 							oriNode.put("height", 52);
 							oriNode.put("showLabelText", true);
 							datas.add(oriNode);
-						} else if ("company".equals(propertyName) || "deviceNumber".equals(propertyName)
-								|| "email".equals(propertyName)) {
+						} else {
 							// 创建属性节点
 							JSONObject propertyNode = new JSONObject();
 							propertyNode.put("type", "property");
@@ -57,6 +56,9 @@ public class JsonParseTool {
 							} else if ("email".equals(propertyName)) {
 								propertyNode.put("descript", "邮箱");
 								propertyNode.put("symbol", "static/img/icon5@3x.png");
+							} else {
+								propertyNode.put("descript", "属性");
+								propertyNode.put("symbol", "static/img/icon11@3x.png");
 							}
 							propertyNode.put("name", propertyValue);
 							propertyNode.put("width", 32);
@@ -92,7 +94,7 @@ public class JsonParseTool {
 							oriNode.put("height", 52);
 							oriNode.put("showLabelText", true);
 							datas.add(oriNode);
-						} else if ("merchantNumber".equals(propertyName) || "paymentCardNumber".equals(propertyName)) {
+						} else {
 							// 创建属性节点
 							JSONObject propertyNode = new JSONObject();
 							propertyNode.put("type", "property");
@@ -103,6 +105,9 @@ public class JsonParseTool {
 								propertyNode.put("symbol", "static/img/icon5@3x.png");
 							} else if ("paymentCardNumber".equals(propertyName)) {
 								propertyNode.put("descript", "还款卡号");
+								propertyNode.put("symbol", "static/img/icon11@3x.png");
+							} else {
+								propertyNode.put("descript", "属性");
 								propertyNode.put("symbol", "static/img/icon11@3x.png");
 							}
 							propertyNode.put("name", propertyValue);
@@ -139,7 +144,7 @@ public class JsonParseTool {
 							oriNode.put("height", 52);
 							oriNode.put("showLabelText", true);
 							datas.add(oriNode);
-						} else if ("company".equals(propertyName) || "agent".equals(propertyName)) {
+						} else {
 							// 创建属性节点
 							JSONObject propertyNode = new JSONObject();
 							propertyNode.put("type", "property");
@@ -150,6 +155,9 @@ public class JsonParseTool {
 								propertyNode.put("symbol", "static/img/icon12@3x.png");
 							} else if ("agent".equals(propertyName)) {
 								propertyNode.put("descript", "推广员");
+								propertyNode.put("symbol", "static/img/icon11@3x.png");
+							}else {
+								propertyNode.put("descript", "属性");
 								propertyNode.put("symbol", "static/img/icon11@3x.png");
 							}
 							propertyNode.put("name", propertyValue);
@@ -245,7 +253,7 @@ public class JsonParseTool {
 		resutlMap.put("links", links);
 		return resutlMap;
 	}
-	
+
 	public static Map<String, Object> parsePathJsonWithoutProperty(JSONObject jsonObject) {
 		if (null == jsonObject) {
 			return null;

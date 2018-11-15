@@ -226,9 +226,9 @@ public class GraphBaseRestExample {
 
     private static void lineSearch(RestApi api, String graphName) throws JSONException {
         LineSearchReqObj lineSearchReqObj = new LineSearchReqObj();
-        List<Integer> vertexIdList = new ArrayList<Integer>();
+        List<String> vertexIdList = new ArrayList<String>();
         String vertexId = getVertexIdByProperty(api, graphName, "person", "name", "marko");
-        vertexIdList.add(Integer.valueOf(vertexId));
+        vertexIdList.add(vertexId);
         lineSearchReqObj.setVertexIdList(vertexIdList);
         List<VertexFilter> vertexFilterList = new ArrayList<VertexFilter>();
         VertexFilter vertexFilter = new VertexFilter();
